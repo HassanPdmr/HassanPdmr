@@ -193,19 +193,12 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @DataProvider(name = "getEmail")
-    public Object[][] getEmail() throws IOException {
+    @Test(priority = 6, description = "Test Case has relations. Click to jump to section JMS-54 : Attempt to edit employee details, but don’t click ‘UPDATE’ & ensure the details have not changed - Version 1 ")
+    public void verifyEditEmployeeWithoutUpdateClick() throws InterruptedException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_management.xlsx", 7);
 
-    }
-
-    @Test(priority = 6, dataProvider = "getEmail", description = "JMS-50 : Mail ID format to be checked with invalid inputs - Version 1")
-    public void verifyEmailAcceptOnlyInValidInputs(String EmailID, boolean isValid) throws InterruptedException {
-
-        ExtentReportListener.getTest().log(Status.INFO, "Check the Email with invalid inputs");
-        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\User_management.xlsx", 6);
-
+        ExtentReportListener.getTest().log(Status.INFO, "Check  edit employee details without clicking update button");
+        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\User_management.xlsx", 8);
 
         for (Object[] row : excelDataA) {
 
@@ -219,37 +212,60 @@ public class UserManagementTest extends BaseTest {
                 String pub = row[5].toString();
                 String access = row[6].toString();
                 String role = row[7].toString();
-                String a = row[8].toString();
-
-                List<String> actualErr = userManagement.emailWithInValidInputs(empName, empID, designation, gender, depart, pub, access, role, EmailID);
-                System.out.println("actual error here for mail is : " + actualErr);
-
-              List<String> expectedErr = new ArrayList<>();
-               if (isValid) {
-
-                    expectedErr.add("Please fill out this field.");
-                } else
-                {
-                    expectedErr.add("A part following '@' should not contain the symbol '@'.");
-                    expectedErr.add("Please include an '@' in the email address, 'test>com' is missing an '@'.");
-                    expectedErr.add("Please include an '@' in the email address, 'check.' is missing an '@'.");
-                }
 
 
 
-                Assert.assertEquals(actualErr.get(0), expectedErr.get(0), "Error messages do not match the expected messages.");
-                System.out.println(actualErr.get(0));
 
-                Assert.assertEquals(actualErr.get(1), expectedErr.get(1), "Error messages do not match the expected messages.");
-                System.out.println(actualErr.get(1));
+                List<String> actualExp = userManagement.editEmployeeButNotClickingUpdate(empName, empID, designation, gender, depart, pub, access, role);
 
-                Assert.assertEquals(actualErr.get(2), expectedErr.get(2), "Error messages do not match the expected messages.");
-                System.out.println(actualErr.get(2));
+                double empI = Double.parseDouble(empID);
+                int empIdAsInt = (int) empI;
+                String empIDAsString = String.valueOf(empIdAsInt);
 
+                List<String> expectedUserValues = List.of(empName, empIDAsString, designation, gender, depart, pub, access, role);
+
+
+                Assert.assertEquals(actualExp, expectedUserValues, "Values are differ from page class");
 
 
             }
+
+
+        }
+    }
+
+    @Test(priority = 7, description = "JMS-56 : Duplicate user with employ ID of the deactivated account - Version 2")
+    public void verifyDupEmpIDofDeactivatedAccount() throws InterruptedException {
+
+        ExtentReportListener.getTest().log(Status.INFO, "Check inactive user EMP id can added again from add user");
+        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\User_management.xlsx", 8);
+
+        for (Object[] row : excelDataA) {
+
+            if (row.length == 9) {
+
+                String empName = row[0].toString();
+                String empID = row[1].toString();
+                String designation = row[2].toString();
+                String gender = row[3].toString();
+                String depart = row[4].toString();
+                String pub = row[5].toString();
+                String access = row[6].toString();
+                String role = row[7].toString();
+                String mail = row[8].toString();
+
+                String actualErr = userManagement.dupUserEmpIdOfDeactivatedAcct(empName, empID, designation, gender, depart, pub, access, role, mail);
+
+
+                String expectedMsg = "Employee ID already exists.";
+
+                Assert.assertEquals(actualErr, expectedMsg, "Same inactive user also added here");
+
+                ExtentReportListener.getTest().log(Status.INFO, "Inactive user login has been verified");
+
+
+            }
+
         }
     }
 }
-

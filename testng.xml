@@ -43,11 +43,10 @@
         <classes>
             <class name="tests.UserManagementTest">
                 <methods>
-                    <include name="verifyEmailAcceptOnlyInValidInputs">
+                    <include name="verifyDupEmpIDofDeactivatedAccount">
                     </include>
                 </methods>
             </class>
         </classes>
     </test>
-
 </suite>

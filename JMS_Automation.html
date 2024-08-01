@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">JMS_Automation_Test_Report</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Jul 30, 2024 08:07:11 PM</span></a>
+<a href="#"><span class="badge badge-primary">Aug 1, 2024 07:55:06 PM</span></a>
 </li>
 </ul>
 </div>
@@ -84,9 +84,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">JMS-50 : Mail ID format to be checked with invalid inputs - Version 1</p>
+            <p class="name">JMS-56 : Duplicate user with employ ID of the deactivated account - Version 2</p>
             <p class="text-sm">
-              <span>8:07:28 PM</span> / <span>00:00:10:324</span>
+              <span>7:55:15 PM</span> / <span>00:00:04:764</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -94,62 +94,70 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">JMS-50 : Mail ID format to be checked with invalid inputs - Version 1</h5>
-<span class='badge badge-success'>07.30.2024 8:07:28 PM</span>
-<span class='badge badge-danger'>07.30.2024 8:07:38 PM</span>
-<span class='badge badge-default'>00:00:10:324</span>
+<h5 class="test-status text-fail">JMS-56 : Duplicate user with employ ID of the deactivated account - Version 2</h5>
+<span class='badge badge-success'>08.01.2024 7:55:15 PM</span>
+<span class='badge badge-danger'>08.01.2024 7:55:20 PM</span>
+<span class='badge badge-default'>00:00:04:764</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
 </div>
-</div>    <div class="row mb-3"><div class="col-md-3">
-<img data-featherlight='screenshots/verifyEmailAcceptOnlyInValidInputs.png' src="screenshots/verifyEmailAcceptOnlyInValidInputs.png">
-    
-    </div></div>
-<div class="detail-body mt-4">
+</div><div class="detail-body mt-4">
 <table class="table table-sm">
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>8:07:28 PM</td>
+        <td>7:55:15 PM</td>
         <td>
-          Parameter: u$@
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:07:28 PM</td>
-        <td>
-          Parameter: false
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:07:28 PM</td>
-        <td>
-          Check the Email with invalid inputs
+          Check inactive user EMP id can added again from add user
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>8:07:36 PM</td>
+        <td>7:55:20 PM</td>
         <td>
           Test Failed
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>8:07:36 PM</td>
+        <td>7:55:20 PM</td>
         <td>
-          <textarea readonly class="code-block">java.lang.AssertionError: Error messages do not match the expected messages. expected [A part following '@' should not contain the symbol '@'.] but found [Please enter a part following '@'. 'u$@' is incomplete.]
-	at org.testng.Assert.fail(Assert.java:110)
-	at org.testng.Assert.failNotEquals(Assert.java:1577)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
-	at org.testng.Assert.assertEquals(Assert.java:131)
-	at org.testng.Assert.assertEquals(Assert.java:655)
-	at tests.UserManagementTest.verifyEmailAcceptOnlyInValidInputs(UserManagementTest.java:240)
+          <textarea readonly class="code-block">com.microsoft.playwright.PlaywrightException: Error {
+  message='Target closed
+=========================== logs ===========================
+waiting for locator("xpath=//div/span[@data-testid='edit-user-active-user']") to be visible
+============================================================
+  name='Error
+  stack='Error: Target closed
+=========================== logs ===========================
+waiting for locator("xpath=//div/span[@data-testid='edit-user-active-user']") to be visible
+============================================================
+    at CRSession.send (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\chromium\crConnection.js:163:34)
+    at CRExecutionContext.evaluateWithArguments (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\chromium\crExecutionContext.js:78:28)
+    at FrameExecutionContext.evaluateWithArguments (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\javascript.js:61:61)
+    at evaluateExpression (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\javascript.js:241:26)
+    at async C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\frames.js:632:24
+    at async Frame.retryWithProgressAndTimeouts (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\frames.js:915:24)
+    at async ProgressController.run (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\progress.js:92:22)
+    at async FrameDispatcher.waitForSelector (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\dispatchers\frameDispatcher.js:100:99)
+    at async DispatcherConnection.dispatch (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\dispatchers\dispatcher.js:312:22)
+}
+	at com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:54)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:111)
+	at com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:126)
+	at com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:102)
+	at com.microsoft.playwright.impl.FrameImpl.waitForSelectorImpl(FrameImpl.java:1064)
+	at com.microsoft.playwright.impl.FrameImpl.waitForSelectorImpl(FrameImpl.java:1054)
+	at com.microsoft.playwright.impl.PageImpl.lambda$waitForSelector$91(PageImpl.java:1449)
+	at com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:47)
+	at com.microsoft.playwright.impl.ChannelOwner.withLogging(ChannelOwner.java:87)
+	at com.microsoft.playwright.impl.PageImpl.waitForSelector(PageImpl.java:1448)
+	at com.microsoft.playwright.Page.waitForSelector(Page.java:7795)
+	at org.jms.pages.UserManagementPage.dupUserEmpIdOfDeactivatedAcct(UserManagementPage.java:476)
+	at tests.UserManagementTest.verifyDupEmpIDofDeactivatedAccount(UserManagementTest.java:257)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -172,99 +180,67 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: com.microsoft.playwright.impl.DriverException: Error {
+  message='Target closed
+=========================== logs ===========================
+waiting for locator("xpath=//div/span[@data-testid='edit-user-active-user']") to be visible
+============================================================
+  name='Error
+  stack='Error: Target closed
+=========================== logs ===========================
+waiting for locator("xpath=//div/span[@data-testid='edit-user-active-user']") to be visible
+============================================================
+    at CRSession.send (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\chromium\crConnection.js:163:34)
+    at CRExecutionContext.evaluateWithArguments (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\chromium\crExecutionContext.js:78:28)
+    at FrameExecutionContext.evaluateWithArguments (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\javascript.js:61:61)
+    at evaluateExpression (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\javascript.js:241:26)
+    at async C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\frames.js:632:24
+    at async Frame.retryWithProgressAndTimeouts (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\frames.js:915:24)
+    at async ProgressController.run (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\progress.js:92:22)
+    at async FrameDispatcher.waitForSelector (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\dispatchers\frameDispatcher.js:100:99)
+    at async DispatcherConnection.dispatch (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\dispatchers\dispatcher.js:312:22)
+}
+	at com.microsoft.playwright.impl.Connection.dispatch(Connection.java:226)
+	at com.microsoft.playwright.impl.Connection.processOneMessage(Connection.java:206)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:109)
+	... 33 more
 </textarea>
           
         </td>
       </tr>
       <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:07:38 PM</td>
-        <td>
-          Trace saved: <a href='traces/verifyEmailAcceptOnlyInValidInputs.zip'>traces/verifyEmailAcceptOnlyInValidInputs.zip</a>
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="fail" test-id="2"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">JMS-50 : Mail ID format to be checked with invalid inputs - Version 1</p>
-            <p class="text-sm">
-              <span>8:07:41 PM</span> / <span>00:00:10:523</span>
-              <span class="badge fail-bg log float-right">Fail</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-fail">JMS-50 : Mail ID format to be checked with invalid inputs - Version 1</h5>
-<span class='badge badge-success'>07.30.2024 8:07:41 PM</span>
-<span class='badge badge-danger'>07.30.2024 8:07:51 PM</span>
-<span class='badge badge-default'>00:00:10:523</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div>    <div class="row mb-3"><div class="col-md-3">
-<img data-featherlight='screenshots/verifyEmailAcceptOnlyInValidInputs.png' src="screenshots/verifyEmailAcceptOnlyInValidInputs.png">
-    
-    </div></div>
-<div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:07:41 PM</td>
-        <td>
-          Parameter: test>com
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:07:41 PM</td>
-        <td>
-          Parameter: false
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:07:41 PM</td>
-        <td>
-          Check the Email with invalid inputs
-        </td>
-      </tr>
-      <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>8:07:48 PM</td>
+        <td>7:55:20 PM</td>
         <td>
           Test Failed
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>8:07:48 PM</td>
+        <td>7:55:20 PM</td>
         <td>
-          <textarea readonly class="code-block">java.lang.AssertionError: Error messages do not match the expected messages. expected [A part following '@' should not contain the symbol '@'.] but found [Please include an '@' in the email address. 'test>com' is missing an '@'.]
-	at org.testng.Assert.fail(Assert.java:110)
-	at org.testng.Assert.failNotEquals(Assert.java:1577)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
-	at org.testng.Assert.assertEquals(Assert.java:131)
-	at org.testng.Assert.assertEquals(Assert.java:655)
-	at tests.UserManagementTest.verifyEmailAcceptOnlyInValidInputs(UserManagementTest.java:240)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+          <textarea readonly class="code-block">com.microsoft.playwright.PlaywrightException: Error {
+  message='Target page, context or browser has been closed
+  name='Error
+  stack='Error: Target page, context or browser has been closed
+    at DispatcherConnection.dispatch (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\dispatchers\dispatcher.js:226:49)
+    at transport.onmessage (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\cli\driver.js:52:57)
+    at Immediate._onImmediate (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\protocol\transport.js:77:34)
+    at process.processImmediate (node:internal/timers:476:21)
+}
+	at com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:54)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:111)
+	at com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:126)
+	at com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:102)
+	at com.microsoft.playwright.impl.PageImpl.screenshotImpl(PageImpl.java:1094)
+	at com.microsoft.playwright.impl.PageImpl.lambda$screenshot$65(PageImpl.java:1038)
+	at com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:47)
+	at com.microsoft.playwright.impl.ChannelOwner.withLogging(ChannelOwner.java:87)
+	at com.microsoft.playwright.impl.PageImpl.screenshot(PageImpl.java:1038)
+	at listeners.ExtentReportListener.onTestFailure(ExtentReportListener.java:84)
+	at org.testng.internal.TestListenerHelper.runTestListeners(TestListenerHelper.java:99)
+	at org.testng.internal.invokers.TestInvoker.runTestResultListener(TestInvoker.java:277)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:764)
 	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
 	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
 	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
@@ -281,124 +257,21 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: com.microsoft.playwright.impl.DriverException: Error {
+  message='Target page, context or browser has been closed
+  name='Error
+  stack='Error: Target page, context or browser has been closed
+    at DispatcherConnection.dispatch (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\server\dispatchers\dispatcher.js:226:49)
+    at transport.onmessage (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\cli\driver.js:52:57)
+    at Immediate._onImmediate (C:\Users\smhassan\AppData\Local\Temp\playwright-java-11391726902930086072\package\lib\protocol\transport.js:77:34)
+    at process.processImmediate (node:internal/timers:476:21)
+}
+	at com.microsoft.playwright.impl.Connection.dispatch(Connection.java:226)
+	at com.microsoft.playwright.impl.Connection.processOneMessage(Connection.java:206)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:109)
+	... 27 more
 </textarea>
           
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:07:51 PM</td>
-        <td>
-          Trace saved: <a href='traces/verifyEmailAcceptOnlyInValidInputs.zip'>traces/verifyEmailAcceptOnlyInValidInputs.zip</a>
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="fail" test-id="3"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">JMS-50 : Mail ID format to be checked with invalid inputs - Version 1</p>
-            <p class="text-sm">
-              <span>8:07:54 PM</span> / <span>00:00:09:654</span>
-              <span class="badge fail-bg log float-right">Fail</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-fail">JMS-50 : Mail ID format to be checked with invalid inputs - Version 1</h5>
-<span class='badge badge-success'>07.30.2024 8:07:54 PM</span>
-<span class='badge badge-danger'>07.30.2024 8:08:03 PM</span>
-<span class='badge badge-default'>00:00:09:654</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div>    <div class="row mb-3"><div class="col-md-3">
-<img data-featherlight='screenshots/verifyEmailAcceptOnlyInValidInputs.png' src="screenshots/verifyEmailAcceptOnlyInValidInputs.png">
-    
-    </div></div>
-<div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:07:54 PM</td>
-        <td>
-          Parameter: KMR@gmail.com
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:07:54 PM</td>
-        <td>
-          Parameter: true
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:07:54 PM</td>
-        <td>
-          Check the Email with invalid inputs
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>8:08:02 PM</td>
-        <td>
-          Test Failed
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>8:08:02 PM</td>
-        <td>
-          <textarea readonly class="code-block">java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 1
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
-	at java.base/java.util.Objects.checkIndex(Objects.java:372)
-	at java.base/java.util.ArrayList.get(ArrayList.java:459)
-	at tests.UserManagementTest.verifyEmailAcceptOnlyInValidInputs(UserManagementTest.java:243)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:829)
-	at org.testng.TestRunner.run(TestRunner.java:602)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
-	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:475)
-	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:58)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-</textarea>
-          
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:08:03 PM</td>
-        <td>
-          Trace saved: <a href='traces/verifyEmailAcceptOnlyInValidInputs.zip'>traces/verifyEmailAcceptOnlyInValidInputs.zip</a>
         </td>
       </tr>
   </tbody>
@@ -419,7 +292,7 @@
 <div class="test-list">
 <div class="test-list-tools">
 <ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
-<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">2</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
 </div>
 <div class="test-list-wrapper scrollable">
 <ul class="test-list-item">
@@ -428,12 +301,12 @@
 <span class="meta">
 <span class='badge log badge-danger'>1</span>
 </span>
-<p class="name">java.lang.IndexOutOfBoundsException</p>
+<p class="name">com.microsoft.playwright.PlaywrightException</p>
 <p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>java.lang.IndexOutOfBoundsException</h4>
+<h4>com.microsoft.playwright.PlaywrightException</h4>
 <span status="fail" class='badge log badge-danger'>1 failed</span>
 </div>
 <table class='table table-sm mt-4'>
@@ -447,49 +320,9 @@
 <tbody>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>20:07:54 PM</td>
+<td>19:55:15 PM</td>
 <td>
-<a href="#" class="linked" test-id='3' id='3'>JMS-50 : Mail ID format to be checked with invalid inputs - Version 1</a>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-<li class="test-item">
-<div class="test-detail">
-<span class="meta">
-<span class='badge log badge-danger'>2</span>
-</span>
-<p class="name">java.lang.AssertionError</p>
-<p class="duration text-sm">2 tests</p>
-</div>
-<div class="test-contents d-none">
-<div class="info">
-<h4>java.lang.AssertionError</h4>
-<span status="fail" class='badge log badge-danger'>2 failed</span>
-</div>
-<table class='table table-sm mt-4'>
-<thead>
-<tr>
-<th class="status-col">Status</th>
-<th class="timestamp-col">Timestamp</th>
-<th>TestName</th>
-</tr>
-</thead>
-<tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>20:07:28 PM</td>
-<td>
-<a href="#" class="linked" test-id='1' id='1'>JMS-50 : Mail ID format to be checked with invalid inputs - Version 1</a>
-</td>
-</tr>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>20:07:41 PM</td>
-<td>
-<a href="#" class="linked" test-id='2' id='2'>JMS-50 : Mail ID format to be checked with invalid inputs - Version 1</a>
+<a href="#" class="linked" test-id='1' id='1'>JMS-56 : Duplicate user with employ ID of the deactivated account - Version 2</a>
 </td>
 </tr>
 </tbody>
@@ -509,13 +342,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Jul 30, 2024 08:07:11 PM</h3>
+<h3>Aug 1, 2024 07:55:06 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Jul 30, 2024 08:08:04 PM</h3>
+<h3>Aug 1, 2024 07:55:21 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -527,7 +360,7 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Tests Failed</p>
-<h3>3</h3>
+<h3>1</h3>
 </div></div>
 </div>
 </div>
@@ -548,7 +381,7 @@
 </small>
 </div>
 <div>
-<small data-tooltip='100%'><b>3</b> tests failed,
+<small data-tooltip='100%'><b>1</b> tests failed,
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -568,8 +401,8 @@
 <div class="card-footer">
 <div><small data-tooltip='0%'><b>0</b> events passed</small></div>
 <div>
-<small data-tooltip='33%'><b>6</b> events failed,
-<b data-tooltip='%'>12</b> others
+<small data-tooltip='80%'><b>4</b> events failed,
+<b data-tooltip='%'>1</b> others
 </small>
 </div>
 </div>
@@ -585,7 +418,7 @@
 </div></div>
 <script>
 var timeline = {
-"JMS-50 : Mail ID format to be checked with invalid inputs - Version 1":10.324,"JMS-50 : Mail ID format to be checked with invalid inputs - Version 1":10.523,"JMS-50 : Mail ID format to be checked with invalid inputs - Version 1":9.654
+"JMS-56 : Duplicate user with employ ID of the deactivated account - Version 2":4.764
 };
 </script>
 <div class="row">
@@ -613,7 +446,7 @@ var timeline = {
 var statusGroup = {
 parentCount: 5,
 passParent: 0,
-failParent: 3,
+failParent: 1,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
@@ -630,10 +463,10 @@ skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
 passEvents: 0,
-failEvents: 6,
+failEvents: 4,
 warningEvents: 0,
 skipEvents: 0,
-infoEvents: 12
+infoEvents: 1
 };
 </script>        </div>
       </div>

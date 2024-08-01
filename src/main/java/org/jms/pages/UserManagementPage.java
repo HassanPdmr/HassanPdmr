@@ -33,6 +33,8 @@ public class UserManagementPage {
     private String Access = "//label[text()='Access']//following::div[1]";
     private String Gender = "id=user-gender";
     private String EMail = "id=user-mail";
+    private String ActivateIcon = "//div/span[@data-testid='edit-user-active-user']";
+    private String DeactivaeIcon = "//div/span[@data-testid='edit-user-in-active-user']";
 
 
     public UserManagementPage(Page page) {
@@ -54,7 +56,11 @@ public class UserManagementPage {
         page.locator(addUser).click();
 
         page.locator(enterEmpName).fill(empName);
-        page.locator(enterEmpId).fill(empId);
+
+        double empI = Double.parseDouble(empId);
+        int empIdAsInt = (int) empI;
+        String empIDAsString = String.valueOf(empIdAsInt);
+        page.locator(enterEmpId).fill(empIDAsString);
 
 
         Locator desig = page.locator(designationDropdown);
@@ -81,9 +87,9 @@ public class UserManagementPage {
 
 
         page.locator(EMail).fill(mail);
-        page.locator(AddOkButton).click();
-
-        page.waitForSelector(addCloseButton).click();
+//        page.locator(AddOkButton).click();
+//
+//        page.waitForSelector(addCloseButton).click();
 
 
     }
@@ -95,9 +101,13 @@ public class UserManagementPage {
         page.waitForSelector("(//p[text()='" + empName + "'])[last()]").click();
         Thread.sleep(1000);
 
+        double empI = Double.parseDouble(empId);
+        int empIdAsInt = (int) empI;
+        String empIDAsString = String.valueOf(empIdAsInt);
 
-        String EditButton = "//div/p[text()='" + empId + "']//following::button[@class='_btn_d74oi_223'][1]";
+        String EditButton = "//div/p[text()='" + empIDAsString + "']//following::button[@class='_btn_d74oi_223'][1]";
 
+        System.out.println("Emp id here: " + empIDAsString);
         page.waitForSelector(EditButton, new Page.WaitForSelectorOptions().setTimeout(30000));
         Locator Edit = page.locator(EditButton);
         Edit.scrollIntoViewIfNeeded();
@@ -332,6 +342,7 @@ public class UserManagementPage {
         System.out.println("empIdStr: " + empNameAsString);
 
         page.locator(enterEmpName).fill(empName);
+
         Locator Gen = page.locator(Gender);
         page.waitForSelector(Gender);
         Gen.selectOption(new SelectOption().setLabel(gender));
@@ -354,6 +365,8 @@ public class UserManagementPage {
         roleNew.selectOption(new SelectOption().setLabel(role));
 
         page.locator(EMail).fill(mail);
+
+        //List<String> data= page.locator(EMail).allInnerTexts();
 
 
         Locator invalidInputs = page.locator("input:invalid").first();
@@ -375,28 +388,33 @@ public class UserManagementPage {
     }
 
 
-    public List<String> emailWithInValidInputs(String empName, String empId, String designation, String gender,
-                                               String depart, String Pub, String access, String role, String mail) {
+    public List<String> editEmployeeButNotClickingUpdate(String empName, String empId, String designation, String gender,
+                                                         String depart, String Pub, String access, String role) throws InterruptedException {
 
         page.locator(userdashboard).click();
-        page.locator(addUser).click();
+
+
+        editUserProfileCard(empName, empId);
+
+        page.locator(enterEmpName).clear();
         page.locator(enterEmpName).fill(empName);
-        int empNameAsInt = (int) Double.parseDouble(empId);
 
-        String empNameAsString = String.valueOf(empNameAsInt);
-        page.locator(enterEmpId).fill(empNameAsString);
-        System.out.println("empIdStr: " + empNameAsString);
+//        page.locator(enterEmpId).clear();
+//        double empI = Double.parseDouble(empId);
+//        int empIdAsInt = (int) empI;
+//        String empIDAsString = String.valueOf(empIdAsInt);
+//        page.locator(enterEmpId).fill(empIDAsString);
 
-        Locator Gen = page.locator(Gender);
-        page.waitForSelector(Gender);
-        Gen.selectOption(new SelectOption().setLabel(gender));
+        Locator desig = page.locator(designationDropdown);
+        desig.selectOption(new SelectOption().setLabel(designation));
 
         Locator dept = page.locator(department);
         page.waitForSelector(department);
         dept.selectOption(new SelectOption().setLabel(depart));
 
-        Locator desig = page.locator(designationDropdown);
-        desig.selectOption(new SelectOption().setLabel(designation));
+        Locator Gen = page.locator(Gender);
+        page.waitForSelector(Gender);
+        Gen.selectOption(new SelectOption().setLabel(gender));
 
         page.locator(Publisher).click();
         page.locator("//div[text()='" + Pub + "']").click();
@@ -407,29 +425,93 @@ public class UserManagementPage {
         Locator roleNew = page.locator(Role);
         roleNew.selectOption(new SelectOption().setLabel(role));
 
-        page.locator(EMail).fill(mail);
-        page.waitForTimeout(2500);
+//        page.locator(EMail).fill(mail);
+
+        List<String> EditUserDetails = new ArrayList<>();
+
+        EditUserDetails.add(page.locator(enterEmpName).inputValue());
+        EditUserDetails.add(page.locator(enterEmpId).inputValue());
 
 
-        page.locator(AddOkButton).click();
-        page.waitForTimeout(2500);
+        assertThat(page.locator("id=user-designation")).isVisible();
+        Locator selectedDesig = desig.locator("option:checked");
+        String selectedDesigText = selectedDesig.textContent().trim();
+        System.out.println("Selected value for designation: " + selectedDesigText);
+        EditUserDetails.add(selectedDesigText);
 
 
-        List<String> EmailInput = new ArrayList<>();
-        List<Locator> invalidInputs = page.locator("input:invalid").all();
+        EditUserDetails.add(page.locator(Gender).inputValue());
 
 
-        for (Locator invalidInput : invalidInputs) {
-            String alertText = (String) invalidInput.evaluate("el => el.validationMessage");
-            if (alertText != null && !alertText.trim().isEmpty()) {
-                EmailInput.add(alertText);
-                System.out.println("List of Error: " + EmailInput);
-            }
+        dept.selectOption(new SelectOption().setLabel(depart));
+        assertThat(page.locator("id=user-department")).isVisible();
+        Locator selectedDepartment = dept.locator("option:checked");
+        String selectedDptText = selectedDepartment.textContent().trim();
+        System.out.println("Selected value for depart: " + selectedDptText);
+        EditUserDetails.add(selectedDptText);
+
+
+        EditUserDetails.add(page.locator(Publisher).textContent());
+        String pub = page.locator(Publisher).textContent();
+        System.out.println("This is Publisher here: " + pub);
+
+
+        EditUserDetails.add(page.locator(Access).textContent());
+        EditUserDetails.add(page.locator(Role).inputValue());
+
+
+        return EditUserDetails;
+
+
+    }
+
+
+    public String dupUserEmpIdOfDeactivatedAcct(String empName, String empId, String designation, String gender,
+                                                String depart, String Pub, String access, String role, String mail) throws InterruptedException {
+
+
+        editUserProfileCard(empName, empId);
+
+
+        Boolean DeActV = page.locator(DeactivaeIcon).isVisible();
+        if (DeActV.equals(true)) {
+
+            page.waitForSelector(DeactivaeIcon).click();
+            page.waitForSelector(ActivateIcon).click();
+            page.locator(addCloseButton).click();
+
+            System.out.println("Close button clicked");
+
+            page.locator(userdashboard).click();
+            page.locator(addUser).click();
+            generalAddUser(empName, empId, designation, gender, depart, Pub, access, role, mail);
+            page.locator(AddOkButton).click();
+
+
+
+
+        } else {
+
+
+            page.waitForSelector(ActivateIcon).click();
+
+            page.locator(addCloseButton).click();
+
+            System.out.println("Close button clicked");
+
+            page.locator(userdashboard).click();
+            page.locator(addUser).click();
+            generalAddUser(empName, empId, designation, gender, depart, Pub, access, role, mail);
+            page.locator(AddOkButton).click();
+
 
         }
-        page.evaluate("window.location.reload(true);");
 
-        return EmailInput;
+        String ErrMsg = page.locator("//div[contains(text(),'Employee ID already exists.')]").textContent();
+        System.out.println("Error Message: " + ErrMsg);
+        return ErrMsg;
+
+
     }
 }
 
