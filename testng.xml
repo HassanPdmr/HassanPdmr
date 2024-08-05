@@ -43,7 +43,7 @@
         <classes>
             <class name="tests.UserManagementTest">
                 <methods>
-                    <include name="verifyDupEmpIDofDeactivatedAccount">
+                    <include name="verifyDepartDesignOnUserRoles">
                     </include>
                 </methods>
             </class>

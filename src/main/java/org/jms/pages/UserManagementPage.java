@@ -28,13 +28,18 @@ public class UserManagementPage {
     private String AddOkButton = "//form[@data-testid='add-user-user-form']//button[@type='submit']";
     private String editUserNameCard = "//div[@class='_content_d74oi_73']";
     private String sakthiuser = "(//p[text()='Sakthi'])[2]";
-    private String EditUser = "//p[text()='1948']//following::img[@alt='edit']";
     private String Publisher = "//label[text()='Publisher']//following::div[1]";
     private String Access = "//label[text()='Access']//following::div[1]";
     private String Gender = "id=user-gender";
     private String EMail = "id=user-mail";
     private String ActivateIcon = "//div/span[@data-testid='edit-user-active-user']";
     private String DeactivaeIcon = "//div/span[@data-testid='edit-user-in-active-user']";
+    private String UpdateBtn = "button[type='submit']";
+    private String Logout = "//p[normalize-space()='Logout']";
+    private String username = "id=siginIn_id";
+    private String password = "id=signin_pwd";
+    private String SignIn = "//button[normalize-space()='Sign in']";
+    private String profile = "//p[normalize-space()='Profile']";
 
 
     public UserManagementPage(Page page) {
@@ -112,6 +117,16 @@ public class UserManagementPage {
         Locator Edit = page.locator(EditButton);
         Edit.scrollIntoViewIfNeeded();
         Edit.click();
+
+
+    }
+
+    public void loginData(String Uname, String Pwd) {
+
+
+        page.locator(username).fill(Uname);
+        page.locator(password).fill(Pwd);
+        page.waitForSelector(SignIn).click();
 
 
     }
@@ -472,13 +487,15 @@ public class UserManagementPage {
 
         editUserProfileCard(empName, empId);
 
-
         Boolean DeActV = page.locator(DeactivaeIcon).isVisible();
+
         if (DeActV.equals(true)) {
 
             page.waitForSelector(DeactivaeIcon).click();
+            page.waitForSelector(addCloseButton).click();
             page.waitForSelector(ActivateIcon).click();
-            page.locator(addCloseButton).click();
+            page.waitForSelector(addCloseButton).click();
+
 
             System.out.println("Close button clicked");
 
@@ -486,16 +503,14 @@ public class UserManagementPage {
             page.locator(addUser).click();
             generalAddUser(empName, empId, designation, gender, depart, Pub, access, role, mail);
             page.locator(AddOkButton).click();
-
-
 
 
         } else {
 
 
             page.waitForSelector(ActivateIcon).click();
+            page.waitForSelector(addCloseButton).click();
 
-            page.locator(addCloseButton).click();
 
             System.out.println("Close button clicked");
 
@@ -503,6 +518,8 @@ public class UserManagementPage {
             page.locator(addUser).click();
             generalAddUser(empName, empId, designation, gender, depart, Pub, access, role, mail);
             page.locator(AddOkButton).click();
+            System.out.println("Ok button has been clicked here");
+            page.waitForTimeout(2000);
 
 
         }
@@ -513,5 +530,305 @@ public class UserManagementPage {
 
 
     }
+
+
+    public List<String> MaleFemaleIconCheck(String empName, String empId, String designation, String gender,
+                                            String depart, String Pub, String access, String role, String mail) throws InterruptedException {
+
+
+        page.locator(userdashboard).click();
+        page.locator(addUser).click();
+        page.locator(enterEmpName).fill(empName);
+
+
+        double empI = Double.parseDouble(empId);
+        int empIdAsInt = (int) empI;
+        String empIDAsString = String.valueOf(empIdAsInt);
+        page.locator(enterEmpId).fill(empIDAsString);
+
+
+        Locator desig = page.locator(designationDropdown);
+        desig.selectOption(new SelectOption().setLabel(designation));
+
+        Locator Gen = page.locator(Gender);
+        Gen.selectOption(new SelectOption().setLabel(gender));
+
+        Locator dept = page.locator(department);
+        dept.selectOption(new SelectOption().setLabel(depart));
+
+
+        page.locator(Publisher).click();
+        page.locator("//div[text()='" + Pub + "']").click();
+
+
+        page.locator(Access).click();
+        page.locator("//div[text()='" + access + "']").click();
+
+        Locator roleNew = page.locator(Role);
+        roleNew.selectOption(new SelectOption().setLabel(role));
+
+
+        page.locator(EMail).fill(mail);
+        page.locator(AddOkButton).click();
+        page.waitForTimeout(2000);
+        page.waitForSelector(addCloseButton).click();
+        System.out.println("Close button clicked");
+
+        editUserProfileCard(empName, empId);
+
+        List<String> GenderCheck = new ArrayList<>();
+
+        GenderCheck.add(page.locator(Gender).inputValue());
+
+        String GendVal = page.locator(Gender).inputValue();
+        System.out.println("Gender Value: " + GendVal);
+
+        return GenderCheck;
+
+    }
+
+    public List<String> CheckWithChangingRoles(String empName, String empId, String designation, String gender,
+                                               String depart, String Pub, String access, String role, String mail,
+                                               String roleTL, String Uname, String Pwd, String rolecheck, String PmUname, String PmPwd) throws InterruptedException {
+
+
+        generalAddUser(empName, empId, designation, gender, depart, Pub, access, role, mail);
+        page.locator(AddOkButton).click();
+
+        page.waitForTimeout(2000);
+        page.waitForSelector(addCloseButton).click();
+
+        editUserProfileCard(empName, empId);
+
+        Locator roleNext = page.locator(Role);
+        roleNext.selectOption(new SelectOption().setLabel(roleTL));
+        System.out.println("1st Role here is: " + roleTL);
+
+        page.waitForSelector(UpdateBtn).click();
+
+        page.waitForTimeout(2000);
+        page.waitForSelector(addCloseButton).click();
+        page.waitForSelector(Logout).click();
+
+        loginData(Uname, Pwd);
+
+        page.waitForSelector(profile).click();
+
+        page.waitForTimeout(2000);
+        page.evaluate("window.scrollBy(0, 5000)");
+
+        boolean checkVis = page.locator("//span[contains(text(), '" + rolecheck + "')]").isVisible();
+        System.out.println("AMTL Role Visibility: " + checkVis);
+
+
+        String AMTL_Role = page.waitForSelector("//span[contains(text(), '" + rolecheck + "')]").innerText();
+
+
+        page.locator(Logout).click();
+
+        loginData(PmUname, PmPwd);
+        page.locator(userdashboard).click();
+        editUserProfileCard(empName, empId);
+
+        Locator roleNext_1 = page.locator(Role);
+        roleNext_1.selectOption(new SelectOption().setLabel(role));
+        System.out.println("2nd Role here is: " + role);
+
+        page.waitForSelector(UpdateBtn).click();
+
+        page.waitForTimeout(2000);
+        page.waitForSelector(addCloseButton).click();
+        page.waitForSelector(Logout).click();
+
+        loginData(Uname, Pwd);
+
+        page.waitForSelector(profile).click();
+
+        String UserRole = page.waitForSelector("//span[contains(text(), '" + role + "')]").innerText();
+
+        List<String> RolesCheck = new ArrayList<>();
+
+        RolesCheck.add(AMTL_Role);
+        System.out.println("AMTL inside List :" + AMTL_Role);
+
+        RolesCheck.add(UserRole);
+        System.out.println("User inside List :" + UserRole);
+
+        return RolesCheck;
+
+
+    }
+
+
+    public List<String> desigDeptVerification(String empName, String empId, String designation,
+                                              String gender, String depart, String Pub, String access, String role, String mail,
+                                              String Uname, String Pwd, String desigNew, String departNew) throws InterruptedException {
+
+
+        generalAddUser(empName, empId, designation, gender, depart, Pub, access, role, mail);
+        page.locator(AddOkButton).click();
+
+        page.waitForTimeout(2000);
+        page.waitForSelector(addCloseButton).click();
+        page.waitForSelector(Logout).click();
+
+        loginData(empId, empId);
+        page.waitForSelector(profile).click();
+
+
+        Boolean DesiVal = page.waitForSelector("//span[contains(text(), '" + designation + "')]").isVisible();
+        if (DesiVal.equals(true)) {
+
+            String DesignNew = page.waitForSelector("//span[contains(text(), '" + designation + "')]").innerText();
+            System.out.println("Existing Designation :" + DesignNew);
+
+
+            String DeptNew = page.waitForSelector("//span[contains(text(), '" + depart + "')]").innerText();
+            System.out.println("Existing Department :" + DeptNew);
+
+
+            page.evaluate("window.scrollBy(0, 1000)");
+            page.waitForSelector(Logout).click();
+
+            loginData(Uname, Pwd);
+            page.locator(userdashboard).click();
+
+            editUserProfileCard(empName, empId);
+
+            Locator desig = page.locator(designationDropdown);
+            desig.selectOption(new SelectOption().setLabel(desigNew));
+
+            Locator dept = page.locator(department);
+            dept.selectOption(new SelectOption().setLabel(departNew));
+
+            page.waitForSelector(UpdateBtn).click();
+            page.waitForTimeout(2000);
+            page.waitForSelector(addCloseButton).click();
+            page.waitForSelector(Logout).click();
+
+            loginData(empId, empId);
+
+            page.waitForSelector(profile).click();
+
+            String DesignUpdate = page.waitForSelector("//span[contains(text(), '" + desigNew + "')]").innerText();
+            System.out.println("Updated Designation :" + DesignUpdate);
+
+
+            String DeptUpdated = page.waitForSelector("//span[contains(text(), '" + departNew + "')]").innerText();
+            System.out.println("Updated Department :" + DeptUpdated);
+
+
+            List<String> DeptAndDesignCheck = new ArrayList<>();
+
+            DeptAndDesignCheck.add(DesignNew);
+            System.out.println("Existing Designation inside List :" + DesignNew);
+
+            DeptAndDesignCheck.add(DeptNew);
+            System.out.println("Existing Department inside List :" + DeptNew);
+
+
+            DeptAndDesignCheck.add(DesignUpdate);
+            System.out.println("Updated Designation inside List :" + DesignUpdate);
+
+
+            DeptAndDesignCheck.add(DeptUpdated);
+            System.out.println("Updated Department inside List :" + DeptUpdated);
+
+            return DeptAndDesignCheck;
+
+        }
+        else {
+
+            page.waitForSelector(Logout).click();
+            loginData(Uname, Pwd);
+            editUserProfileCard(empName, empId);
+
+            Locator desig = page.locator(designationDropdown);
+            desig.selectOption(new SelectOption().setLabel(designation));
+
+            Locator dept = page.locator(department);
+            dept.selectOption(new SelectOption().setLabel(depart));
+
+            page.waitForSelector(UpdateBtn).click();
+            page.waitForTimeout(2000);
+            page.waitForSelector(addCloseButton).click();
+            page.waitForSelector(Logout).click();
+
+            loginData(empId, empId);
+            page.waitForSelector(profile).click();
+            
+            String DesignNew = page.waitForSelector("//span[contains(text(), '" + designation + "')]").innerText();
+            System.out.println("Existing Designation :" + DesignNew);
+
+
+            String DeptNew = page.waitForSelector("//span[contains(text(), '" + depart + "')]").innerText();
+            System.out.println("Existing Department :" + DeptNew);
+
+
+            page.evaluate("window.scrollBy(0, 1000)");
+            page.waitForSelector(Logout).click();
+
+            loginData(Uname, Pwd);
+            page.locator(userdashboard).click();
+
+            editUserProfileCard(empName, empId);
+
+            Locator desigN = page.locator(designationDropdown);
+            desigN.selectOption(new SelectOption().setLabel(desigNew));
+
+            Locator deptN = page.locator(department);
+            deptN.selectOption(new SelectOption().setLabel(departNew));
+
+            page.waitForSelector(UpdateBtn).click();
+            page.waitForTimeout(2000);
+            page.waitForSelector(addCloseButton).click();
+            page.waitForSelector(Logout).click();
+
+            loginData(empId, empId);
+
+            page.waitForSelector(profile).click();
+
+            String DesignUpdate = page.waitForSelector("//span[contains(text(), '" + desigNew + "')]").innerText();
+            System.out.println("Updated Designation :" + DesignUpdate);
+
+
+            String DeptUpdated = page.waitForSelector("//span[contains(text(), '" + departNew + "')]").innerText();
+            System.out.println("Updated Department :" + DeptUpdated);
+
+
+            List<String> DeptAndDesignCheck = new ArrayList<>();
+
+            DeptAndDesignCheck.add(DesignNew);
+            System.out.println("Existing Designation inside List :" + DesignNew);
+
+            DeptAndDesignCheck.add(DeptNew);
+            System.out.println("Existing Department inside List :" + DeptNew);
+
+
+            DeptAndDesignCheck.add(DesignUpdate);
+            System.out.println("Updated Designation inside List :" + DesignUpdate);
+
+
+            DeptAndDesignCheck.add(DeptUpdated);
+            System.out.println("Updated Department inside List :" + DeptUpdated);
+
+            return DeptAndDesignCheck;
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+    }
+
+
 }
 

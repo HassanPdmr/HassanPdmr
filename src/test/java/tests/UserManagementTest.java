@@ -214,8 +214,6 @@ public class UserManagementTest extends BaseTest {
                 String role = row[7].toString();
 
 
-
-
                 List<String> actualExp = userManagement.editEmployeeButNotClickingUpdate(empName, empID, designation, gender, depart, pub, access, role);
 
                 double empI = Double.parseDouble(empID);
@@ -268,4 +266,108 @@ public class UserManagementTest extends BaseTest {
 
         }
     }
+
+    @DataProvider(name = "getGender")
+    public Object[][] getGenderData() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_management.xlsx", 9);
+
+    }
+
+
+    @Test(priority = 8, dataProvider = "getGender", description = "JMS-51 : Verify the Male/female icon on employee badge based on gender - Version 1")
+    public void verifyGenderWithMaleAndFemale(String empName, String empId, String designation, String gender,
+                                              String depart, String Pub, String access, String role, String mail) throws InterruptedException {
+
+
+        ExtentReportListener.getTest().log(Status.INFO, "Check Gender dropdown");
+
+        List<String> actual = userManagement.MaleFemaleIconCheck(empName, empId, designation, gender, depart, Pub, access, role, mail);
+
+        String MaleGen = "Male";
+        String FemaleGen = "Female";
+
+
+        if (gender.equals(MaleGen)) {
+            Assert.assertEquals(actual.get(0), MaleGen, "Expected gender to be Male");
+        } else if (gender.equals(FemaleGen)) {
+            Assert.assertEquals(actual.get(0), FemaleGen, "Expected gender to be Female");
+        }
+
+        ExtentReportListener.getTest().log(Status.INFO, "Gender icon has been verified");
+
+    }
+
+    @DataProvider(name = "getChangingRoles")
+    public Object[][] getRoleNewData() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_management.xlsx", 10);
+
+    }
+
+    @Test(priority = 9, dataProvider = "getChangingRoles", description = " JMS-207 : Change role of any user and verify the same by logging into user’s profile - Version 1")
+    public void verifyChangingRolesByLoggingUser(String empName, String empId, String designation, String gender,
+                                                 String depart, String Pub, String access, String role, String mail,
+                                                 String roleTL, String Uname, String Pwd, String rolecheck, String PmUname, String PmPwd) throws InterruptedException {
+
+        ExtentReportListener.getTest().log(Status.INFO, "Check Roles from TL to User and User to TL");
+
+        List<String> actualVal = userManagement.CheckWithChangingRoles(empName, empId, designation, gender, depart,
+                Pub, access, role, mail, roleTL, Uname, Pwd, rolecheck, PmUname, PmPwd);
+
+
+        String TLVal = "Role : AMTL";
+        String UserVal = "Role : User";
+
+
+        Assert.assertEquals(actualVal.get(0), TLVal, "Expected gender to be Male");
+        Assert.assertEquals(actualVal.get(1), UserVal, "Expected gender to be FeMale");
+
+        ExtentReportListener.getTest().log(Status.INFO, "Changing roles has been verified");
+
+
+    }
+
+
+
+    @DataProvider(name = "getDepartDesignation")
+    public Object[][] getDeptDesignData() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_management.xlsx", 11);
+
+    }
+
+    @Test(priority = 9, dataProvider = "getDepartDesignation", description = " JMS-57 : Verify Designation and Department don’t impact on the roles assigned - Version 2")
+
+    public void verifyDepartDesignOnUserRoles(String empName, String empId, String designation,
+                                              String gender, String depart, String Pub, String access, String role, String mail,
+                                              String Uname, String Pwd, String desigNew, String departNew) throws InterruptedException {
+
+        ExtentReportListener.getTest().log(Status.INFO, "Check Designation and Department don't impact on User roles");
+
+
+        List<String> actualVal = userManagement.desigDeptVerification(empName, empId, designation, gender,
+                depart, Pub, access, role, mail, Uname, Pwd, desigNew, departNew);
+
+        String ExisitingDesigVal = "Designation : Senior Paginator";
+        String ExisitingDeptVal = "Department : Graphics";
+
+        String UpdatedDesigVal = "Designation : Product Tester";
+        String UpdatedDeptVal = "Department : Administration";
+
+
+        Assert.assertEquals(actualVal.get(0), ExisitingDesigVal, "Wrong Existing Designation displayed");
+        Assert.assertEquals(actualVal.get(1), ExisitingDeptVal, "Wrong Existing Department displayed");
+
+        Assert.assertEquals(actualVal.get(2), UpdatedDesigVal, "Wrong Updated Designation displayed");
+        Assert.assertEquals(actualVal.get(3), UpdatedDeptVal, "Wrong Updated Department displayed");
+
+        ExtentReportListener.getTest().log(Status.INFO, "Department and Designation has been verified which it doesn't reflect on roles");
+
+
+
+
+    }
+
+
 }
