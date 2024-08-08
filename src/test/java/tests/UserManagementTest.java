@@ -329,7 +329,6 @@ public class UserManagementTest extends BaseTest {
     }
 
 
-
     @DataProvider(name = "getDepartDesignation")
     public Object[][] getDeptDesignData() throws IOException {
 
@@ -338,7 +337,6 @@ public class UserManagementTest extends BaseTest {
     }
 
     @Test(priority = 9, dataProvider = "getDepartDesignation", description = " JMS-57 : Verify Designation and Department don’t impact on the roles assigned - Version 2")
-
     public void verifyDepartDesignOnUserRoles(String empName, String empId, String designation,
                                               String gender, String depart, String Pub, String access, String role, String mail,
                                               String Uname, String Pwd, String desigNew, String departNew) throws InterruptedException {
@@ -365,9 +363,105 @@ public class UserManagementTest extends BaseTest {
         ExtentReportListener.getTest().log(Status.INFO, "Department and Designation has been verified which it doesn't reflect on roles");
 
 
+    }
+
+
+    @DataProvider(name = "getAllManageView")
+    public Object[][] getManageView() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 0);
+
+    }
+
+    @Test(priority = 10, dataProvider = "getAllManageView", description = "JMS-210 : MANAGE view and verify user can easily navigate between Publisher view, Journal view, Article view - Version 1")
+    public void verifyAllViewManage(String PubV, String JourV, String ArtV){
+
+
+
+        ExtentReportListener.getTest().log(Status.INFO, "Check for Manage View for Publisher, Journal and Article view");
+
+        List<Boolean> actualVal = userManagement.navigateToAllManageViewPage(PubV,JourV,ArtV);
+
+        Assert.assertTrue(actualVal.get(0), "View was not displayed as per the option");
+        Assert.assertTrue(actualVal.get(1), "View was not displayed as per the option");
+        Assert.assertTrue(actualVal.get(2), "View was not displayed as per the option");
+
+        ExtentReportListener.getTest().log(Status.INFO, "All Manage view has been displayed");
+
+
+
+
 
 
     }
+
+    @DataProvider(name = "getPublisherView")
+    public Object[][] getPubView() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 1);
+
+    }
+
+    @Test(priority = 11, dataProvider = "getPublisherView", description = "JMS-211 : Add a new Publisher(Pub-A) and verify the publisher is displayed with correct Name/Acronym - Version 1")
+    public void verifyPubView(String PubAcro, String PubName){
+
+        ExtentReportListener.getTest().log(Status.INFO, "Check for Publisher verify with ack and name");
+
+        List<Object> actualVal = userManagement.addAndVerifyPublisher(PubAcro,PubName);
+
+        Assert.assertTrue((Boolean) actualVal.get(0), "Publisher Acro displayed wrongly here ");
+
+        Assert.assertEquals(actualVal.get(1), PubName, "Publisher name was wrongly displayed");
+
+        Assert.assertFalse((Boolean) actualVal.get(2), "Journal was added");
+
+        ExtentReportListener.getTest().log(Status.INFO, "Publisher name and Acro has been verified");
+
+
+
+
+    }
+
+
+
+    @DataProvider(name = "getTwoJournalCheck")
+    public Object[][] getTwoJournals() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 2);
+
+    }
+
+    @Test(priority = 12, dataProvider = "getTwoJournalCheck", description = "JMS-212 : Add one or two journals(Jrnl-A,B) under the publisher and revisit the Publisher banner. - Version 1")
+    public void verifyTwoJournals(String PubAcro, String PubName, String Jacro,
+                                  String Jname, String JacroNew, String JnameNew){
+
+        ExtentReportListener.getTest().log(Status.INFO, "Check two journals that can be added in one publisher");
+
+        List<Boolean> actualVal = userManagement.addTwoJounralsAndVerifywithPub(PubAcro, PubName, Jacro, Jname, JacroNew,JnameNew);
+
+
+        Assert.assertTrue(actualVal.get(0), "Journal count 1 was not added");
+        Assert.assertTrue(actualVal.get(1), "Journal count 2 was not added");
+        Assert.assertFalse(actualVal.get(2), "Article was listed here");
+
+
+        ExtentReportListener.getTest().log(Status.INFO, "Journals created and it has been verified under publisher");
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
 
 
 }

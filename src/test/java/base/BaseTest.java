@@ -3,10 +3,7 @@ package base;
 import com.microsoft.playwright.Page;
 import listeners.ExtentReportListener;
 import org.jms.pagefactory.PageFactory;
-import org.jms.pages.AddJournalPage;
-import org.jms.pages.HomePage;
-import org.jms.pages.PreRequestPage;
-import org.jms.pages.UserManagementPage;
+import org.jms.pages.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -23,6 +20,7 @@ public class BaseTest {
     protected AddJournalPage addJournalPage;
     protected PreRequestPage prerequestpage;
     protected UserManagementPage userManagement;
+    protected UMSecurityPage umSecurityPage;
 
 
 

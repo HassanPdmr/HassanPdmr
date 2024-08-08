@@ -58,4 +58,11 @@ public class HomePage {
         return new UserManagementPage(page);
     }
 
+    public UMSecurityPage navigateToUMSecurityPage() {
+
+        page.url();
+
+        return new UMSecurityPage(page);
+    }
+
 }
