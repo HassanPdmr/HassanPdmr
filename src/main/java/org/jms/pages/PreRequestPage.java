@@ -183,7 +183,7 @@ public class PreRequestPage {
 
 
     private String selectPubJrName = "id=publisher";
-    private String addarticleicon = "id=add_article";
+
     private String UploadLabel = "//label[text()='Upload']";
     private String formLabel = "//label[text()='Form']";
     private String clientftplabel = "//label[text()='Client FTP']";
@@ -198,6 +198,7 @@ public class PreRequestPage {
      private String selectworkflow="//*[@id='workFlow']//following::p[text()='Fresh']";
      private String noofpages="//input[@id='numberOfPages']";
      private String cebypass="id=CE by-pass";*/
+    private String addarticleicon = "id=add_article";
     private String form = "//img[@alt='Option 2 (Form)']";
     private String clickSelectPub = "id=publisher";
     private String Selectpubdropdown = "//input[@placeholder='Search...']";

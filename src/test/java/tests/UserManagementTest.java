@@ -374,23 +374,18 @@ public class UserManagementTest extends BaseTest {
     }
 
     @Test(priority = 10, dataProvider = "getAllManageView", description = "JMS-210 : MANAGE view and verify user can easily navigate between Publisher view, Journal view, Article view - Version 1")
-    public void verifyAllViewManage(String PubV, String JourV, String ArtV){
-
+    public void verifyAllViewManage(String PubV, String JourV, String ArtV) {
 
 
         ExtentReportListener.getTest().log(Status.INFO, "Check for Manage View for Publisher, Journal and Article view");
 
-        List<Boolean> actualVal = userManagement.navigateToAllManageViewPage(PubV,JourV,ArtV);
+        List<Boolean> actualVal = userManagement.navigateToAllManageViewPage(PubV, JourV, ArtV);
 
         Assert.assertTrue(actualVal.get(0), "View was not displayed as per the option");
         Assert.assertTrue(actualVal.get(1), "View was not displayed as per the option");
         Assert.assertTrue(actualVal.get(2), "View was not displayed as per the option");
 
         ExtentReportListener.getTest().log(Status.INFO, "All Manage view has been displayed");
-
-
-
-
 
 
     }
@@ -403,11 +398,11 @@ public class UserManagementTest extends BaseTest {
     }
 
     @Test(priority = 11, dataProvider = "getPublisherView", description = "JMS-211 : Add a new Publisher(Pub-A) and verify the publisher is displayed with correct Name/Acronym - Version 1")
-    public void verifyPubView(String PubAcro, String PubName){
+    public void verifyPubView(String PubAcro, String PubName) {
 
         ExtentReportListener.getTest().log(Status.INFO, "Check for Publisher verify with ack and name");
 
-        List<Object> actualVal = userManagement.addAndVerifyPublisher(PubAcro,PubName);
+        List<Object> actualVal = userManagement.addAndVerifyPublisher(PubAcro, PubName);
 
         Assert.assertTrue((Boolean) actualVal.get(0), "Publisher Acro displayed wrongly here ");
 
@@ -418,10 +413,7 @@ public class UserManagementTest extends BaseTest {
         ExtentReportListener.getTest().log(Status.INFO, "Publisher name and Acro has been verified");
 
 
-
-
     }
-
 
 
     @DataProvider(name = "getTwoJournalCheck")
@@ -433,11 +425,11 @@ public class UserManagementTest extends BaseTest {
 
     @Test(priority = 12, dataProvider = "getTwoJournalCheck", description = "JMS-212 : Add one or two journals(Jrnl-A,B) under the publisher and revisit the Publisher banner. - Version 1")
     public void verifyTwoJournals(String PubAcro, String PubName, String Jacro,
-                                  String Jname, String JacroNew, String JnameNew){
+                                  String Jname, String JacroNew, String JnameNew) {
 
         ExtentReportListener.getTest().log(Status.INFO, "Check two journals that can be added in one publisher");
 
-        List<Boolean> actualVal = userManagement.addTwoJounralsAndVerifywithPub(PubAcro, PubName, Jacro, Jname, JacroNew,JnameNew);
+        List<Boolean> actualVal = userManagement.addTwoJounralsAndVerifywithPub(PubAcro, PubName, Jacro, Jname, JacroNew, JnameNew);
 
 
         Assert.assertTrue(actualVal.get(0), "Journal count 1 was not added");
@@ -448,8 +440,220 @@ public class UserManagementTest extends BaseTest {
         ExtentReportListener.getTest().log(Status.INFO, "Journals created and it has been verified under publisher");
 
 
+    }
 
 
+    @DataProvider(name = "getAddArtilce")
+    public Object[][] getAddArticleData() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 3);
+
+    }
+
+    @Test(priority = 13, dataProvider = "getAddArtilce", description = " JMS-214 : Add articles under journal(Jrnl-A) and verify the Publisher and Journal banners - Version 1")
+    public void verifyAddArticlewithPub(String PubAcro, String PubName, String Jacro,
+                                        String Jname, String JacroArt, String artname, String workflow) throws InterruptedException {
+
+
+        ExtentReportListener.getTest().log(Status.INFO, "Check with add article along with publisher");
+
+        Boolean actValue = userManagement.AddArticleWithPub(PubAcro, PubName, Jacro, Jname, JacroArt, artname, workflow);
+
+        Assert.assertTrue(actValue, "Article not added");
+
+        ExtentReportListener.getTest().log(Status.INFO, "Article added Successfully");
+
+
+    }
+
+    @DataProvider(name = "getPubDescription")
+    public Object[][] getPubDescptn() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 4);
+
+    }
+
+
+    @Test(priority = 14, dataProvider = "getPubDescription", description = "JMS-216 : Verify the description of the publisher is displayed correctly in the outer banner - Version 1")
+    public void verifyPubDescription(String PubAcro, String PubName, String Description) {
+
+        ExtentReportListener.getTest().log(Status.INFO, "Check publisher Description and verify it");
+
+        String actualVal = userManagement.checkPubDescription(PubAcro, PubName, Description);
+
+        Assert.assertEquals(actualVal, "Test Description", "Wrong description is displayed");
+
+        ExtentReportListener.getTest().log(Status.INFO, "Description has been successfully verified");
+
+    }
+
+    @Test(priority = 15, dataProvider = "getPubDescription", description = "JMS-219 : Verify the following details in Publisher banner by adding/editing - Version 2")
+    public void verifyPubDetailsOuterBanner(String PubAcro, String PubName, String Description) {
+
+        ExtentReportListener.getTest().log(Status.INFO, "Check publisher Acroname and Desc in Outer banner  ");
+
+        List<String> actualVal = userManagement.checkPubDetailsInOuterBanner(PubAcro, PubName, Description);
+
+        Assert.assertEquals(actualVal.get(0), PubAcro, "Wrong PubAcro is displayed");
+        Assert.assertEquals(actualVal.get(1), Description, "Wrong description is displayed");
+
+        ExtentReportListener.getTest().log(Status.INFO, "Description has been successfully verified");
+
+
+    }
+
+    @DataProvider(name = "getJournalBanner")
+    public Object[][] getJrDataBanner() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 5);
+
+    }
+
+
+   @Test(priority = 16, dataProvider = "getJournalBanner", description = "JMS-220 : Verify the following details in journal badge by adding/editing: - Version 2")
+    public void verifyJournalDetailOuterBanner(String PubAcro, String PubName, String Jacro, String Jname){
+
+
+       ExtentReportListener.getTest().log(Status.INFO, "Check Journal Details in Journal Badge");
+
+       List<Object> actualVal = userManagement.checkJournalDetailInOuterBanner(PubAcro,PubName,Jacro,Jname);
+
+       Assert.assertEquals(actualVal.get(0),PubName,"Wrong PubName displayed");
+       Assert.assertEquals(actualVal.get(1),Jacro,"Wrong Journal Ackro displayed");
+       Assert.assertEquals(actualVal.get(2),Jname,"Wrong Journal Name displayed");
+       Assert.assertTrue((Boolean) actualVal.get(3), "Wrong message");
+
+       ExtentReportListener.getTest().log(Status.INFO, "Journal badge has been successfully verified");
+
+   }
+
+
+    @DataProvider(name = "getArticleBadge")
+    public Object[][] getArtBadge() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 6);
+
+    }
+
+    @Test(priority = 16, dataProvider = "getArticleBadge", description = "JMS-220 : Verify the following details in journal badge by adding/editing: - Version 2")
+    public void verifyArticleName(String PubName, String journalacro, String Jack, String artname, String workflow) throws InterruptedException {
+
+        ExtentReportListener.getTest().log(Status.INFO, "Check Article Details in Article Badge");
+
+
+        List<Object> actualVal = userManagement.checkDetailsInArticleBadge(PubName, journalacro, Jack, artname, workflow);
+
+        Assert.assertTrue((Boolean) actualVal.get(0),"Wrong result displayed");
+        Assert.assertEquals(actualVal.get(1), artname,"Wrong result displayed");
+
+        ExtentReportListener.getTest().log(Status.INFO, "Article badge has been successfully verified");
+
+
+
+    }
+
+
+    @DataProvider(name = "getSearch")
+    public Object[][] getsearchStock() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 7);
+
+    }
+
+
+    @Test(priority = 17,dataProvider = "getSearch", description = "JMS-220 : Verify the following details in journal badge by adding/editing: - Version 2")
+    public void verifyStockSearch(String PubName) {
+
+        ExtentReportListener.getTest().log(Status.INFO, "Checking Search in Stock");
+
+        boolean actualVal = userManagement.checkSearchOptioninStock(PubName);
+        Assert.assertTrue(actualVal, "Search results are not correctly updated.");
+        ExtentReportListener.getTest().log(Status.INFO, "Search verification completed.");
+
+
+
+
+    }
+
+    @DataProvider(name = "getPubFromFilter")
+    public Object[][] getPubinBothStockAndManage() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 8);
+
+    }
+
+    @Test(priority = 18,dataProvider = "getPubFromFilter", description = "JMS-78 : Apply filter on Pub, journal separately and ensure the list is updated by filter(Publisher) - Version 2")
+    public void verifyPubinCountFilter(String PubAcro, String PubNam){
+
+        ExtentReportListener.getTest().log(Status.INFO, "Checking Publisher count from stock with manage count");
+
+
+        boolean actualVal = userManagement.checkPubJournalSepratelyinFilterPUB(PubAcro,PubNam);
+        Assert.assertTrue(actualVal, "Publisher count varies");
+        ExtentReportListener.getTest().log(Status.INFO, "Filter verification completed for Publisher");
+
+
+
+    }
+
+
+    @DataProvider(name = "getJourFromFilter")
+    public Object[][] getJourinBothStockAndManage() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 9);
+
+    }
+
+
+    @Test(priority = 19,dataProvider = "getJourFromFilter", description = "JMS-78 : Apply filter on Pub, journal separately and ensure the list is updated by filter(Journal) - Version 2")
+    public void verifyJourInCountFilter(String PubAcro, String Jacro, String Jname) {
+
+        ExtentReportListener.getTest().log(Status.INFO, "Checking Journals count from stock with manage count");
+
+
+        boolean actualVal = userManagement.checkPubJournalSepratelyinFilterJour(PubAcro, Jacro, Jname);
+        Assert.assertTrue(actualVal, "Publisher count varies");
+        ExtentReportListener.getTest().log(Status.INFO, "Filter verification completed for Journals");
+
+
+    }
+
+    @DataProvider(name = "getJrWithPub")
+    public Object[][] getJourPubFromFilter() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 10);
+
+    }
+
+    @Test(priority = 20,dataProvider = "getJrWithPub", description = "JMS-79 : Apply filter on Pub+journal and ensure the list is updated accordingly - Version 1 ")
+    public void verifyJrWithPubInFilter(String PubAcro, String PubName, String Jacro, String Jname  ) {
+
+        ExtentReportListener.getTest().log(Status.INFO, "Checking Journals count with publisher at a time");
+
+
+        boolean ActualVal = userManagement.PubWithJournalColumnFilterCheck(PubAcro,PubName,Jacro,Jname );
+        Assert.assertTrue(ActualVal, "Publisher withJournal count varies");
+        ExtentReportListener.getTest().log(Status.INFO, "Filter verification completed for Journals with Publisher");
+
+
+    }
+
+    @DataProvider(name = "getPenArt")
+    public Object[][] getPendingArticle() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 11);
+
+    }
+
+    @Test(priority = 21,dataProvider = "getPenArt", description = "JMS-79 : Apply filter on Pub+journal and ensure the list is updated accordingly - Version 1 ")
+    public void verifyPendingArticleCount(String journalacro, String artname, String workflow) {
+
+        ExtentReportListener.getTest().log(Status.INFO, "Checking Journals count with publisher at a time");
+
+
+        boolean ActualVal = userManagement.checkPendingArticleCount(journalacro,artname,workflow );
+        Assert.assertTrue(ActualVal, "Pending Article varies");
+        ExtentReportListener.getTest().log(Status.INFO, "Pending Article count has been verified");
 
 
     }
@@ -460,8 +664,4 @@ public class UserManagementTest extends BaseTest {
 
 
 
-
-
-
-
-}
+    }

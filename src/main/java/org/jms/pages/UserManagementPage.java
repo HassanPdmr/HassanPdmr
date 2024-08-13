@@ -90,8 +90,6 @@ public class UserManagementPage {
     private String JrDuplicateralertCloseButton = "//h2[text()='JMS - Duplicate File']//following::span[1]";
 
 
-
-
     private String Imageuploadbutton = "//button[text()='Upload Image']";
 
     private String styletemplate = "//*[@id='styles-upload']//preceding::div[1]";
@@ -186,6 +184,102 @@ public class UserManagementPage {
 
 
     private String addButton = "//button[@type='button']";
+    private String addarticleicon = "id=add_article";
+    private String form = "//img[@alt='Option 2 (Form)']";
+    private String clickSelectPub = "id=publisher";
+    private String Selectpubdropdown = "//input[@placeholder='Search...']";
+    private String selectpublisher = "//p[normalize-space(text())='GGD(EMS Press)']\n";
+    private String articleidinput = "id=articleID";
+    private String authormail = "id=authorMail";
+    private String authorname = "id=authorName";
+    private String articlename = "id=articleName";
+    private String selectpriority = "id=priority";
+    private String selectpriorityopt = "//*[@id='priority']//following::p[text()='High']";
+    private String receivedate = "id=receivedDate";
+    private String reviseddate = "id=revisedDate";
+    private String Accepteddate = "id=historyAccDate";
+    private String selecttat = "//label[text()='TAT']//following::div[1]";
+    private String selecttatinput = "//label[text()='TAT']//following::li[1]//following::p[1]";
+    private String Doino = "id=doi";
+    private String workflowselection = "//*[text()='Assign Workflow']";
+    private String selectgeneralworkflow = "//*[@alt='General']";
+    private String assignbutton = "//*[text()='Assign']";
+
+
+    // private String selectworkflowopt="//*[@id='workFlow']//following::p[text()='Fresh']";
+    private String noofpages = "//input[@id='numberOfPages']";
+    private String cebypass = "id=CE by-pass";
+    private String articletype = "//*[@placeholder='Enter Article Type...']";
+    private String TATShow = "//*[text()='Turn Around Time']//preceding-sibling::img";
+    private String importtatfromjournal = "//*[@title='Import TATs from Journal']";
+    private String confirmimportfromjour = "//*[contains(text(),'Import TAT')]//following::div//following::newbutton[contains(text(),'Yes')]";
+    private String startdate = "id=startDate";
+    private String ChecklistSelectionShow = "//*[text()='Checklist Selections']//preceding-sibling::img";
+
+    private String OnOpenAccess = "id=acpOpenAccess";
+
+
+    private String fileupload = "//*[@alt='Upload']";
+    private String addnotes = "//*[@alt='Add Notes']";
+    private String Plzwwritehere = "//*[@data-placeholder='Type here...']";
+    private String AddNoteutton = "//*[text()='Add Note']";
+    private String addnotetoastclose = "//*[text()='JMS - Add Notes']//following::span[1]";
+    private String checklist = "//*[text()='Check Lists']";
+    private String figurechecklist = "id=figures";
+    private String checlistalert = "//*[text()='Alert']//following::newbutton[text()='Yes']";
+    private String checklisttoast = "//*[text()='JMS - Check Lists']//following::span[1]";
+    private String mailpreview = "//*[text()='Preview']";
+    private String tomail = "//label[text()='To']//following::input[@id='category'][1]";
+    private String tomailluser = "//p[normalize-space(text())='compuscriptrep@gmail.com']//preceding-sibling::input";
+    private String Acknowledgementtomailluser = "//p[normalize-space(text())='latexam@gmail.com']//preceding-sibling::input";
+
+
+    private String ccmail = "//label[text()='Cc']//following::input[@id='category'][1]";
+    private String ccmailuser = "//p[normalize-space(text())='nirmala@pdmrindia.com']//preceding-sibling::input";
+    private String Acknowlegeemtnsavemailbutton = "//button[text()='Save Mail']";
+    private String Acknowledgementyesalert = "//*[text()='Are you sure to Save the mail on acknowledgement?']//following::newbutton[text()='Yes']";
+    private String Acknowlegementtoastclose = "//*[text()='JMS - Mail']//following::span[1]";
+    private String notificationmail = "//*[text()='Notification']";
+    private String savenotificationmail = "//*[text()='Save Mail']";
+    private String notificationalert = "//*[text()='Are you sure to Save the mail on notification?']//following::newbutton[text()='Yes']";
+    private String notificationsuccesstoastmail = "//*[text()='A mail will be triggered once the article is added successfully']//preceding::span[text()='×']";
+    private String addarticlebutton = "(//*[text()='Add Article'])[2]";
+    private String checkall = "//div[text()='Check All']";
+    private String Checklistsubmitbutton = "//button[text()='Submit CheckList']";
+    private String addarticlealert = "//*[text()='JMS - Add Article']//following::span[1]";
+    private String selectview = "id=select_view";
+    private String journalsview = "//*[@id='select_view']//following::li//following::p[text()='Journals View']";
+
+    private String JourView_1 = "id=select_view";
+    private String JourView_2 = "//p[@for='Journals View']";
+    private String ArtView_1 = "id=select_view";
+    private String ArtView_2 = "//p[@for='Articles View']";
+
+
+    private String supplement = "id=supplement";
+    private String aopFree = "id=acpFree";
+    private String aopopenacess = "id=acpOpenAccess";
+    private String tables = "id=tables";
+    private String displayfigures = "id=displayFigures";
+    private String InlineFigures = "id=inlineFigures";
+
+
+    private String publisher = "id=react-select-3-placeholder";
+    private String access = "id=react-select-5-placeholder";
+    private String mail = "id=user-mail";
+    private String Stock = "//p[normalize-space()='Stock']";
+    private String StockSearch = "//input[@placeholder='Search...']";
+    private String Filter = "//button[@title='Column Filter']";
+    private String ClearallFilter = "//button[normalize-space()='Clear All']";
+    private String SelectallFilter = "//button[normalize-space()='Select All']";
+    private String PubCheckboxfilter = "//input[@name='Publisher']";
+    private String JourCheckboxfilter = "//input[@name='Journal']";
+    private String PendingCheckboxfilter = "//input[@name='Pending Article']";
+    private String ApprovedCheckboxfilter = "//input[@name='Approved Article']";
+    private String ReuploadedCheckboxfilter = "//input[@name='Reuploaded Article']";
+    private String ColumnFilter = "//th[normalize-space()='Publisher']//img[contains(@title,'Filter')]";
+    private String FilterDropDown = "//select[@class='_filterColumn_svj5m_157']";
+
 
     private String acknowledgement = "//div[contains(text(),'Journal Added Successfully')]";
 
@@ -249,6 +343,100 @@ public class UserManagementPage {
     }
 
 
+    public void miniGeneralAddArticle(String journalacro, String artname, String workflow) {
+
+        page.locator(baseicon).click();
+        assertThat(page.locator(addarticleicon)).isVisible();
+        page.locator(addarticleicon).click();
+        page.locator(form).click();
+
+        LocalDate today = LocalDate.now();
+        LocalDate tomarrow = today.plusDays(1);
+        LocalDate DayOftomarrow = today.plusDays(2);
+
+
+        String formattedDate = today.format(DateTimeFormatter.ISO_LOCAL_DATE);
+        String tomorrow = (today.plusDays(1)).format(DateTimeFormatter.ISO_DATE);
+        String dayoftomorrow = (today.plusDays(2)).format(DateTimeFormatter.ISO_DATE);
+
+
+        page.locator(clickSelectPub).click();
+
+        page.locator(Selectpubdropdown).fill(journalacro);
+        page.waitForTimeout(1000);
+        Locator JAck = page.locator("//p[normalize-space(text())='" + journalacro + "']");
+        JAck.scrollIntoViewIfNeeded();
+        JAck.click();
+
+
+        String arttimeid = String.valueOf(System.currentTimeMillis());
+        page.locator(articleidinput).fill(arttimeid);
+
+        page.locator(authormail).fill("abc@gmail.com");
+        page.locator(authorname).fill("Mahindra");
+        page.locator(articlename).fill(artname);
+        page.locator(selectpriority).click();
+        page.locator(selectpriorityopt).click();
+        page.locator(receivedate).fill(formattedDate);
+        page.locator(reviseddate).fill(tomorrow);
+        page.locator(Accepteddate).fill(dayoftomorrow);
+        page.locator(selecttat).click();
+        page.locator(selecttatinput).click();
+
+        int doi = 1;
+        long doinumber = Long.parseLong(arttimeid);
+        long doival = doi + doinumber;
+        String doivalue = String.valueOf(doival);
+
+
+        page.locator(Doino).fill(doivalue);
+        page.locator(workflowselection).click();
+        page.locator("//*[@alt='" + workflow + "']").click();
+        page.locator(assignbutton).click();
+        page.locator(noofpages).fill("200");
+        page.locator(articletype).fill("Research");
+        page.locator(cebypass).click();
+        page.locator(TATShow).click();
+        page.locator(importtatfromjournal).click();
+        page.locator(confirmimportfromjour).click();
+        page.locator(ChecklistSelectionShow).click();
+        page.locator(startdate).fill(formattedDate);
+        page.locator(OnOpenAccess).click();
+        fileChooser = page.waitForFileChooser(() -> page.locator(fileupload).click());
+        fileChooser.setFiles(Paths.get("Sample.zip"));
+
+        page.locator(addnotes).click();
+
+        page.locator(Plzwwritehere).fill("this particular article is from general workflow");
+        page.locator(AddNoteutton).click();
+        page.locator(addnotetoastclose).click();
+
+        page.locator(mailpreview).click();
+        page.locator(ccmail).click();
+        page.locator(checkall).click();
+        page.locator(tomail).click();
+        page.locator(checkall).click();
+        page.locator(Acknowlegeemtnsavemailbutton).click();
+        page.locator(Acknowledgementyesalert).click();
+        page.locator(Acknowlegementtoastclose).click();
+        page.locator(notificationmail).click();
+        page.locator(ccmail).click();
+        page.locator(checkall).click();
+        page.locator(tomail).click();
+        page.locator(checkall).click();
+        page.locator(savenotificationmail).click();
+        page.locator(notificationalert).click();
+        page.locator(notificationsuccesstoastmail).click();
+        //page.locator(checkall).click();
+        page.locator(checklist).click();
+        page.locator(figurechecklist).click();
+        page.locator(Checklistsubmitbutton).click();
+        page.locator(checlistalert).click();
+        page.locator(checklisttoast).click();
+
+    }
+
+
     public void editUserProfileCard(String empName, String empId) throws InterruptedException {
 
         page.locator(userdashboard).click();
@@ -290,7 +478,10 @@ public class UserManagementPage {
         page.locator(pub_acronym).fill(PubAcro);
         page.locator(pub_name_textbox).fill(PubName);
         page.locator(pub_mail_textbox).fill("sak@gmail.com");
-        page.locator(desc_inputbox).fill("1");
+
+        page.waitForTimeout(2000);
+
+        page.locator(desc_inputbox).fill("Test Description");
         LocalDate today = LocalDate.now();
         LocalDate tomarrow = today.plusDays(1);
 
@@ -424,7 +615,122 @@ public class UserManagementPage {
 
     }
 
-    public void AddJournalUploadFilesOld(){
+
+    public String AddArticleGeneral(String journalacro, String artname, String workflow) throws InterruptedException {
+
+        page.locator(baseicon).click();
+        assertThat(page.locator(addarticleicon)).isVisible();
+        page.locator(addarticleicon).click();
+        page.locator(form).click();
+
+        LocalDate today = LocalDate.now();
+        LocalDate tomarrow = today.plusDays(1);
+        LocalDate DayOftomarrow = today.plusDays(2);
+
+
+        String formattedDate = today.format(DateTimeFormatter.ISO_LOCAL_DATE);
+        String tomorrow = (today.plusDays(1)).format(DateTimeFormatter.ISO_DATE);
+        String dayoftomorrow = (today.plusDays(2)).format(DateTimeFormatter.ISO_DATE);
+
+
+        page.locator(clickSelectPub).click();
+
+        page.locator(Selectpubdropdown).fill(journalacro);
+        page.waitForTimeout(1000);
+        Locator JAck = page.locator("//p[normalize-space(text())='" + journalacro + "']");
+        JAck.scrollIntoViewIfNeeded();
+        JAck.click();
+
+
+        String arttimeid = String.valueOf(System.currentTimeMillis());
+        page.locator(articleidinput).fill(arttimeid);
+
+        page.locator(authormail).fill("abc@gmail.com");
+        page.locator(authorname).fill("Mahindra");
+        page.locator(articlename).fill(artname);
+        page.locator(selectpriority).click();
+        page.locator(selectpriorityopt).click();
+        page.locator(receivedate).fill(formattedDate);
+        page.locator(reviseddate).fill(tomorrow);
+        page.locator(Accepteddate).fill(dayoftomorrow);
+        page.locator(selecttat).click();
+        page.locator(selecttatinput).click();
+
+        int doi = 1;
+        long doinumber = Long.parseLong(arttimeid);
+        long doival = doi + doinumber;
+        String doivalue = String.valueOf(doival);
+
+
+        page.locator(Doino).fill(doivalue);
+        page.locator(workflowselection).click();
+        page.locator("//*[@alt='" + workflow + "']").click();
+        page.locator(assignbutton).click();
+        page.locator(noofpages).fill("200");
+        page.locator(articletype).fill("Research");
+        page.locator(cebypass).click();
+        page.locator(TATShow).click();
+        page.locator(importtatfromjournal).click();
+        page.locator(confirmimportfromjour).click();
+        page.locator(ChecklistSelectionShow).click();
+        page.locator(startdate).fill(formattedDate);
+        page.locator(OnOpenAccess).click();
+        fileChooser = page.waitForFileChooser(() -> page.locator(fileupload).click());
+        fileChooser.setFiles(Paths.get("Sample.zip"));
+
+        page.locator(addnotes).click();
+
+        page.locator(Plzwwritehere).fill("this particular article is from general workflow");
+        page.locator(AddNoteutton).click();
+        page.locator(addnotetoastclose).click();
+
+        page.locator(mailpreview).click();
+        page.locator(ccmail).click();
+        page.locator(checkall).click();
+        page.locator(tomail).click();
+        page.locator(checkall).click();
+        page.locator(Acknowlegeemtnsavemailbutton).click();
+        page.locator(Acknowledgementyesalert).click();
+        page.locator(Acknowlegementtoastclose).click();
+        page.locator(notificationmail).click();
+        page.locator(ccmail).click();
+        page.locator(checkall).click();
+        page.locator(tomail).click();
+        page.locator(checkall).click();
+        page.locator(savenotificationmail).click();
+        page.locator(notificationalert).click();
+        page.locator(notificationsuccesstoastmail).click();
+        //page.locator(checkall).click();
+        page.locator(checklist).click();
+        page.locator(figurechecklist).click();
+        page.locator(Checklistsubmitbutton).click();
+        page.locator(checlistalert).click();
+        page.locator(checklisttoast).click();
+
+        Locator Check = page.locator(addarticlebutton);
+
+        boolean isVisible = Check.isVisible();
+        boolean isEnabled = Check.isEnabled();
+
+        if (isVisible && isEnabled) {
+            System.out.println("The button is clickable.");
+        } else {
+            System.out.println("The button is not clickable.");
+        }
+        page.locator(addarticlebutton).click();
+
+        Thread.sleep(10000);
+        page.locator(managemenu).click();
+        page.locator(selectview).click();
+        page.locator(ArticleView).click();
+        page.waitForTimeout(2000);
+        page.locator("(//em[text()='" + doivalue + "'])[1]//preceding::td[2]").click();
+        return doivalue;
+
+
+    }
+
+    public void AddJournalUploadFilesOld() {
 
         page.locator(importStyleTemplate).click();
         page.locator(importFileTATyes).click();
@@ -434,7 +740,7 @@ public class UserManagementPage {
 
     }
 
-    public void NewAddJournalUploadFiles(){
+    public void NewAddJournalUploadFiles() {
 
         fileChooser = page.waitForFileChooser(() -> page.locator(styleTemplateUploadButton).click());
         fileChooser.setFiles(Paths.get("ems_journal New.sty"));
@@ -444,8 +750,6 @@ public class UserManagementPage {
 
 
     }
-
-
 
 
     public boolean creatingUserWithoutAdd(String empName, String empId, String designation,
@@ -1181,7 +1485,9 @@ public class UserManagementPage {
         page.locator(Manage).click();
         page.locator(SelectView).click();
         page.locator(PubView).click();
+
         Boolean PubVisibility = page.locator("//*[text()='" + PubAcro + "']").isVisible();
+
         System.out.println("Is Publisher is visible :" + PubVisibility);
         CheckPubVisibility.add(PubVisibility);
 
@@ -1198,6 +1504,7 @@ public class UserManagementPage {
         page.locator(Manage).click();
         page.locator(SelectView).click();
         page.locator(JourView).click();
+
         Boolean JourVisibility = page.locator("//h2[text()='" + PubName + "']//following::th[text()='xxxxx']//following::div[text()='xxxxx']").isVisible();
         System.out.println("Is Journal is visible :" + JourVisibility);
         CheckPubVisibility.add(JourVisibility);
@@ -1263,4 +1570,324 @@ public class UserManagementPage {
 
 
     }
+
+
+    public Boolean AddArticleWithPub(String PubAcro, String PubName, String Jacro,
+                                     String Jname, String JacroArt, String artname, String workflow) throws InterruptedException {
+
+        AddPubGeneral(PubAcro, PubName);
+
+        AddJournalGeneral(PubAcro, Jacro, Jname);
+
+        AddJournalUploadFilesOld();
+
+        page.locator(baseicon).click();
+        page.locator(addarticleicon).click();
+
+        AddArticleGeneral(JacroArt, artname, workflow);
+
+        Boolean ArticleVerify = page.locator("//input[@value='" + Jacro + "(" + PubAcro + ")']").isVisible();
+        System.out.println("is Article is visible :" + ArticleVerify);
+
+        return ArticleVerify;
+
+
+    }
+
+
+    public String checkPubDescription(String PubAcro, String PubName, String Description) {
+
+        AddPubGeneral(PubAcro, PubName);
+
+        page.locator(Manage).click();
+        page.locator(SelectView).click();
+        page.locator(PubView).click();
+
+        page.waitForTimeout(2000);
+        String DesVal = page.waitForSelector("//th[normalize-space()='" + PubAcro + "']//following::div[normalize-space()='" + Description + "']").innerText();
+        System.out.println("Description here is :" + DesVal);
+
+        return DesVal;
+
+
+    }
+
+    public List<String> checkPubDetailsInOuterBanner(String PubAcro, String PubName, String PDescription) {
+
+
+        AddPubGeneral(PubAcro, PubName);
+        page.locator(Manage).click();
+        page.locator(SelectView).click();
+        page.locator(PubView).click();
+
+        List<String> PubOuterBanner = new ArrayList<>();
+
+        String PubVal = page.locator("//th[normalize-space()='" + PubAcro + "']").textContent();
+        System.out.println("PubName :" + PubVal);
+        PubOuterBanner.add(PubVal);
+
+        String PubDescription = page.locator("//th[normalize-space()='" + PubAcro + "']//following::div[normalize-space()='" + PDescription + "']").textContent();
+        System.out.println("Description :" + PubDescription);
+        PubOuterBanner.add(PubDescription);
+
+        return PubOuterBanner;
+    }
+
+    public List<Object> checkJournalDetailInOuterBanner(String PubAcro, String PubName, String Jacro, String Jname) {
+
+
+        AddJournalGeneral(PubAcro, Jacro, Jname);
+
+        AddJournalUploadFilesOld();
+
+        page.locator(Manage).click();
+        page.locator(JourView_1).click();
+        page.locator(JourView_2).click();
+
+
+        List<Object> JournalOuterBadge = new ArrayList<>();
+
+        page.waitForTimeout(2000);
+
+        page.evaluate("window.scrollBy(0, 520)");
+
+        String PublisherName = page.locator("//h2[text()='" + PubName + "']").innerText();
+        System.out.println("Publisher name : " + PublisherName);
+        JournalOuterBadge.add(PublisherName);
+
+        String JAckValue = page.locator("//th[text()='" + Jacro + "']").innerText();
+        System.out.println("Journal Acroname: " + JAckValue);
+        JournalOuterBadge.add(JAckValue);
+
+        String JnameValue = page.locator("(//h2[text()='" + PubName + "']//following::th[text()='" + Jacro + "']//following::div[text()='" + Jname + "'])[1]").innerText();
+        System.out.println("Journal name: " + JnameValue);
+        JournalOuterBadge.add(JnameValue);
+
+        page.waitForTimeout(2000);
+
+        Boolean rectoIsClicked = page.locator("(//h2[text()='" + PubName + "']//following::th[text()='" + Jacro + "']" +
+                "//following::td//input[@id='recto'])[1]").isChecked();
+        System.out.println("Is recto is Clicked: " + rectoIsClicked);
+        JournalOuterBadge.add(rectoIsClicked);
+
+
+        return JournalOuterBadge;
+
+    }
+
+    public List<Object> checkDetailsInArticleBadge(String PubName, String journalacro, String Jack, String artname, String workflow) throws InterruptedException {
+
+        AddArticleGeneral(journalacro, artname, workflow);
+
+        page.locator(Manage).click();
+        page.locator(ArtView_1).click();
+        page.locator(ArtView_2).click();
+
+        List<Object> ArticleOuterBadge = new ArrayList<>();
+
+
+        Boolean ArtView = page.locator("//h2[normalize-space()='" + PubName + " / " + Jack + "']").isVisible();
+        System.out.println("Visibility of Article: " + ArtView);
+        ArticleOuterBadge.add(ArtView);
+
+        page.waitForTimeout(2000);
+        page.evaluate("window.scrollBy(0, 720)");
+
+
+        String ArticleName = page.waitForSelector("//th[normalize-space()='" + artname + "']").innerText();
+        System.out.println("Visibility of Article Name: " + ArticleName);
+        ArticleOuterBadge.add(ArticleName);
+
+
+        return ArticleOuterBadge;
+
+
+    }
+
+
+    public boolean checkSearchOptioninStock(String PubName) {
+
+        try {
+            page.locator(Stock).click();
+            page.locator(StockSearch).fill(PubName);
+
+
+            page.waitForSelector("//span[@title='" + PubName + "']");
+
+            List<String> results = page.locator(".results").allTextContents();
+
+            return results.stream().allMatch(result -> result.contains(PubName));
+
+
+        } catch (
+                Exception e) {
+
+            e.printStackTrace();
+            return false;
+
+        }
+
+    }
+
+
+    public boolean checkPubJournalSepratelyinFilterPUB(String PubAcro, String PubName) {
+
+        AddPubGeneral(PubAcro, PubName);
+
+        page.locator(Stock).click();
+        page.locator(Filter).click();
+
+        page.locator(ClearallFilter).click();
+        page.locator(PubCheckboxfilter).click();
+
+        int PubCountStock = page.locator("//tbody/tr").count();
+        System.out.println("Count in Publisher Stock in hand: " + PubCountStock);
+
+        page.locator(managemenu).click();
+        page.locator(SelectView).click();
+        page.locator(PubView).click();
+
+        int PubCountManage = page.locator("//div//table").count();
+        System.out.println("Count in Publisher Stock in hand: " + PubCountManage);
+
+        if (PubCountStock == PubCountManage) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean checkPubJournalSepratelyinFilterJour(String PubAcro, String Jacro, String Jname) {
+
+        AddJournalGeneral(PubAcro, Jacro, Jname);
+        AddJournalUploadFilesOld();
+        page.waitForTimeout(1000);
+        page.evaluate("window.scrollBy(0, 1000)");
+
+        Locator Add = page.locator(addButton);
+        boolean isVisible = Add.first().isVisible();
+        System.out.println("is Add button visible? : " + isVisible);
+
+        page.waitForSelector("//button[@type='button']");
+        Add.click();
+
+        page.locator(addCloseButton).click();
+
+        page.locator(Stock).click();
+        page.locator(Filter).click();
+        page.locator(ClearallFilter).click();
+
+        page.locator(JourCheckboxfilter).click();
+
+        int JourCountStock = page.locator("//tbody/tr").count();
+        System.out.println("Count in Journal Stock in hand: " + JourCountStock);
+
+        page.locator(managemenu).click();
+        page.locator(SelectView).click();
+        page.locator(journalsview).click();
+
+        int JourCountManage = page.locator("//div//h2").count();
+        int filteredJournalCount = JourCountManage > 0 ? JourCountManage - 1 : 0;
+        System.out.println("Count in Journal Manage: " + filteredJournalCount);
+
+        if (JourCountStock == filteredJournalCount) {
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
+
+
+    public boolean PubWithJournalColumnFilterCheck(String PubAcro, String PubName, String Jacro, String Jname) {
+
+
+        AddPubGeneral(PubAcro, PubName);
+
+        AddJournalGeneral(PubAcro, Jacro, Jname);
+        AddJournalUploadFilesOld();
+        page.waitForTimeout(1000);
+        page.evaluate("window.scrollBy(0, 1000)");
+
+        Locator Add = page.locator(addButton);
+        boolean isVisible = Add.first().isVisible();
+        System.out.println("is Add button visible? : " + isVisible);
+        page.waitForSelector("//button[@type='button']");
+        Add.click();
+
+        page.locator(Stock).click();
+        page.locator(ColumnFilter).click();
+
+        page.waitForTimeout(4000);
+
+
+        Locator dropdown = page.locator(FilterDropDown);
+        dropdown.selectOption(new SelectOption().setValue(PubAcro));
+
+
+        page.waitForTimeout(2000);
+//        page.waitForSelector("//option[@value='"+PubAcro+"']").click();
+
+
+        int JrWithPubStock = page.locator("//tbody/tr").count();
+        System.out.println("Count for Publisher with journal :" + JrWithPubStock);
+
+        page.locator(managemenu).click();
+
+
+        String PubJrManagetext = page.locator("//*[text()='" + PubAcro + "']//following::span[2]").textContent();
+        System.out.println("Journal Count in Manage: " + PubJrManagetext);
+
+        int PubJrManage;
+
+        try {
+            PubJrManage = Integer.parseInt(PubJrManagetext.trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Error parsing journal count: " + e.getMessage());
+            PubJrManage = -1; // Set to a default value or handle as appropriate
+        }
+
+
+        if (JrWithPubStock == PubJrManage) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean checkPendingArticleCount(String journalacro, String artname, String workflow) {
+
+        page.locator(managemenu).click();
+        page.locator(selectview).click();
+        page.locator(ArticleView).click();
+        String ExtPendingArticle = page.locator("//span[contains(@title,'login queue')]").innerText();
+        System.out.println("Pending Article Before: "+ExtPendingArticle);
+
+        int EValue = Integer.parseInt(ExtPendingArticle);
+        int ExpPenVal = EValue + 1;
+
+        System.out.println("Now after incremented value: "+ExpPenVal);
+
+        page.reload();
+        miniGeneralAddArticle(journalacro, artname, workflow);
+        page.locator(managemenu).click();
+        page.locator(selectview).click();
+        page.locator(ArticleView).click();
+
+        String PendingArticle = page.locator("//span[contains(@title,'login queue')]").innerText();
+        System.out.println("Pending Article After: "+PendingArticle);
+        int PenValue = Integer.parseInt(PendingArticle);
+
+        if (ExpPenVal == PenValue) {
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
+
 }

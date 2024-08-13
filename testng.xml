@@ -43,7 +43,7 @@
         <classes>
             <class name="tests.UserManagementTest">
                 <methods>
-                    <include name="verifyTwoJournals">
+                    <include name="verifyPendingArticleCount">
                     </include>
                 </methods>
             </class>
@@ -60,8 +60,6 @@
 <!--            </class>-->
 <!--        </classes>-->
 <!--    </test>-->
-
-
 
 
 </suite>

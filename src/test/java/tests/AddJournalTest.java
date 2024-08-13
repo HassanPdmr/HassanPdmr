@@ -298,7 +298,7 @@ public class AddJournalTest extends BaseTest {
                 String PubName = row[3].toString();
 
 
-                List<String> actualValues = addJournalPage.TATModificationFastTrackToGeneral(Pub, J_acrm, J_name, PubName );
+                List<String> actualValues = addJournalPage.TATModificationFastTrackToGeneral(Pub, J_acrm, J_name, PubName);
 
 
                 List<String> expectedValues = List.of("2", "2", "2", "2", "2", "2", "2", "2",
@@ -733,14 +733,14 @@ public class AddJournalTest extends BaseTest {
                 addJournalPage.ImportStyFromPub(Pub, j_acrm, j_name);
                 int latestFileCount = addJournalPage.getFileCount();
                 int expectedFileCount = 1;
-                System.out.println("Actual Latest files count: "+latestFileCount);
+                System.out.println("Actual Latest files count: " + latestFileCount);
                 Assert.assertEquals(latestFileCount, expectedFileCount, "The number of files does not match the expected count.");
 
 
                 List<String> latestFilesTexts = addJournalPage.getFileTexts();
                 List<String> expectedTexts = List.of("ems_journal.sty");
 
-                System.out.println("Actual lastName: "+latestFilesTexts);
+                System.out.println("Actual lastName: " + latestFilesTexts);
                 Assert.assertTrue(latestFilesTexts.containsAll(expectedTexts), "The list of file texts does not match the expected texts.");
                 ExtentReportListener.getTest().log(Status.INFO, "Verification done for Style template");
 
@@ -757,7 +757,7 @@ public class AddJournalTest extends BaseTest {
 
 
     @Test(priority = 20, description = "JMS-173 : Import GuideLines from publisher and verify the following details")
-    public void verifyImportGuideLineFromPub(){
+    public void verifyImportGuideLineFromPub() {
 
 
         ExtentReportListener.getTest().log(Status.INFO, "Check the import from publisher Guidelines and verify same");
@@ -774,18 +774,16 @@ public class AddJournalTest extends BaseTest {
                 addJournalPage.ImportGuideFromPub(Pub, j_acrm, j_name);
                 int latestguideFileCount = addJournalPage.getGuideFileCount();
                 int expectedFileCount = 1;
-                System.out.println("Actual Latest files count: "+latestguideFileCount);
+                System.out.println("Actual Latest files count: " + latestguideFileCount);
                 Assert.assertEquals(latestguideFileCount, expectedFileCount, "The number of files does not match the expected count.");
 
 
                 List<String> latestGuideFilesTexts = addJournalPage.getGuideFileTexts();
                 List<String> expectedTexts = List.of("GuidelinesNew.docx");
 
-                System.out.println("Actual lastName: "+latestGuideFilesTexts);
+                System.out.println("Actual lastName: " + latestGuideFilesTexts);
                 Assert.assertTrue(latestGuideFilesTexts.containsAll(expectedTexts), "The list of file texts does not match the expected texts.");
                 ExtentReportListener.getTest().log(Status.INFO, "Verification done for GuideLine doc");
-
-
 
 
             } else {
@@ -795,8 +793,6 @@ public class AddJournalTest extends BaseTest {
 
 
         }
-
-
 
 
     }
@@ -878,49 +874,47 @@ public class AddJournalTest extends BaseTest {
         }
     }
 
-        @Test(priority = 22, description = "JMS-164 : Verify unmodified of TAT - Create two journals, import TAT for both journals (Add article) - Modified")
-        public void verifyUnModifiedTATtwoJournalAddAritcle() throws InterruptedException {
+    @Test(priority = 22, description = "JMS-164 : Verify unmodified of TAT - Create two journals, import TAT for both journals (Add article) - Modified")
+    public void verifyUnModifiedTATtwoJournalAddAritcle() throws InterruptedException {
 
 
-            ExtentReportListener.getTest().log(Status.INFO, "Check the modification of TAT by adding 2 journals from add article - Modifed TAT");
+        ExtentReportListener.getTest().log(Status.INFO, "Check the modification of TAT by adding 2 journals from add article - Modifed TAT");
 
-            List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 15);
+        List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 15);
 
-            for (Object[] row : excelData) {
+        for (Object[] row : excelData) {
 
-                if (row.length == 7) {
+            if (row.length == 7) {
 
-                    String Pub = row[0].toString();
-                    String J_acrm = row[1].toString();
-                    String J_name = row[2].toString();
-                    String PubName = row[3].toString();
-                    String artName = row[4].toString();
-                    String journalacro = row[5].toString();
-                    String workflow = row[6].toString();
-
-
-                    List<String> actualValuesUnModifiedTAT = addJournalPage.unmodifiedTATbyAddArticleTwoJournals(Pub, J_acrm, J_name, PubName, artName, journalacro, workflow);
-
-                    List<String> expectedValuesUnModifiedTAT = List.of("1", "1", "1", "1", "1", "1", "1", "1", "1",
-                                                                                "1", "1", "1", "1", "1", "1", "1", "1", "1",
-                                                                                 "1", "1", "1", "1", "1", "1", "1", "1","1",
-                                                                                    "1", "1", "1", "1", "1", "1", "1");
-
-                    Assert.assertEquals(actualValuesUnModifiedTAT, expectedValuesUnModifiedTAT, "Values retrieved from page class do not match expected values");
+                String Pub = row[0].toString();
+                String J_acrm = row[1].toString();
+                String J_name = row[2].toString();
+                String PubName = row[3].toString();
+                String artName = row[4].toString();
+                String journalacro = row[5].toString();
+                String workflow = row[6].toString();
 
 
-                    ExtentReportListener.getTest().log(Status.INFO, "UnModified TAT for journals has been verified from add articles");
+                List<String> actualValuesUnModifiedTAT = addJournalPage.unmodifiedTATbyAddArticleTwoJournals(Pub, J_acrm, J_name, PubName, artName, journalacro, workflow);
+
+                List<String> expectedValuesUnModifiedTAT = List.of("1", "1", "1", "1", "1", "1", "1", "1", "1",
+                        "1", "1", "1", "1", "1", "1", "1", "1", "1",
+                        "1", "1", "1", "1", "1", "1", "1", "1", "1",
+                        "1", "1", "1", "1", "1", "1", "1");
+
+                Assert.assertEquals(actualValuesUnModifiedTAT, expectedValuesUnModifiedTAT, "Values retrieved from page class do not match expected values");
 
 
-                } else {
+                ExtentReportListener.getTest().log(Status.INFO, "UnModified TAT for journals has been verified from add articles");
 
-                    System.out.println("Row does not have expected numbers: " + row.length);
-                }
 
+            } else {
+
+                System.out.println("Row does not have expected numbers: " + row.length);
             }
+
         }
-
-
+    }
 
 
 }
