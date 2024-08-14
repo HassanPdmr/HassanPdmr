@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">JMS_Automation_Test_Report</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Aug 13, 2024 07:38:00 PM</span></a>
+<a href="#"><span class="badge badge-primary">Aug 14, 2024 08:00:35 PM</span></a>
 </li>
 </ul>
 </div>
@@ -84,9 +84,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">JMS-79 : Apply filter on Pub+journal and ensure the list is updated accordingly - Version 1 </p>
+            <p class="name">JMS-151 : Reactivated employee (TL/AM) can perform the same roles as normal - Version 2</p>
             <p class="text-sm">
-              <span>7:38:15 PM</span> / <span>00:00:47:550</span>
+              <span>8:00:48 PM</span> / <span>00:00:34:490</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -94,17 +94,17 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">JMS-79 : Apply filter on Pub+journal and ensure the list is updated accordingly - Version 1 </h5>
-<span class='badge badge-success'>08.13.2024 7:38:15 PM</span>
-<span class='badge badge-danger'>08.13.2024 7:39:02 PM</span>
-<span class='badge badge-default'>00:00:47:550</span>
+<h5 class="test-status text-fail">JMS-151 : Reactivated employee (TL/AM) can perform the same roles as normal - Version 2</h5>
+<span class='badge badge-success'>08.14.2024 8:00:48 PM</span>
+<span class='badge badge-danger'>08.14.2024 8:01:23 PM</span>
+<span class='badge badge-default'>00:00:34:490</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
 </div>
 </div>    <div class="row mb-3"><div class="col-md-3">
-<img data-featherlight='screenshots/verifyPendingArticleCount.png' src="screenshots/verifyPendingArticleCount.png">
+<img data-featherlight='screenshots/verifyReactivationAMTLforAssign.png' src="screenshots/verifyReactivationAMTLforAssign.png">
     
     </div></div>
 <div class="detail-body mt-4">
@@ -113,48 +113,126 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>7:38:15 PM</td>
+        <td>8:00:48 PM</td>
         <td>
-          Parameter: Tank(GOAT)
+          Parameter: Auto(AT)
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>7:38:15 PM</td>
+        <td>8:00:48 PM</td>
         <td>
-          Parameter: 12366
+          Parameter: 823654
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>7:38:15 PM</td>
+        <td>8:00:48 PM</td>
         <td>
           Parameter: Test Workflow By Santhosh
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>7:38:15 PM</td>
+        <td>8:00:48 PM</td>
         <td>
-          Checking Journals count with publisher at a time
+          Parameter: Anbul
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>8:00:48 PM</td>
+        <td>
+          Parameter: 1915
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>8:00:48 PM</td>
+        <td>
+          Parameter: 1915
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>8:00:48 PM</td>
+        <td>
+          Parameter: 1915
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>8:00:48 PM</td>
+        <td>
+          Parameter: Hemalatha
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>8:00:48 PM</td>
+        <td>
+          Parameter: 4321
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>8:00:49 PM</td>
+        <td>
+          Deactivate and Reactivate the TL/AM login and check to assign to user
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>7:38:52 PM</td>
+        <td>8:01:21 PM</td>
         <td>
           Test Failed
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>7:38:52 PM</td>
+        <td>8:01:21 PM</td>
         <td>
-          <textarea readonly class="code-block">java.lang.AssertionError: Pending Article varies expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:110)
-	at org.testng.Assert.failNotEquals(Assert.java:1577)
-	at org.testng.Assert.assertTrue(Assert.java:56)
-	at tests.UserManagementTest.verifyPendingArticleCount(UserManagementTest.java:655)
+          <textarea readonly class="code-block">com.microsoft.playwright.PlaywrightException: Error {
+  message='Error: strict mode violation: locator("xpath=//img[@title='assign']") resolved to 2 elements:
+    1) <img title="assign" class="_action-image_ivrd6_240" s…/> aka getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("assign")).first()
+    2) <img title="assign" class="_action-image_ivrd6_240" s…/> aka getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("assign")).nth(1)
+
+=========================== logs ===========================
+waiting for locator("xpath=//img[@title='assign']")
+============================================================
+  name='Error
+  stack='Error: Error: strict mode violation: locator("xpath=//img[@title='assign']") resolved to 2 elements:
+    1) <img title="assign" class="_action-image_ivrd6_240" s…/> aka getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("assign")).first()
+    2) <img title="assign" class="_action-image_ivrd6_240" s…/> aka getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("assign")).nth(1)
+
+=========================== logs ===========================
+waiting for locator("xpath=//img[@title='assign']")
+============================================================
+    at CRExecutionContext.evaluateWithArguments (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\chromium\crExecutionContext.js:92:33)
+    at async ScopedRace._race (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\utils\manualPromise.js:84:14)
+    at async evaluateExpression (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\javascript.js:241:12)
+    at async C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\frames.js:944:22
+    at async Frame.retryWithProgressAndTimeouts (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\frames.js:915:24)
+    at async C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\frames.js:999:29
+    at async ProgressController.run (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\progress.js:92:22)
+    at async FrameDispatcher.click (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\dispatchers\frameDispatcher.js:151:12)
+    at async DispatcherConnection.dispatch (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\dispatchers\dispatcher.js:312:22)
+}
+	at com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:54)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:111)
+	at com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:126)
+	at com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:102)
+	at com.microsoft.playwright.impl.FrameImpl.clickImpl(FrameImpl.java:252)
+	at com.microsoft.playwright.impl.FrameImpl.lambda$click$8(FrameImpl.java:243)
+	at com.microsoft.playwright.impl.LoggingSupport.lambda$withLogging$0(LoggingSupport.java:36)
+	at com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:47)
+	at com.microsoft.playwright.impl.ChannelOwner.withLogging(ChannelOwner.java:87)
+	at com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:35)
+	at com.microsoft.playwright.impl.FrameImpl.click(FrameImpl.java:243)
+	at com.microsoft.playwright.impl.LocatorImpl.click(LocatorImpl.java:140)
+	at com.microsoft.playwright.Locator.click(Locator.java:2297)
+	at org.jms.pages.UserManagementPage.checkReactivatedTLorAMtoAssign(UserManagementPage.java:2113)
+	at tests.UserManagementTest.verifyReactivationAMTLforAssign(UserManagementTest.java:743)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -177,15 +255,45 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: com.microsoft.playwright.impl.DriverException: Error {
+  message='Error: strict mode violation: locator("xpath=//img[@title='assign']") resolved to 2 elements:
+    1) <img title="assign" class="_action-image_ivrd6_240" s…/> aka getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("assign")).first()
+    2) <img title="assign" class="_action-image_ivrd6_240" s…/> aka getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("assign")).nth(1)
+
+=========================== logs ===========================
+waiting for locator("xpath=//img[@title='assign']")
+============================================================
+  name='Error
+  stack='Error: Error: strict mode violation: locator("xpath=//img[@title='assign']") resolved to 2 elements:
+    1) <img title="assign" class="_action-image_ivrd6_240" s…/> aka getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("assign")).first()
+    2) <img title="assign" class="_action-image_ivrd6_240" s…/> aka getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("assign")).nth(1)
+
+=========================== logs ===========================
+waiting for locator("xpath=//img[@title='assign']")
+============================================================
+    at CRExecutionContext.evaluateWithArguments (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\chromium\crExecutionContext.js:92:33)
+    at async ScopedRace._race (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\utils\manualPromise.js:84:14)
+    at async evaluateExpression (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\javascript.js:241:12)
+    at async C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\frames.js:944:22
+    at async Frame.retryWithProgressAndTimeouts (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\frames.js:915:24)
+    at async C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\frames.js:999:29
+    at async ProgressController.run (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\progress.js:92:22)
+    at async FrameDispatcher.click (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\dispatchers\frameDispatcher.js:151:12)
+    at async DispatcherConnection.dispatch (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\dispatchers\dispatcher.js:312:22)
+}
+	at com.microsoft.playwright.impl.Connection.dispatch(Connection.java:226)
+	at com.microsoft.playwright.impl.Connection.processOneMessage(Connection.java:206)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:109)
+	... 35 more
 </textarea>
           
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>7:39:02 PM</td>
+        <td>8:01:23 PM</td>
         <td>
-          Trace saved: <a href='traces/verifyPendingArticleCount.zip'>traces/verifyPendingArticleCount.zip</a>
+          Trace saved: <a href='traces/verifyReactivationAMTLforAssign.zip'>traces/verifyReactivationAMTLforAssign.zip</a>
         </td>
       </tr>
   </tbody>
@@ -215,12 +323,12 @@
 <span class="meta">
 <span class='badge log badge-danger'>1</span>
 </span>
-<p class="name">java.lang.AssertionError</p>
+<p class="name">com.microsoft.playwright.PlaywrightException</p>
 <p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>java.lang.AssertionError</h4>
+<h4>com.microsoft.playwright.PlaywrightException</h4>
 <span status="fail" class='badge log badge-danger'>1 failed</span>
 </div>
 <table class='table table-sm mt-4'>
@@ -234,9 +342,9 @@
 <tbody>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>19:38:15 PM</td>
+<td>20:00:48 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='1'>JMS-79 : Apply filter on Pub+journal and ensure the list is updated accordingly - Version 1 </a>
+<a href="#" class="linked" test-id='1' id='1'>JMS-151 : Reactivated employee (TL/AM) can perform the same roles as normal - Version 2</a>
 </td>
 </tr>
 </tbody>
@@ -256,13 +364,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Aug 13, 2024 07:38:00 PM</h3>
+<h3>Aug 14, 2024 08:00:35 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Aug 13, 2024 07:39:03 PM</h3>
+<h3>Aug 14, 2024 08:01:23 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -315,8 +423,8 @@
 <div class="card-footer">
 <div><small data-tooltip='0%'><b>0</b> events passed</small></div>
 <div>
-<small data-tooltip='28%'><b>2</b> events failed,
-<b data-tooltip='%'>5</b> others
+<small data-tooltip='15%'><b>2</b> events failed,
+<b data-tooltip='%'>11</b> others
 </small>
 </div>
 </div>
@@ -332,7 +440,7 @@
 </div></div>
 <script>
 var timeline = {
-"JMS-79 : Apply filter on Pub+journal and ensure the list is updated accordingly - Version 1 ":47.55
+"JMS-151 : Reactivated employee (TL/AM) can perform the same roles as normal - Version 2":34.49
 };
 </script>
 <div class="row">
@@ -380,7 +488,7 @@ passEvents: 0,
 failEvents: 2,
 warningEvents: 0,
 skipEvents: 0,
-infoEvents: 5
+infoEvents: 11
 };
 </script>        </div>
       </div>

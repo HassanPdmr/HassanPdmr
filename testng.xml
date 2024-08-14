@@ -43,7 +43,7 @@
         <classes>
             <class name="tests.UserManagementTest">
                 <methods>
-                    <include name="verifyPendingArticleCount">
+                    <include name="verifyReactivationAMTLforAssign">
                     </include>
                 </methods>
             </class>

@@ -279,6 +279,10 @@ public class UserManagementPage {
     private String ReuploadedCheckboxfilter = "//input[@name='Reuploaded Article']";
     private String ColumnFilter = "//th[normalize-space()='Publisher']//img[contains(@title,'Filter')]";
     private String FilterDropDown = "//select[@class='_filterColumn_svj5m_157']";
+    private String SearchBar = "//input[@placeholder='Search...']";
+    private String Assign = "(//img[@title='assign'])[1]";
+    private String AssignOkay = "//button[normalize-space()='Assign']";
+
 
 
     private String acknowledgement = "//div[contains(text(),'Journal Added Successfully')]";
@@ -323,18 +327,18 @@ public class UserManagementPage {
         dept.selectOption(new SelectOption().setLabel(depart));
 
 
-        page.locator(Publisher).click();
+        page.waitForSelector(Publisher).click();
         page.locator("//div[text()='" + Pub + "']").click();
 
 
-        page.locator(Access).click();
+        page.waitForSelector(Access).click();
         page.locator("//div[text()='" + access + "']").click();
 
         Locator roleNew = page.locator(Role);
         roleNew.selectOption(new SelectOption().setLabel(role));
 
 
-        page.locator(EMail).fill(mail);
+        page.waitForSelector(EMail).fill(mail);
 //        page.locator(AddOkButton).click();
 //
 //        page.waitForSelector(addCloseButton).click();
@@ -1241,15 +1245,14 @@ public class UserManagementPage {
         boolean checkVis = page.locator("//span[contains(text(), '" + rolecheck + "')]").isVisible();
         System.out.println("AMTL Role Visibility: " + checkVis);
 
-
         String AMTL_Role = page.waitForSelector("//span[contains(text(), '" + rolecheck + "')]").innerText();
-
-
         page.locator(Logout).click();
+
 
         loginData(PmUname, PmPwd);
         page.locator(userdashboard).click();
         editUserProfileCard(empName, empId);
+
 
         Locator roleNext_1 = page.locator(Role);
         roleNext_1.selectOption(new SelectOption().setLabel(role));
@@ -1864,12 +1867,12 @@ public class UserManagementPage {
         page.locator(selectview).click();
         page.locator(ArticleView).click();
         String ExtPendingArticle = page.locator("//span[contains(@title,'login queue')]").innerText();
-        System.out.println("Pending Article Before: "+ExtPendingArticle);
+        System.out.println("Pending Article Before: " + ExtPendingArticle);
 
         int EValue = Integer.parseInt(ExtPendingArticle);
         int ExpPenVal = EValue + 1;
 
-        System.out.println("Now after incremented value: "+ExpPenVal);
+        System.out.println("Now after incremented value: " + ExpPenVal);
 
         page.reload();
         miniGeneralAddArticle(journalacro, artname, workflow);
@@ -1878,7 +1881,7 @@ public class UserManagementPage {
         page.locator(ArticleView).click();
 
         String PendingArticle = page.locator("//span[contains(@title,'login queue')]").innerText();
-        System.out.println("Pending Article After: "+PendingArticle);
+        System.out.println("Pending Article After: " + PendingArticle);
         int PenValue = Integer.parseInt(PendingArticle);
 
         if (ExpPenVal == PenValue) {
@@ -1887,7 +1890,270 @@ public class UserManagementPage {
             return false;
         }
 
+    }
+
+    public boolean checkDeactivationUserAndLogin(String empName, String empId, String designation, String gender,
+                                                 String depart, String Pub, String access, String role, String mail, String Uname, String Pwd) throws InterruptedException {
+
+
+        generalAddUser(empName, empId, designation, gender, depart, Pub, access, role, mail);
+        page.locator(AddOkButton).click();
+        page.waitForSelector(addCloseButton).click();
+        System.out.println("Ok button has been clicked here");
+        page.waitForTimeout(2000);
+
+        editUserProfileCard(empName, empId);
+        Boolean DeActV = page.locator(DeactivaeIcon).isVisible();
+
+        if (DeActV.equals(true)) {
+
+            page.locator(DeactivaeIcon).click();
+            page.waitForSelector(addCloseButton).click();
+            page.locator(ActivateIcon).click();
+            page.waitForSelector(addCloseButton).click();
+
+            System.out.println("Close button clicked in if");
+
+        } else {
+
+            page.locator(ActivateIcon).click();
+            page.waitForSelector(addCloseButton).click();
+
+            System.out.println("Close button clicked in else");
+
+        }
+
+        page.locator(Logout).click();
+        page.locator(username).fill(Uname);
+        page.locator(password).fill(Pwd);
+        page.locator(SignIn).click();
+
+        Boolean ErrMSg = page.locator("//span[text()='* User Disabled. Contact admin']").isVisible();
+        System.out.println("Is err msg visible :" + ErrMSg);
+
+        if (ErrMSg.equals(true)) {
+
+            return true;
+
+        } else {
+
+            return false;
+        }
 
     }
+
+    public boolean checkDeactivatedUserForAssign(String empName, String empId, String designation, String gender,
+                                                 String depart, String Pub, String access, String role, String mail,
+                                                 String Uname, String Pwd) throws InterruptedException {
+
+        generalAddUser(empName, empId, designation, gender, depart, Pub, access, role, mail);
+        page.locator(AddOkButton).click();
+        page.waitForTimeout(2000);
+        page.waitForSelector(addCloseButton).click();
+        System.out.println("Ok button has been clicked here");
+        page.waitForTimeout(3000);
+
+
+        editUserProfileCard(empName, empId);
+
+
+        Boolean DeActVN = page.locator(DeactivaeIcon).isVisible();
+        if (DeActVN.equals(true)) {
+
+            page.waitForSelector(DeactivaeIcon).click();
+            page.waitForSelector(addCloseButton).click();
+            editUserProfileCard(empName, empId);
+
+            page.waitForSelector(ActivateIcon).click();
+            page.waitForTimeout(2000);
+            page.waitForSelector(addCloseButton).click();
+
+            System.out.println("Close button clicked in if");
+
+        } else {
+
+            page.waitForSelector(ActivateIcon).click();
+            page.waitForTimeout(2000);
+            page.waitForSelector(addCloseButton).click();
+
+            System.out.println("Close button clicked in else");
+
+        }
+        page.waitForTimeout(2000);
+        page.waitForSelector(Logout).click();
+        page.waitForSelector(username).fill(Uname);
+        page.waitForSelector(password).fill(Pwd);
+        page.waitForSelector(SignIn).click();
+
+
+        page.waitForTimeout(2000);
+        page.waitForSelector("(//img[@title='assign'])[last()]").click();
+        page.waitForSelector("//input[@id='Process']").click();
+
+        Boolean DeactiveUser = page.locator("//p[normalize-space()='Indian (2233)']").isVisible();
+        System.out.println("Deactivated user is visible: " + DeactiveUser);
+
+        if (DeactiveUser.equals(true)) {
+
+            return true;
+
+        } else {
+
+            return false;
+        }
+
+    }
+
+    public boolean checkDeactivatedEmpToBeActivated(String empName, String empId, String designation, String gender,
+                                                    String depart, String Pub, String access, String role, String mail,
+                                                    String Uname, String Pwd) throws InterruptedException {
+
+        generalAddUser(empName, empId, designation, gender, depart, Pub, access, role, mail);
+        page.locator(AddOkButton).click();
+        page.waitForTimeout(2000);
+        page.waitForSelector(addCloseButton).click();
+        System.out.println("Ok button has been clicked here");
+        page.waitForTimeout(3000);
+
+        editUserProfileCard(empName, empId);
+
+        Boolean DeActVN = page.locator(DeactivaeIcon).isVisible();
+        if (DeActVN.equals(true)) {
+
+            page.locator(DeactivaeIcon).click();
+            page.waitForSelector(addCloseButton).click();
+            page.reload();
+
+
+
+        } else {
+            page.locator(ActivateIcon).click();
+            page.waitForTimeout(2000);
+            page.locator(addCloseButton).click();
+
+            editUserProfileCard(empName, empId);
+
+            page.locator(DeactivaeIcon).click();
+            page.locator(addCloseButton).click();
+
+        }
+
+        page.waitForTimeout(2000);
+        page.waitForSelector(Logout).click();
+        page.waitForSelector(username).fill(Uname);
+        page.waitForSelector(password).fill(Pwd);
+        page.waitForSelector(SignIn).click();
+
+        page.locator(profile).click();
+
+        Boolean EmpIdVisibility = page.waitForSelector("//span[contains(text(), '" + empId + "')]").isVisible();
+        System.out.println("Emp id in profile is :" + EmpIdVisibility);
+
+
+        if (EmpIdVisibility.equals(true)) {
+
+            return true;
+
+        } else {
+
+            return false;
+        }
+
+
+    }
+
+
+
+    public boolean checkReactivatedTLorAMtoAssign(String journalacro, String artname, String workflow,
+                                                  String empName, String EmpId, String Uname, String Pwd, String UempName, String UempId) throws InterruptedException {
+
+
+        miniGeneralAddArticle(journalacro, artname, workflow);
+        Locator Check = page.locator(addarticlebutton);
+
+        boolean isVisible = Check.isVisible();
+        boolean isEnabled = Check.isEnabled();
+
+        if (isVisible && isEnabled) {
+            System.out.println("The button is clickable.");
+        } else {
+            System.out.println("The button is not clickable.");
+        }
+        page.locator(addarticlebutton).click();
+        Thread.sleep(10090);
+
+        page.waitForSelector(userdashboard).click();
+        editUserProfileCard(empName,EmpId);
+
+        Boolean DeActVN = page.locator(DeactivaeIcon).isVisible();
+        if (DeActVN.equals(true)) {
+
+            page.locator(DeactivaeIcon).click();
+            page.waitForSelector(addCloseButton).click();
+            page.reload();
+
+        } else {
+            page.locator(ActivateIcon).click();
+            page.waitForTimeout(2000);
+            page.locator(addCloseButton).click();
+
+            editUserProfileCard(empName, EmpId);
+
+            page.locator(DeactivaeIcon).click();
+            page.waitForTimeout(2000);
+            page.waitForSelector(addCloseButton).click();
+
+        }
+
+        page.waitForSelector(Logout).click();
+        page.waitForSelector(username).fill(Uname);
+        page.waitForSelector(password).fill(Pwd);
+        page.waitForSelector(SignIn).click();
+        page.locator(SearchBar).fill(artname);
+        page.locator(Assign).click();
+        page.waitForSelector("//input[@id='Process']").click();
+        page.waitForSelector("//p[normalize-space()='"+ UempName +" ("+UempId+")']").click();
+
+        page.locator(AssignOkay).click();
+        page.waitForSelector(Logout).click();
+        page.waitForSelector(username).fill(UempName);
+        page.waitForSelector(password).fill(UempId);
+
+        page.waitForSelector(SearchBar).fill(artname);
+
+        Boolean PlayButton = page.locator("(//img[@title='start'])[1]").isVisible();
+        System.out.println("Is Playbutton is Visible :"+PlayButton);
+
+        if (PlayButton.equals(true)) {
+
+            return true;
+
+        } else {
+
+            return false;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
 
 }

@@ -510,22 +510,22 @@ public class UserManagementTest extends BaseTest {
     }
 
 
-   @Test(priority = 16, dataProvider = "getJournalBanner", description = "JMS-220 : Verify the following details in journal badge by adding/editing: - Version 2")
-    public void verifyJournalDetailOuterBanner(String PubAcro, String PubName, String Jacro, String Jname){
+    @Test(priority = 16, dataProvider = "getJournalBanner", description = "JMS-220 : Verify the following details in journal badge by adding/editing: - Version 2")
+    public void verifyJournalDetailOuterBanner(String PubAcro, String PubName, String Jacro, String Jname) {
 
 
-       ExtentReportListener.getTest().log(Status.INFO, "Check Journal Details in Journal Badge");
+        ExtentReportListener.getTest().log(Status.INFO, "Check Journal Details in Journal Badge");
 
-       List<Object> actualVal = userManagement.checkJournalDetailInOuterBanner(PubAcro,PubName,Jacro,Jname);
+        List<Object> actualVal = userManagement.checkJournalDetailInOuterBanner(PubAcro, PubName, Jacro, Jname);
 
-       Assert.assertEquals(actualVal.get(0),PubName,"Wrong PubName displayed");
-       Assert.assertEquals(actualVal.get(1),Jacro,"Wrong Journal Ackro displayed");
-       Assert.assertEquals(actualVal.get(2),Jname,"Wrong Journal Name displayed");
-       Assert.assertTrue((Boolean) actualVal.get(3), "Wrong message");
+        Assert.assertEquals(actualVal.get(0), PubName, "Wrong PubName displayed");
+        Assert.assertEquals(actualVal.get(1), Jacro, "Wrong Journal Ackro displayed");
+        Assert.assertEquals(actualVal.get(2), Jname, "Wrong Journal Name displayed");
+        Assert.assertTrue((Boolean) actualVal.get(3), "Wrong message");
 
-       ExtentReportListener.getTest().log(Status.INFO, "Journal badge has been successfully verified");
+        ExtentReportListener.getTest().log(Status.INFO, "Journal badge has been successfully verified");
 
-   }
+    }
 
 
     @DataProvider(name = "getArticleBadge")
@@ -543,11 +543,10 @@ public class UserManagementTest extends BaseTest {
 
         List<Object> actualVal = userManagement.checkDetailsInArticleBadge(PubName, journalacro, Jack, artname, workflow);
 
-        Assert.assertTrue((Boolean) actualVal.get(0),"Wrong result displayed");
-        Assert.assertEquals(actualVal.get(1), artname,"Wrong result displayed");
+        Assert.assertTrue((Boolean) actualVal.get(0), "Wrong result displayed");
+        Assert.assertEquals(actualVal.get(1), artname, "Wrong result displayed");
 
         ExtentReportListener.getTest().log(Status.INFO, "Article badge has been successfully verified");
-
 
 
     }
@@ -561,7 +560,7 @@ public class UserManagementTest extends BaseTest {
     }
 
 
-    @Test(priority = 17,dataProvider = "getSearch", description = "JMS-220 : Verify the following details in journal badge by adding/editing: - Version 2")
+    @Test(priority = 17, dataProvider = "getSearch", description = "JMS-220 : Verify the following details in journal badge by adding/editing: - Version 2")
     public void verifyStockSearch(String PubName) {
 
         ExtentReportListener.getTest().log(Status.INFO, "Checking Search in Stock");
@@ -569,8 +568,6 @@ public class UserManagementTest extends BaseTest {
         boolean actualVal = userManagement.checkSearchOptioninStock(PubName);
         Assert.assertTrue(actualVal, "Search results are not correctly updated.");
         ExtentReportListener.getTest().log(Status.INFO, "Search verification completed.");
-
-
 
 
     }
@@ -582,16 +579,15 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 18,dataProvider = "getPubFromFilter", description = "JMS-78 : Apply filter on Pub, journal separately and ensure the list is updated by filter(Publisher) - Version 2")
-    public void verifyPubinCountFilter(String PubAcro, String PubNam){
+    @Test(priority = 18, dataProvider = "getPubFromFilter", description = "JMS-78 : Apply filter on Pub, journal separately and ensure the list is updated by filter(Publisher) - Version 2")
+    public void verifyPubinCountFilter(String PubAcro, String PubNam) {
 
         ExtentReportListener.getTest().log(Status.INFO, "Checking Publisher count from stock with manage count");
 
 
-        boolean actualVal = userManagement.checkPubJournalSepratelyinFilterPUB(PubAcro,PubNam);
+        boolean actualVal = userManagement.checkPubJournalSepratelyinFilterPUB(PubAcro, PubNam);
         Assert.assertTrue(actualVal, "Publisher count varies");
         ExtentReportListener.getTest().log(Status.INFO, "Filter verification completed for Publisher");
-
 
 
     }
@@ -605,7 +601,7 @@ public class UserManagementTest extends BaseTest {
     }
 
 
-    @Test(priority = 19,dataProvider = "getJourFromFilter", description = "JMS-78 : Apply filter on Pub, journal separately and ensure the list is updated by filter(Journal) - Version 2")
+    @Test(priority = 19, dataProvider = "getJourFromFilter", description = "JMS-78 : Apply filter on Pub, journal separately and ensure the list is updated by filter(Journal) - Version 2")
     public void verifyJourInCountFilter(String PubAcro, String Jacro, String Jname) {
 
         ExtentReportListener.getTest().log(Status.INFO, "Checking Journals count from stock with manage count");
@@ -625,13 +621,13 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 20,dataProvider = "getJrWithPub", description = "JMS-79 : Apply filter on Pub+journal and ensure the list is updated accordingly - Version 1 ")
-    public void verifyJrWithPubInFilter(String PubAcro, String PubName, String Jacro, String Jname  ) {
+    @Test(priority = 20, dataProvider = "getJrWithPub", description = "JMS-79 : Apply filter on Pub+journal and ensure the list is updated accordingly - Version 1 ")
+    public void verifyJrWithPubInFilter(String PubAcro, String PubName, String Jacro, String Jname) {
 
         ExtentReportListener.getTest().log(Status.INFO, "Checking Journals count with publisher at a time");
 
 
-        boolean ActualVal = userManagement.PubWithJournalColumnFilterCheck(PubAcro,PubName,Jacro,Jname );
+        boolean ActualVal = userManagement.PubWithJournalColumnFilterCheck(PubAcro, PubName, Jacro, Jname);
         Assert.assertTrue(ActualVal, "Publisher withJournal count varies");
         ExtentReportListener.getTest().log(Status.INFO, "Filter verification completed for Journals with Publisher");
 
@@ -645,13 +641,13 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 21,dataProvider = "getPenArt", description = "JMS-79 : Apply filter on Pub+journal and ensure the list is updated accordingly - Version 1 ")
+    @Test(priority = 21, dataProvider = "getPenArt", description = "JMS-79 : Apply filter on Pub+journal and ensure the list is updated accordingly - Version 1 ")
     public void verifyPendingArticleCount(String journalacro, String artname, String workflow) {
 
         ExtentReportListener.getTest().log(Status.INFO, "Checking Journals count with publisher at a time");
 
 
-        boolean ActualVal = userManagement.checkPendingArticleCount(journalacro,artname,workflow );
+        boolean ActualVal = userManagement.checkPendingArticleCount(journalacro, artname, workflow);
         Assert.assertTrue(ActualVal, "Pending Article varies");
         ExtentReportListener.getTest().log(Status.INFO, "Pending Article count has been verified");
 
@@ -659,9 +655,101 @@ public class UserManagementTest extends BaseTest {
     }
 
 
+    @DataProvider(name = "getUserDeactData")
+    public Object[][] getUserDactData() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_Management_ActDeact.xlsx", 0);
+
+    }
+
+    @Test(priority = 22, dataProvider = "getUserDeactData", description = "JMS-145 : Deactivate the user and ensure the employee can’t be logged in again - Version 1 ")
+    public void verifyDeactivatedUserLogin(String empName, String empId, String designation, String gender,
+                                           String depart, String Pub, String access, String role, String mail, String Uname, String Pwd) throws InterruptedException {
+
+        ExtentReportListener.getTest().log(Status.INFO, "Verification the deactivated user need to be login again");
+
+        boolean ActualVal = userManagement.checkDeactivationUserAndLogin(empName, empId, designation, gender, depart, Pub, access, role, mail, Uname, Pwd);
+
+        Assert.assertTrue(ActualVal, "Deactivated User can able to login again");
+
+        ExtentReportListener.getTest().log(Status.INFO, "Deactivated user login has been verified");
+
+
+    }
+
+    @DataProvider(name = "getUserforAssign")
+    public Object[][] getUserforAssign() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_Management_ActDeact.xlsx", 1);
+
+    }
+
+    @Test(priority = 23, dataProvider = "getUserforAssign", description = " JMS-146 : Deactivate the user and ensure employee is not available to be assigned - Version 2")
+    public void verifyDeactivatedUsertoAssign(String empName, String empId, String designation, String gender,
+                                              String depart, String Pub, String access, String role, String mail, String Uname, String Pwd) throws InterruptedException {
+
+
+        ExtentReportListener.getTest().log(Status.INFO, "Verify the deactivated user to login again");
+
+        boolean ActualVal = userManagement.checkDeactivatedUserForAssign(empName, empId, designation, gender, depart, Pub, access, role, mail, Uname, Pwd);
+
+        Assert.assertFalse(ActualVal, "Deactivated User displayed in assign option for Latex TL login");
+
+        ExtentReportListener.getTest().log(Status.INFO, "Deactivated user assign has been verified");
+
+
+    }
+
+    @DataProvider(name = "getActivateUserToLogin")
+    public Object[][] getActivateUserToLogin() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_Management_ActDeact.xlsx", 2);
+
+    }
+
+    @Test(priority = 24, dataProvider = "getActivateUserToLogin", description = "JMS-149 : Verify Deactivated employee can be re-activated, and check he/she can be signed in - Version 2")
+    public void verifyActivatedUserToLogin(String empName, String empId, String designation, String gender,
+                                           String depart, String Pub, String access, String role, String mail, String Uname, String Pwd) throws InterruptedException {
+
+
+        ExtentReportListener.getTest().log(Status.INFO, "Verify the deactivated to active and try user to login again");
+
+
+        boolean ActulVal = userManagement.checkDeactivatedEmpToBeActivated(empName, empId, designation, gender, depart,
+                Pub, access, role, mail, Uname, Pwd);
+
+        Assert.assertTrue(ActulVal, "Can't able to login for Activated user");
+
+        ExtentReportListener.getTest().log(Status.INFO, "Deactivated user has been Activated and it has been verified");
+
+
+    }
+    @DataProvider(name = "getTLAMReactivaton")
+    public Object[][] getTLAMReactivaton() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\User_Management_ActDeact.xlsx", 3);
+
+    }
+
+
+    @Test(priority = 25, dataProvider = "getTLAMReactivaton", description = "JMS-151 : Reactivated employee (TL/AM) can perform the same roles as normal - Version 2")
+    public void verifyReactivationAMTLforAssign(String journalacro, String artname, String workflow,
+                                                String empName, String EmpId, String Uname, String Pwd, String UempName, String UempId) throws InterruptedException {
+
+
+        ExtentReportListener.getTest().log(Status.INFO, "Deactivate and Reactivate the TL/AM login and check to assign to user");
+
+
+        boolean ActulVal = userManagement.checkReactivatedTLorAMtoAssign(journalacro,artname,workflow,empName,EmpId,Uname,Pwd,UempName,UempId);
+
+
+        Assert.assertTrue(ActulVal, "Can't able to assign to user login from AM/TL Reactivated login");
+
+
+        ExtentReportListener.getTest().log(Status.INFO, "Reactivation ID can able to assign to user verification is done");
 
 
 
-
+    }
 
     }
