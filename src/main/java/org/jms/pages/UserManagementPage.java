@@ -284,7 +284,6 @@ public class UserManagementPage {
     private String AssignOkay = "//button[normalize-space()='Assign']";
 
 
-
     private String acknowledgement = "//div[contains(text(),'Journal Added Successfully')]";
 
 
@@ -293,9 +292,15 @@ public class UserManagementPage {
 
     }
 
-    public void verifyAddUserisClickable() {
+    public void verifyAddUserisClickable() throws InterruptedException {
 
-        page.locator(userdashboard).click();
+
+        page.waitForTimeout(2000);
+        page.locator(Logout).click();
+        page.locator(username).fill("7000");
+        page.locator(password).fill("7000");
+        page.locator(SignIn).click();
+        page.waitForSelector(userdashboard).click();
         page.locator(addUser).click();
         page.waitForSelector(addCloseButton).click();
 
@@ -304,11 +309,11 @@ public class UserManagementPage {
     public void generalAddUser(String empName, String empId, String designation, String gender,
                                String depart, String Pub, String access, String role, String mail) {
 
-        page.locator(userdashboard).click();
+        page.waitForSelector(userdashboard).click();
         page.locator(addUser).click();
 
-        page.locator(enterEmpName).fill(empName);
 
+        page.locator(enterEmpName).fill(empName);
         double empI = Double.parseDouble(empId);
         int empIdAsInt = (int) empI;
         String empIDAsString = String.valueOf(empIdAsInt);
@@ -535,8 +540,10 @@ public class UserManagementPage {
         fileChooser = page.waitForFileChooser(() -> page.locator(guidelinesdoc).click());
         fileChooser.setFiles(Paths.get("GuidelinesNew.docx"));
 
+        page.evaluate("window.scrollBy(0, 1000)");
+        page.waitForTimeout(2000);
         page.locator(addbutton).click();
-        page.waitForSelector(PubalertCloseButton).click();
+        page.reload();
 
 
     }
@@ -694,7 +701,8 @@ public class UserManagementPage {
         page.locator(tomail).click();
         page.locator(checkall).click();
         page.locator(Acknowlegeemtnsavemailbutton).click();
-        page.locator(Acknowledgementyesalert).click();
+        page.waitForTimeout(3000);
+        page.waitForSelector(Acknowledgementyesalert).click();
         page.locator(Acknowlegementtoastclose).click();
         page.locator(notificationmail).click();
         page.locator(ccmail).click();
@@ -721,13 +729,22 @@ public class UserManagementPage {
         } else {
             System.out.println("The button is not clickable.");
         }
-        page.locator(addarticlebutton).click();
+        page.evaluate("window.scrollBy(0, 1000)");
 
-        Thread.sleep(10000);
+        Locator Add = page.locator(addarticlebutton);
+        boolean isVisibleButtn = Add.first().isVisible();
+        System.out.println("is Add button visible? : " + isVisibleButtn);
+        Add.click();
+
+        Thread.sleep(20000);
+
         page.locator(managemenu).click();
-        page.locator(selectview).click();
-        page.locator(ArticleView).click();
+        page.waitForSelector(selectview).click();
+        page.waitForSelector(ArticleView).click();
         page.waitForTimeout(2000);
+
+        boolean VisibilityArt =  page.locator("(//em[text()='" + doivalue + "'])[1]//preceding::td[2]").isVisible();
+        System.out.println("Visibility of Art with DOI: "+VisibilityArt);
         page.locator("(//em[text()='" + doivalue + "'])[1]//preceding::td[2]").click();
         return doivalue;
 
@@ -760,6 +777,7 @@ public class UserManagementPage {
                                           String gender, String depart, String Pub, String access,
                                           String role, String mail) {
 
+        page.locator(addUser).click();
         page.locator(enterEmpName).fill(empName);
         page.locator(enterEmpId).fill(empId);
 
@@ -797,6 +815,7 @@ public class UserManagementPage {
                                  String depart, String Pub, String access, String role, String mail) {
 
 
+        page.waitForSelector(addUser).click();
         page.locator(enterEmpName).fill(empName);
         page.locator(enterEmpId).fill(empId);
 
@@ -1112,14 +1131,19 @@ public class UserManagementPage {
 
         editUserProfileCard(empName, empId);
 
+
+        page.waitForTimeout(2000);
         Boolean DeActV = page.locator(DeactivaeIcon).isVisible();
 
         if (DeActV.equals(true)) {
 
+            System.out.println("Entered in If");
             page.waitForSelector(DeactivaeIcon).click();
-            page.waitForSelector(addCloseButton).click();
+            page.reload();
+
+            editUserProfileCard(empName,empId);
             page.waitForSelector(ActivateIcon).click();
-            page.waitForSelector(addCloseButton).click();
+            page.reload();
 
 
             System.out.println("Close button clicked");
@@ -1133,8 +1157,9 @@ public class UserManagementPage {
         } else {
 
 
-            page.waitForSelector(ActivateIcon).click();
-            page.waitForSelector(addCloseButton).click();
+            System.out.println("Entered in else");
+            page.locator(ActivateIcon).click();
+            page.reload();
 
 
             System.out.println("Close button clicked");
@@ -1217,6 +1242,7 @@ public class UserManagementPage {
                                                String roleTL, String Uname, String Pwd, String rolecheck, String PmUname, String PmPwd) throws InterruptedException {
 
 
+
         generalAddUser(empName, empId, designation, gender, depart, Pub, access, role, mail);
         page.locator(AddOkButton).click();
 
@@ -1278,6 +1304,9 @@ public class UserManagementPage {
         RolesCheck.add(UserRole);
         System.out.println("User inside List :" + UserRole);
 
+
+
+
         return RolesCheck;
 
 
@@ -1289,6 +1318,7 @@ public class UserManagementPage {
                                               String Uname, String Pwd, String desigNew, String departNew) throws InterruptedException {
 
 
+        Thread.sleep(2000);
         generalAddUser(empName, empId, designation, gender, depart, Pub, access, role, mail);
         page.locator(AddOkButton).click();
 
@@ -1300,7 +1330,7 @@ public class UserManagementPage {
         page.waitForSelector(profile).click();
 
 
-        Boolean DesiVal = page.waitForSelector("//span[contains(text(), '" + designation + "')]").isVisible();
+        Boolean DesiVal = page.locator("//span[contains(text(), '" + designation + "')]").isVisible();
         if (DesiVal.equals(true)) {
 
             String DesignNew = page.waitForSelector("//span[contains(text(), '" + designation + "')]").innerText();
@@ -1461,7 +1491,7 @@ public class UserManagementPage {
         page.locator(JourView).click();
 
         Boolean JournView = page.locator("//input[@value='" + JourV + "']").isVisible();
-        System.out.println("Does Publisher view is visible: " + JournView);
+        System.out.println("Does Journal view is visible: " + JournView);
         ManageViewCheck.add(JournView);
 
 
@@ -1469,7 +1499,7 @@ public class UserManagementPage {
         page.locator(ArticleView).click();
 
         Boolean ArticleView = page.locator("//input[@value='" + ArtV + "']").isVisible();
-        System.out.println("Does Publisher view is visible: " + ArticleView);
+        System.out.println("Does Article view is visible: " + ArticleView);
         ManageViewCheck.add(ArticleView);
 
         return ManageViewCheck;
@@ -1530,9 +1560,9 @@ public class UserManagementPage {
         AddJournalUploadFilesOld();
 
         page.waitForTimeout(2000);
-
+        page.evaluate("window.scrollBy(0, 1000)");
         page.waitForSelector(addButton).click();
-        page.locator(JralertCloseButton).click();
+        page.reload();
 
         page.keyboard().press("Control+Shift+R");
         page.reload();
@@ -1541,8 +1571,17 @@ public class UserManagementPage {
         AddJournalGeneral(PubAcro, JacroNew, JnameNew);
         NewAddJournalUploadFiles();
 
-        page.waitForSelector(addButton).click();
-        page.locator(JralertCloseButton).click();
+
+        Locator Add = page.locator(addButton);
+        boolean isVisible = Add.first().isVisible();
+        System.out.println("is Add button visible? : " + isVisible);
+
+        page.waitForSelector("//button[@type='button']");
+        Add.click();
+        page.reload();
+
+
+
 
         page.locator(Manage).click();
         page.locator(SelectView).click();
@@ -1579,10 +1618,18 @@ public class UserManagementPage {
                                      String Jname, String JacroArt, String artname, String workflow) throws InterruptedException {
 
         AddPubGeneral(PubAcro, PubName);
-
         AddJournalGeneral(PubAcro, Jacro, Jname);
-
         AddJournalUploadFilesOld();
+        page.evaluate("window.scrollBy(0, 1000)");
+        Locator Add = page.locator(addButton);
+        boolean isVisible = Add.first().isVisible();
+        System.out.println("is Add button visible? : " + isVisible);
+
+        page.waitForSelector("//button[@type='button']");
+        Add.click();
+        page.waitForTimeout(2000);
+        page.reload();
+
 
         page.locator(baseicon).click();
         page.locator(addarticleicon).click();
@@ -1775,7 +1822,7 @@ public class UserManagementPage {
         page.waitForSelector("//button[@type='button']");
         Add.click();
 
-        page.locator(addCloseButton).click();
+        page.reload();
 
         page.locator(Stock).click();
         page.locator(Filter).click();
@@ -1903,21 +1950,30 @@ public class UserManagementPage {
         page.waitForTimeout(2000);
 
         editUserProfileCard(empName, empId);
+        page.waitForTimeout(2000);
+
         Boolean DeActV = page.locator(DeactivaeIcon).isVisible();
 
         if (DeActV.equals(true)) {
 
+            System.out.println("Entered in if");
+            page.waitForTimeout(2000);
             page.locator(DeactivaeIcon).click();
-            page.waitForSelector(addCloseButton).click();
+            page.reload();
+            editUserProfileCard(empName,empId);
             page.locator(ActivateIcon).click();
-            page.waitForSelector(addCloseButton).click();
+            page.reload();
+//            page.locator(addCloseButton).click();
 
             System.out.println("Close button clicked in if");
 
         } else {
 
+            System.out.println("Entered in else");
+            page.waitForTimeout(2000);
             page.locator(ActivateIcon).click();
-            page.waitForSelector(addCloseButton).click();
+            page.reload();
+//            page.locator(addCloseButton).click();
 
             System.out.println("Close button clicked in else");
 
@@ -1930,6 +1986,11 @@ public class UserManagementPage {
 
         Boolean ErrMSg = page.locator("//span[text()='* User Disabled. Contact admin']").isVisible();
         System.out.println("Is err msg visible :" + ErrMSg);
+
+        page.locator(username).fill("7000");
+        page.locator(password).fill("7000");
+        page.locator(SignIn).click();
+
 
         if (ErrMSg.equals(true)) {
 
@@ -1957,25 +2018,28 @@ public class UserManagementPage {
         editUserProfileCard(empName, empId);
 
 
+        page.waitForTimeout(2000);
         Boolean DeActVN = page.locator(DeactivaeIcon).isVisible();
+
         if (DeActVN.equals(true)) {
 
-            page.waitForSelector(DeactivaeIcon).click();
-            page.waitForSelector(addCloseButton).click();
+            System.out.println("Entered in if");
+            page.locator(DeactivaeIcon).click();
+            page.reload();
             editUserProfileCard(empName, empId);
 
-            page.waitForSelector(ActivateIcon).click();
+            page.locator(ActivateIcon).click();
             page.waitForTimeout(2000);
-            page.waitForSelector(addCloseButton).click();
+            page.reload();
 
             System.out.println("Close button clicked in if");
 
         } else {
 
-            page.waitForSelector(ActivateIcon).click();
+            System.out.println("Entered in else");
+            page.locator(ActivateIcon).click();
             page.waitForTimeout(2000);
-            page.waitForSelector(addCloseButton).click();
-
+            page.reload();
             System.out.println("Close button clicked in else");
 
         }
@@ -2020,21 +2084,24 @@ public class UserManagementPage {
         Boolean DeActVN = page.locator(DeactivaeIcon).isVisible();
         if (DeActVN.equals(true)) {
 
+            System.out.println("Entered in if");
+            page.waitForTimeout(2000);
             page.locator(DeactivaeIcon).click();
-            page.waitForSelector(addCloseButton).click();
             page.reload();
 
 
 
         } else {
+            System.out.println("Entered in else");
+            page.waitForTimeout(2000);
             page.locator(ActivateIcon).click();
             page.waitForTimeout(2000);
-            page.locator(addCloseButton).click();
+            page.reload();
 
             editUserProfileCard(empName, empId);
 
             page.locator(DeactivaeIcon).click();
-            page.locator(addCloseButton).click();
+            page.reload();
 
         }
 
@@ -2063,7 +2130,6 @@ public class UserManagementPage {
     }
 
 
-
     public boolean checkReactivatedTLorAMtoAssign(String journalacro, String artname, String workflow,
                                                   String empName, String EmpId, String Uname, String Pwd, String UempName, String UempId) throws InterruptedException {
 
@@ -2083,7 +2149,7 @@ public class UserManagementPage {
         Thread.sleep(10090);
 
         page.waitForSelector(userdashboard).click();
-        editUserProfileCard(empName,EmpId);
+        editUserProfileCard(empName, EmpId);
 
         Boolean DeActVN = page.locator(DeactivaeIcon).isVisible();
         if (DeActVN.equals(true)) {
@@ -2112,17 +2178,24 @@ public class UserManagementPage {
         page.locator(SearchBar).fill(artname);
         page.locator(Assign).click();
         page.waitForSelector("//input[@id='Process']").click();
-        page.waitForSelector("//p[normalize-space()='"+ UempName +" ("+UempId+")']").click();
+        page.waitForTimeout(2000);
+        page.locator("//p[normalize-space()='" + UempName + " (" + UempId + ")']").click();
 
         page.locator(AssignOkay).click();
         page.waitForSelector(Logout).click();
-        page.waitForSelector(username).fill(UempName);
+        page.waitForSelector(username).fill(UempId);
         page.waitForSelector(password).fill(UempId);
+        page.waitForSelector(SignIn).click();
 
         page.waitForSelector(SearchBar).fill(artname);
 
         Boolean PlayButton = page.locator("(//img[@title='start'])[1]").isVisible();
-        System.out.println("Is Playbutton is Visible :"+PlayButton);
+        System.out.println("Is Playbutton is Visible :" + PlayButton);
+
+        page.locator(Logout).click();
+        page.locator(username).fill("7000");
+        page.locator(password).fill("7000");
+        page.locator(SignIn).click();
 
         if (PlayButton.equals(true)) {
 
@@ -2135,25 +2208,80 @@ public class UserManagementPage {
 
 
 
+    }
+
+    public boolean checkDeactivationOfOwnIDforPM(String empName, String empId, String designation, String gender,
+                                            String depart, String Pub, String access, String role, String mail, String PmUname, String PmPass) throws InterruptedException {
+
+        generalAddUser(empName, empId, designation, gender, depart, Pub, access, role, mail);
+        page.waitForSelector(AddOkButton).click();
+        page.waitForTimeout(3000);
+        page.waitForSelector(addCloseButton).click();
+
+        page.locator(Logout).click();
+        page.locator(username).fill(empId);
+        page.locator(password).fill(empId);
+        page.locator(SignIn).click();
+        page.waitForTimeout(2000);
+
+
+        System.out.println("Print it");
+
+
+        Boolean ErrMsg = page.locator("//span[text()='* User Disabled. Contact admin']").isVisible();
+
+        if (ErrMsg.equals(true)) {
+
+            System.out.println("Enter in If");
+            page.locator(username).clear();
+            page.locator(password).clear();
+            page.locator(username).fill(PmUname);
+            page.locator(password).fill(PmUname);
+            page.locator(SignIn).click();
+
+
+            editUserProfileCard(empName, empId);
+
+            page.locator(DeactivaeIcon).click();
+            page.reload();
+            page.waitForTimeout(2000);
+            editUserProfileCard(empName, empId);
+            page.locator(ActivateIcon).click();
+            page.waitForTimeout(2000);
+            page.reload();
+            page.waitForSelector(Logout).click();
+
+
+        } else {
+
+            editUserProfileCard(empName, empId);
+            System.out.println("Enter in else");
+            page.locator(ActivateIcon).click();
+            page.reload();
+            page.waitForSelector(Logout).click();
 
 
 
+        }
+        page.locator(username).fill(empId);
+        page.locator(password).fill(empId);
+        page.locator(SignIn).click();
 
+        page.waitForTimeout(2000);
+        Boolean UpdatedErrMsg = page.locator("//span[text()='* User Disabled. Contact admin']").isVisible();
+        if (UpdatedErrMsg.equals(true)) {
 
+            return true;
 
+        } else {
 
-
-
-
-
-
-
-
-
-
+            return false;
+        }
 
 
     }
 
 
 }
+
+

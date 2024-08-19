@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">JMS_Automation_Test_Report</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Aug 14, 2024 08:00:35 PM</span></a>
+<a href="#"><span class="badge badge-primary">Aug 19, 2024 11:51:51 AM</span></a>
 </li>
 </ul>
 </div>
@@ -71,7 +71,9 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
 <a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<a class="dropdown-item" status="skip" href="#"><span>Skip</span><span class="status warning"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
@@ -79,14 +81,89 @@
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="fail" test-id="1"
+        <li class="test-item"  status="pass" test-id="1"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">JMS-151 : Reactivated employee (TL/AM) can perform the same roles as normal - Version 2</p>
+            <p class="name">Verify Acronym should not be allowed with special characters</p>
             <p class="text-sm">
-              <span>8:00:48 PM</span> / <span>00:00:34:490</span>
+              <span>11:52:18 AM</span> / <span>00:00:48:458</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Verify Acronym should not be allowed with special characters</h5>
+<span class='badge badge-success'>08.19.2024 11:52:18 AM</span>
+<span class='badge badge-danger'>08.19.2024 11:53:06 AM</span>
+<span class='badge badge-default'>00:00:48:458</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:52:18 AM</td>
+        <td>
+          Parameter: SamZ&
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:52:18 AM</td>
+        <td>
+          Parameter: SamrZ
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:52:18 AM</td>
+        <td>
+          Enter Journal Acronym with special char
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:52:57 AM</td>
+        <td>
+          Journal has been added even with Special characters in Journal Acronym
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>11:52:57 AM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:53:06 AM</td>
+        <td>
+          Trace saved: <a href='traces/verifyAcrWithSplChar.zip'>traces/verifyAcrWithSplChar.zip</a>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="2"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Verify Acronym should not be allowed with special characters</p>
+            <p class="text-sm">
+              <span>11:53:10 AM</span> / <span>00:00:52:370</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -94,17 +171,17 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">JMS-151 : Reactivated employee (TL/AM) can perform the same roles as normal - Version 2</h5>
-<span class='badge badge-success'>08.14.2024 8:00:48 PM</span>
-<span class='badge badge-danger'>08.14.2024 8:01:23 PM</span>
-<span class='badge badge-default'>00:00:34:490</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<h5 class="test-status text-fail">Verify Acronym should not be allowed with special characters</h5>
+<span class='badge badge-success'>08.19.2024 11:53:10 AM</span>
+<span class='badge badge-danger'>08.19.2024 11:54:02 AM</span>
+<span class='badge badge-default'>00:00:52:370</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
 </div>
 </div>    <div class="row mb-3"><div class="col-md-3">
-<img data-featherlight='screenshots/verifyReactivationAMTLforAssign.png' src="screenshots/verifyReactivationAMTLforAssign.png">
+<img data-featherlight='screenshots/verifyAcrWithSplChar.png' src="screenshots/verifyAcrWithSplChar.png">
     
     </div></div>
 <div class="detail-body mt-4">
@@ -113,126 +190,67 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>8:00:48 PM</td>
+        <td>11:53:10 AM</td>
         <td>
-          Parameter: Auto(AT)
+          Parameter: D#PQ
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>8:00:48 PM</td>
+        <td>11:53:10 AM</td>
         <td>
-          Parameter: 823654
+          Parameter: WomeQX
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>8:00:48 PM</td>
+        <td>11:53:10 AM</td>
         <td>
-          Parameter: Test Workflow By Santhosh
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:00:48 PM</td>
-        <td>
-          Parameter: Anbul
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:00:48 PM</td>
-        <td>
-          Parameter: 1915
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:00:48 PM</td>
-        <td>
-          Parameter: 1915
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:00:48 PM</td>
-        <td>
-          Parameter: 1915
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:00:48 PM</td>
-        <td>
-          Parameter: Hemalatha
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:00:48 PM</td>
-        <td>
-          Parameter: 4321
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>8:00:49 PM</td>
-        <td>
-          Deactivate and Reactivate the TL/AM login and check to assign to user
+          Enter Journal Acronym with special char
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>8:01:21 PM</td>
+        <td>11:53:59 AM</td>
         <td>
           Test Failed
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>8:01:21 PM</td>
+        <td>11:53:59 AM</td>
         <td>
-          <textarea readonly class="code-block">com.microsoft.playwright.PlaywrightException: Error {
-  message='Error: strict mode violation: locator("xpath=//img[@title='assign']") resolved to 2 elements:
-    1) <img title="assign" class="_action-image_ivrd6_240" s…/> aka getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("assign")).first()
-    2) <img title="assign" class="_action-image_ivrd6_240" s…/> aka getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("assign")).nth(1)
-
+          <textarea readonly class="code-block">com.microsoft.playwright.TimeoutError: Error {
+  message='Timeout 30000ms exceeded.
 =========================== logs ===========================
-waiting for locator("xpath=//img[@title='assign']")
+waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online First ']/../..//*[text()='Days for XML']/../input")
 ============================================================
-  name='Error
-  stack='Error: Error: strict mode violation: locator("xpath=//img[@title='assign']") resolved to 2 elements:
-    1) <img title="assign" class="_action-image_ivrd6_240" s…/> aka getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("assign")).first()
-    2) <img title="assign" class="_action-image_ivrd6_240" s…/> aka getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("assign")).nth(1)
-
+  name='TimeoutError
+  stack='TimeoutError: Timeout 30000ms exceeded.
 =========================== logs ===========================
-waiting for locator("xpath=//img[@title='assign']")
+waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online First ']/../..//*[text()='Days for XML']/../input")
 ============================================================
-    at CRExecutionContext.evaluateWithArguments (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\chromium\crExecutionContext.js:92:33)
-    at async ScopedRace._race (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\utils\manualPromise.js:84:14)
-    at async evaluateExpression (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\javascript.js:241:12)
-    at async C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\frames.js:944:22
-    at async Frame.retryWithProgressAndTimeouts (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\frames.js:915:24)
-    at async C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\frames.js:999:29
-    at async ProgressController.run (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\progress.js:92:22)
-    at async FrameDispatcher.click (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\dispatchers\frameDispatcher.js:151:12)
-    at async DispatcherConnection.dispatch (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\dispatchers\dispatcher.js:312:22)
+    at ProgressController.run (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6296531276040340635\package\lib\server\progress.js:88:26)
+    at Frame.fill (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6296531276040340635\package\lib\server\frames.js:1042:23)
+    at FrameDispatcher.fill (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6296531276040340635\package\lib\server\dispatchers\frameDispatcher.js:163:30)
+    at DispatcherConnection.dispatch (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6296531276040340635\package\lib\server\dispatchers\dispatcher.js:312:46)
 }
-	at com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:54)
+	at com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:52)
 	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:111)
 	at com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:126)
 	at com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:102)
-	at com.microsoft.playwright.impl.FrameImpl.clickImpl(FrameImpl.java:252)
-	at com.microsoft.playwright.impl.FrameImpl.lambda$click$8(FrameImpl.java:243)
+	at com.microsoft.playwright.impl.FrameImpl.fillImpl(FrameImpl.java:335)
+	at com.microsoft.playwright.impl.FrameImpl.lambda$fill$14(FrameImpl.java:325)
 	at com.microsoft.playwright.impl.LoggingSupport.lambda$withLogging$0(LoggingSupport.java:36)
 	at com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:47)
 	at com.microsoft.playwright.impl.ChannelOwner.withLogging(ChannelOwner.java:87)
 	at com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:35)
-	at com.microsoft.playwright.impl.FrameImpl.click(FrameImpl.java:243)
-	at com.microsoft.playwright.impl.LocatorImpl.click(LocatorImpl.java:140)
-	at com.microsoft.playwright.Locator.click(Locator.java:2297)
-	at org.jms.pages.UserManagementPage.checkReactivatedTLorAMtoAssign(UserManagementPage.java:2113)
-	at tests.UserManagementTest.verifyReactivationAMTLforAssign(UserManagementTest.java:743)
+	at com.microsoft.playwright.impl.FrameImpl.fill(FrameImpl.java:325)
+	at com.microsoft.playwright.impl.LocatorImpl.fill(LocatorImpl.java:210)
+	at com.microsoft.playwright.Locator.fill(Locator.java:2841)
+	at org.jms.pages.AddJournalPage.generalAddJournals(AddJournalPage.java:381)
+	at org.jms.pages.AddJournalPage.sameAcrWithSlChar(AddJournalPage.java:458)
+	at tests.AddJournalTest.verifyAcrWithSplChar(AddJournalTest.java:67)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -255,45 +273,142 @@ waiting for locator("xpath=//img[@title='assign']")
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: com.microsoft.playwright.impl.DriverException: Error {
-  message='Error: strict mode violation: locator("xpath=//img[@title='assign']") resolved to 2 elements:
-    1) <img title="assign" class="_action-image_ivrd6_240" s…/> aka getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("assign")).first()
-    2) <img title="assign" class="_action-image_ivrd6_240" s…/> aka getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("assign")).nth(1)
-
+Caused by: com.microsoft.playwright.TimeoutError: Error {
+  message='Timeout 30000ms exceeded.
 =========================== logs ===========================
-waiting for locator("xpath=//img[@title='assign']")
+waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online First ']/../..//*[text()='Days for XML']/../input")
 ============================================================
-  name='Error
-  stack='Error: Error: strict mode violation: locator("xpath=//img[@title='assign']") resolved to 2 elements:
-    1) <img title="assign" class="_action-image_ivrd6_240" s…/> aka getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("assign")).first()
-    2) <img title="assign" class="_action-image_ivrd6_240" s…/> aka getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName("assign")).nth(1)
-
+  name='TimeoutError
+  stack='TimeoutError: Timeout 30000ms exceeded.
 =========================== logs ===========================
-waiting for locator("xpath=//img[@title='assign']")
+waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online First ']/../..//*[text()='Days for XML']/../input")
 ============================================================
-    at CRExecutionContext.evaluateWithArguments (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\chromium\crExecutionContext.js:92:33)
-    at async ScopedRace._race (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\utils\manualPromise.js:84:14)
-    at async evaluateExpression (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\javascript.js:241:12)
-    at async C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\frames.js:944:22
-    at async Frame.retryWithProgressAndTimeouts (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\frames.js:915:24)
-    at async C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\frames.js:999:29
-    at async ProgressController.run (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\progress.js:92:22)
-    at async FrameDispatcher.click (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\dispatchers\frameDispatcher.js:151:12)
-    at async DispatcherConnection.dispatch (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6949451940543005855\package\lib\server\dispatchers\dispatcher.js:312:22)
+    at ProgressController.run (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6296531276040340635\package\lib\server\progress.js:88:26)
+    at Frame.fill (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6296531276040340635\package\lib\server\frames.js:1042:23)
+    at FrameDispatcher.fill (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6296531276040340635\package\lib\server\dispatchers\frameDispatcher.js:163:30)
+    at DispatcherConnection.dispatch (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6296531276040340635\package\lib\server\dispatchers\dispatcher.js:312:46)
 }
-	at com.microsoft.playwright.impl.Connection.dispatch(Connection.java:226)
+	at com.microsoft.playwright.impl.Connection.dispatch(Connection.java:224)
 	at com.microsoft.playwright.impl.Connection.processOneMessage(Connection.java:206)
 	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:109)
-	... 35 more
+	... 36 more
 </textarea>
           
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>8:01:23 PM</td>
+        <td>11:54:02 AM</td>
         <td>
-          Trace saved: <a href='traces/verifyReactivationAMTLforAssign.zip'>traces/verifyReactivationAMTLforAssign.zip</a>
+          Trace saved: <a href='traces/verifyAcrWithSplChar.zip'>traces/verifyAcrWithSplChar.zip</a>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="3"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Verify Acronym should not be allowed with special characters</p>
+            <p class="text-sm">
+              <span>11:54:32 AM</span> / <span>00:00:01:509</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">Verify Acronym should not be allowed with special characters</h5>
+<span class='badge badge-success'>08.19.2024 11:54:32 AM</span>
+<span class='badge badge-danger'>08.19.2024 11:54:34 AM</span>
+<span class='badge badge-default'>00:00:01:509</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:54:32 AM</td>
+        <td>
+          Parameter: JQZQ
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:54:32 AM</td>
+        <td>
+          Parameter: QQanda
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>11:54:34 AM</td>
+        <td>
+          Test Skipped
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:54:34 AM</td>
+        <td>
+          Trace saved: <a href='traces/verifyAcrWithSplChar.zip'>traces/verifyAcrWithSplChar.zip</a>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="4"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Same journal can be created with different publisher</p>
+            <p class="text-sm">
+              <span>11:54:34 AM</span> / <span>00:00:01:259</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">Same journal can be created with different publisher</h5>
+<span class='badge badge-success'>08.19.2024 11:54:34 AM</span>
+<span class='badge badge-danger'>08.19.2024 11:54:35 AM</span>
+<span class='badge badge-default'>00:00:01:259</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=4</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>11:54:35 AM</td>
+        <td>
+          Test Skipped
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:54:35 AM</td>
+        <td>
+          Trace saved: <a href='traces/verifySameJrWithDiffPub.zip'>traces/verifySameJrWithDiffPub.zip</a>
         </td>
       </tr>
   </tbody>
@@ -323,12 +438,12 @@ waiting for locator("xpath=//img[@title='assign']")
 <span class="meta">
 <span class='badge log badge-danger'>1</span>
 </span>
-<p class="name">com.microsoft.playwright.PlaywrightException</p>
+<p class="name">com.microsoft.playwright.TimeoutError</p>
 <p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>com.microsoft.playwright.PlaywrightException</h4>
+<h4>com.microsoft.playwright.TimeoutError</h4>
 <span status="fail" class='badge log badge-danger'>1 failed</span>
 </div>
 <table class='table table-sm mt-4'>
@@ -342,9 +457,9 @@ waiting for locator("xpath=//img[@title='assign']")
 <tbody>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>20:00:48 PM</td>
+<td>11:53:10 AM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='1'>JMS-151 : Reactivated employee (TL/AM) can perform the same roles as normal - Version 2</a>
+<a href="#" class="linked" test-id='2' id='2'>Verify Acronym should not be allowed with special characters</a>
 </td>
 </tr>
 </tbody>
@@ -364,19 +479,19 @@ waiting for locator("xpath=//img[@title='assign']")
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Aug 14, 2024 08:00:35 PM</h3>
+<h3>Aug 19, 2024 11:51:51 AM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Aug 14, 2024 08:01:23 PM</h3>
+<h3>Aug 19, 2024 11:54:35 AM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Tests Passed</p>
-<h3>0</h3>
+<h3>1</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -398,13 +513,13 @@ waiting for locator("xpath=//img[@title='assign']")
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='0%'>
-<b>0</b> tests passed
+<div><small data-tooltip='25%'>
+<b>1</b> tests passed
 </small>
 </div>
 <div>
-<small data-tooltip='100%'><b>1</b> tests failed,
-<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+<small data-tooltip='25%'><b>1</b> tests failed,
+<b>2</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
 </div>
@@ -421,10 +536,10 @@ waiting for locator("xpath=//img[@title='assign']")
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='0%'><b>0</b> events passed</small></div>
+<div><small data-tooltip='5%'><b>1</b> events passed</small></div>
 <div>
-<small data-tooltip='15%'><b>2</b> events failed,
-<b data-tooltip='%'>11</b> others
+<small data-tooltip='11%'><b>2</b> events failed,
+<b data-tooltip='%'>15</b> others
 </small>
 </div>
 </div>
@@ -440,7 +555,7 @@ waiting for locator("xpath=//img[@title='assign']")
 </div></div>
 <script>
 var timeline = {
-"JMS-151 : Reactivated employee (TL/AM) can perform the same roles as normal - Version 2":34.49
+"Verify Acronym should not be allowed with special characters":48.458,"Verify Acronym should not be allowed with special characters":52.37,"Verify Acronym should not be allowed with special characters":1.509,"Same journal can be created with different publisher":1.259
 };
 </script>
 <div class="row">
@@ -467,10 +582,10 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 0,
+passParent: 1,
 failParent: 1,
 warningParent: 0,
-skipParent: 0,
+skipParent: 2,
 childCount: 5,
 passChild: 0,
 failChild: 0,
@@ -484,11 +599,11 @@ warningGrandChild: 0,
 skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
-passEvents: 0,
+passEvents: 1,
 failEvents: 2,
 warningEvents: 0,
-skipEvents: 0,
-infoEvents: 11
+skipEvents: 2,
+infoEvents: 13
 };
 </script>        </div>
       </div>

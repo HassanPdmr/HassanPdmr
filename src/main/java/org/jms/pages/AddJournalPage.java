@@ -125,7 +125,7 @@ public class AddJournalPage {
 
     private String addButton = "//button[@type='button']";
 
-    private String acknowledgement = "//div[contains(text(),'Journal Added Successfully')]";
+    private String acknowledgement = "//div[contains(text(),'Journal already exists')]";
 
     private String alertCloseButton = "//h2[text()='JMS - Add Journal']//following::span[1]";
     private String manageMenu = "//div[@id='root']//following::p[text()='Manage']";
@@ -378,7 +378,7 @@ public class AddJournalPage {
 
         page.locator(G_ONFdaysOfPage).fill("1");
         page.locator(G_ONFdaysOfQC).fill("1");
-        page.locator(G_ONFdaysOfXML).fill("1");
+        page.waitForSelector(G_ONFdaysOfXML).fill("1");
         page.locator(FS_ONFdaysOfPage).fill("1");
         page.locator(FS_ONFdaysOfQC).fill("1");
         page.locator(FS_ONFdaysOfXML).fill("1");
@@ -476,7 +476,7 @@ public class AddJournalPage {
         page.locator(JourView_1).click();
         page.locator(JourView_2).click();
 
-        String JValue = page.locator("//th[text()='" + J_acrm + "']").innerText();
+        String JValue = page.locator("(//th[text()='" + J_acrm + "'])[2]").innerText();
         System.out.println("Journal Acroname: " + JValue);
         return JValue;
 

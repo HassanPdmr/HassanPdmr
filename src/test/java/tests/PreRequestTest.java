@@ -23,64 +23,64 @@ public class PreRequestTest extends BaseTest {
         prerequestpage.navigatetobaseicon();
     }
 
-//
-//    @DataProvider(name = "getPubData")
-//    public Object[][] getPublisherData() throws IOException {
-//
-//        return ReadExcelData("D:\\ZoneTest\\PreRequest.xlsx", 0);
-//    }
 
-//
-//    @Test(priority = 1, dataProvider = "getPubData")
-//    public void AddPublisher(String pub_acro, String pub_name) throws InterruptedException {
-//
-//        prerequestpage.DoAddPub(pub_acro, pub_name);
-//        System.out.println("Pubacro: " + pub_acro);
-//        System.out.println("PubName: " + pub_name);
-//
-//
-//    }
-//
-//    @Test(priority = 2)
-//    public void AddJournal() throws InterruptedException {
-//
-//        List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\PreRequest.xlsx", 1);
-//        for (Object[] row : excelData) {
-//            if (row.length == 3) {
-//                String Pub = row[0].toString();
-//                String J_acrm = row[1].toString();
-//                String J_name = row[2].toString();
-//                prerequestpage.DoAddJournal(Pub, J_acrm, J_name);
-//                ExtentReportListener.getTest().log(Status.INFO, "Journal Added");
-//
-//
-//            } else {
-//                System.out.println("Row does not have expected numbers: " + row.length);
-//            }
-//
-//        }
-//
-//
-//
-//
-//
-//    }
-//
+    @DataProvider(name = "getPubData")
+    public Object[][] getPublisherData() throws IOException {
 
-//    @DataProvider(name = "AddingArticle")
-//    public Object[][] getaddArticledata() throws IOException {
-//
-//        return ReadExcelData("D:\\ZoneTest\\PreRequest.xlsx", 2);
-//    }
-//
-//
-//    @Test(priority =3,dataProvider = "AddingArticle")
-//    public void AddArticle(String journalacro, String articleid, String artname, String doinum, String workflow, String username, String password, String jacrm, String pubname) throws InterruptedException {
-//
-//        prerequestpage.DoAddArticle(journalacro,articleid,artname,doinum,workflow);
-//        ExtentReportListener.getTest().log(Status.INFO, "Article Added");
-//
-//    }
+        return ReadExcelData("D:\\ZoneTest\\PreRequest.xlsx", 0);
+    }
+
+
+    @Test(priority = 1, dataProvider = "getPubData")
+    public void AddPublisher(String pub_acro, String pub_name) throws InterruptedException {
+
+        prerequestpage.DoAddPub(pub_acro, pub_name);
+        System.out.println("Pubacro: " + pub_acro);
+        System.out.println("PubName: " + pub_name);
+
+
+    }
+
+    @Test(priority = 2)
+    public void AddJournal() throws InterruptedException {
+
+        List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\PreRequest.xlsx", 1);
+        for (Object[] row : excelData) {
+            if (row.length == 3) {
+                String Pub = row[0].toString();
+                String J_acrm = row[1].toString();
+                String J_name = row[2].toString();
+                prerequestpage.DoAddJournal(Pub, J_acrm, J_name);
+                ExtentReportListener.getTest().log(Status.INFO, "Journal Added");
+
+
+            } else {
+                System.out.println("Row does not have expected numbers: " + row.length);
+            }
+
+        }
+
+
+
+
+
+    }
+
+
+    @DataProvider(name = "AddingArticle")
+    public Object[][] getaddArticledata() throws IOException {
+
+        return ReadExcelData("D:\\ZoneTest\\PreRequest.xlsx", 2);
+    }
+
+
+    @Test(priority =3,dataProvider = "AddingArticle")
+    public void AddArticle(String journalacro, String articleid, String artname, String doinum, String workflow, String username, String password, String jacrm, String pubname) throws InterruptedException {
+
+        prerequestpage.DoAddArticle(journalacro,articleid,artname,doinum,workflow);
+        ExtentReportListener.getTest().log(Status.INFO, "Article Added");
+
+    }
 
     @DataProvider(name = "AddingUser")
     public Object[][] getaddUser() throws IOException{

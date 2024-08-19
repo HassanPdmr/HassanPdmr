@@ -86,7 +86,7 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 3, description = "Same journal can be created with different publisher")
+    @Test(priority = 2, description = "Same journal can be created with different publisher")
     public void verifySameJrWithDiffPub() throws InterruptedException {
         ExtentReportListener.getTest().log(Status.INFO, "Enter Same journal with different publisher");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 2);
@@ -113,7 +113,7 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 4, description = "Verify Publisher,Title, Acronym can’t be changed after journal is created")
+    @Test(priority = 3, description = "Verify Publisher,Title, Acronym can’t be changed after journal is created")
     public void verifyPubNameAcro() {
 
         ExtentReportListener.getTest().log(Status.INFO, "Enter Same journal with different publisher");
@@ -145,7 +145,7 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 5, description = "Ensure the working of recto option at issue stage")
+    @Test(priority = 4, description = "Ensure the working of recto option at issue stage")
     public void verifyRectoBox() {
 
         ExtentReportListener.getTest().log(Status.INFO, "Check the recto checkbox whether it is clickable");

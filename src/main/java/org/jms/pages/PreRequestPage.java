@@ -301,154 +301,154 @@ public class PreRequestPage {
         page.locator(baseicon).click();
     }
 
-//    public void DoAddPub(String a, String b) {
-//        page.locator(baseicon).click();
-//        page.locator(addpubicon).click();
-//        page.locator(pub_acronym).fill(a);
-//        page.locator(pub_name_textbox).fill(b);
-//        page.locator(pub_mail_textbox).fill("sak@gmail.com");
-//        page.locator(desc_inputbox).fill("1");
-//        LocalDate today = LocalDate.now();
-//        LocalDate tomarrow = today.plusDays(1);
-//
-//        String formattedDate = today.format(DateTimeFormatter.ISO_LOCAL_DATE);
-//        String tomorrow = (today.plusDays(1)).format(DateTimeFormatter.ISO_DATE);
-//
-//
-//        page.locator(selectdateinput).fill(tomorrow);
-//
-//        page.locator(pub_location).fill("1");
-//        page.locator(ftpusername).fill("1");
-//        page.locator(ftppassword).fill("1");
-//
-//
-//        page.locator(ftp_initial_directory).fill("1");
-//        page.locator(daysforlatexnormalization).fill("1");
-//        page.locator(daysforgraphics).fill("1");
-//        page.locator(daysforPreediting).fill("1");
-//        page.locator(daysforcopyediting).fill("1");
-//        page.locator(daysforlatexnormalization).fill("1");
-//        page.locator(daysfortypesettings).fill("1");
-//        page.locator(daysforqc).fill("1");
-//        page.locator(daysforaupag).fill("1");
-//        page.locator(daysforauqc).fill("1");
-//        page.locator(daysforpepag).fill("1");
-//        page.locator(daysforpeqc).fill("1");
-//        page.locator(daysforonlinepag).fill("1");
-//        page.locator(daysforonlineqc).fill("1");
-//        page.locator(daysforonlinexml).fill("1");
-//        page.locator(IssuePag).fill("1");
-//        page.locator(IssueQC).fill("1");
-//        page.locator(printpag).fill("1");
-//        page.locator(printQC).fill("1");
-//        //assertThat(page.locator(printxml)).isAttached();
-//        page.locator(printxml).fill("1");
-//
-//
-//        uploadfiles();
-//        page.locator(CopyTat).click();
-//        page.locator(CopyTatConfirm).click();
-//
-//        page.locator(addbutton).click();
-//        page.locator(addalertclose).click();
-//
-//
-//    }
-//
-//    public void uploadfiles() {
-//        fileChooser = page.waitForFileChooser(() -> page.locator(Imageuploadbutton).click());
-//        fileChooser.setFiles(Paths.get("image.jpg"));
-//
-//        fileChooser = page.waitForFileChooser(() -> page.locator(styletemplate).click());
-//        fileChooser.setFiles(Paths.get("ems_journal.sty"));
-//
-//        fileChooser = page.waitForFileChooser(() -> page.locator(guidelinesdoc).click());
-//        fileChooser.setFiles(Paths.get("GuidelinesNew.docx"));
-//    }
-//
-//
-//    public void DoAddJournal(String Pub, String J_acrm, String J_name) throws InterruptedException {
-//
-//        page.locator(baseicon).click();
-//        page.locator(addjouricon).click();
-//        System.out.println(Pub);
-//        System.out.println(J_acrm);
-//        System.out.println(J_name);
-//        page.locator(baseicon).click();
-//        page.locator(addjouricon).click();
-//        page.locator(publisher_1).click();
-//        page.locator("//div[@class='_options-container_15e5e_189']//following::ul/li//p[text()='" + Pub + "']").click();
-//        page.locator(jor_acrm).fill(J_acrm);
-//        page.locator(jor_fullname).fill(J_name);
-//        LocalDate currentDate = LocalDate.now();
-//        String formattedDate = currentDate.format(DateTimeFormatter.ISO_LOCAL_DATE);
-//        page.locator(jor_received_date).fill(formattedDate);
-//        page.locator(recto_facing).click();
-//        page.locator(layout_1).click();
-//        page.locator(layout_2).click();
-//        page.locator(trimSizeWidth).fill("1");
-//        page.locator(trimSizeHeight).fill("2");
-//        page.locator(remarks).fill("Test Remarks");
-//        page.locator(category_1).click();
-//        page.locator(category_2_technicalEdit).click();
-//        page.locator(category_2_typeSetting).click();
-//        page.locator(category_3_CopyEdit).click();
-//        page.locator(copyEditLevel_1).click();
-//        page.locator(copyEditLevel_2).click();
-//        page.locator(pubType_1).click();
-//        page.locator(pubType_CheckAll).click();
-//        page.locator(G_FPdaysOfLatex).fill("1");
-//        page.locator(G_FPdaysOfGraphics).fill("1");
-//        page.locator(G_FPdaysOfPreEdit).fill("1");
-//        page.locator(G_FPdaysOfCopyEdit).fill("1");
-//        page.locator(G_FPdaysOfTypeSetting).fill("1");
-//        page.locator(G_FPdaysOfQC).fill("1");
-//        page.locator(FS_FPdaysOfLatex).fill("1");
-//        page.locator(FS_FPdaysOfGraphics).fill("1");
-//        page.locator(FS_FPdaysOfPreEdit).fill("1");
-//        page.locator(FS_FPdaysOfCopyEdit).fill("1");
-//        page.locator(FS_FPdaysOfTypeSetting).fill("1");
-//        page.locator(FS_FPdaysOfQC).fill("1");
-//        page.evaluate("window.scrollBy(0, 320)");
-//        page.locator(G_AUdaysOfPage).fill("1");
-//        page.locator(G_AUdaysOfQC).fill("1");
-//        page.locator(FS_AUdaysOfPage).fill("1");
-//        page.locator(FS_AUdaysOfQC).fill("1");
-//        page.locator(G_PEdaysOfPage).fill("1");
-//        page.locator(G_PEdaysOfQC).fill("1");
-//        page.locator(FS_PEdaysOfPage).fill("1");
-//        page.locator(FS_PEdaysOfQC).fill("1");
-//        page.evaluate("window.scrollBy(0, 320)");
-//        page.locator(G_ONFdaysOfPage).fill("1");
-//        page.locator(G_ONFdaysOfQC).fill("1");
-//        page.locator(G_ONFdaysOfXML).fill("1");
-//        page.locator(FS_ONFdaysOfPage).fill("1");
-//        page.locator(FS_ONFdaysOfQC).fill("1");
-//        page.locator(FS_ONFdaysOfXML).fill("1");
-//
-//        page.locator(G_ISSdaysOfPage).fill("1");
-//        page.locator(G_ISSdaysOfQC).fill("1");
-//        page.locator(FS_ISSdaysOfPage).fill("1");
-//        page.locator(FS_ISSdaysOfQC).fill("1");
-//        page.locator(G_PrintdaysOfPage).fill("1");
-//        page.locator(G_PrintdaysOfQC).fill("1");
-//        page.locator(G_PrintdaysOfXML).fill("1");
-//        page.locator(FS_PrintdaysOfPage).fill("1");
-//        page.locator(FS_PrintdaysOfQC).fill("1");
-//        page.locator(FS_PrintdaysOfXML).fill("1");
-//
-//        fileChooser = page.waitForFileChooser(() -> page.locator(styleTemplateUploadButton).click());
-//        fileChooser.setFiles(Paths.get("ems_journal.sty"));
-//        fileChooser = page.waitForFileChooser(() -> page.locator(guideLineUploadButton).click());
-//        fileChooser.setFiles(Paths.get("EMS_Press.pdf"));
-//
-//        page.locator(addButton).click();
-//        Thread.sleep(2000);
-//
-//        page.locator(alertCloseButton).click();
-//
-//    }
-//
+    public void DoAddPub(String a, String b) {
+        page.locator(baseicon).click();
+        page.locator(addpubicon).click();
+        page.locator(pub_acronym).fill(a);
+        page.locator(pub_name_textbox).fill(b);
+        page.locator(pub_mail_textbox).fill("sak@gmail.com");
+        page.locator(desc_inputbox).fill("1");
+        LocalDate today = LocalDate.now();
+        LocalDate tomarrow = today.plusDays(1);
+
+        String formattedDate = today.format(DateTimeFormatter.ISO_LOCAL_DATE);
+        String tomorrow = (today.plusDays(1)).format(DateTimeFormatter.ISO_DATE);
+
+
+        page.locator(selectdateinput).fill(tomorrow);
+
+        page.locator(pub_location).fill("1");
+        page.locator(ftpusername).fill("1");
+        page.locator(ftppassword).fill("1");
+
+
+        page.locator(ftp_initial_directory).fill("1");
+        page.locator(daysforlatexnormalization).fill("1");
+        page.locator(daysforgraphics).fill("1");
+        page.locator(daysforPreediting).fill("1");
+        page.locator(daysforcopyediting).fill("1");
+        page.locator(daysforlatexnormalization).fill("1");
+        page.locator(daysfortypesettings).fill("1");
+        page.locator(daysforqc).fill("1");
+        page.locator(daysforaupag).fill("1");
+        page.locator(daysforauqc).fill("1");
+        page.locator(daysforpepag).fill("1");
+        page.locator(daysforpeqc).fill("1");
+        page.locator(daysforonlinepag).fill("1");
+        page.locator(daysforonlineqc).fill("1");
+        page.locator(daysforonlinexml).fill("1");
+        page.locator(IssuePag).fill("1");
+        page.locator(IssueQC).fill("1");
+        page.locator(printpag).fill("1");
+        page.locator(printQC).fill("1");
+        //assertThat(page.locator(printxml)).isAttached();
+        page.locator(printxml).fill("1");
+
+
+        uploadfiles();
+        page.locator(CopyTat).click();
+        page.locator(CopyTatConfirm).click();
+
+        page.locator(addbutton).click();
+        page.locator(addalertclose).click();
+
+
+    }
+
+    public void uploadfiles() {
+        fileChooser = page.waitForFileChooser(() -> page.locator(Imageuploadbutton).click());
+        fileChooser.setFiles(Paths.get("image.jpg"));
+
+        fileChooser = page.waitForFileChooser(() -> page.locator(styletemplate).click());
+        fileChooser.setFiles(Paths.get("ems_journal.sty"));
+
+        fileChooser = page.waitForFileChooser(() -> page.locator(guidelinesdoc).click());
+        fileChooser.setFiles(Paths.get("GuidelinesNew.docx"));
+    }
+
+
+    public void DoAddJournal(String Pub, String J_acrm, String J_name) throws InterruptedException {
+
+        page.locator(baseicon).click();
+        page.locator(addjouricon).click();
+        System.out.println(Pub);
+        System.out.println(J_acrm);
+        System.out.println(J_name);
+        page.locator(baseicon).click();
+        page.locator(addjouricon).click();
+        page.locator(publisher_1).click();
+        page.locator("//div[@class='_options-container_15e5e_189']//following::ul/li//p[text()='" + Pub + "']").click();
+        page.locator(jor_acrm).fill(J_acrm);
+        page.locator(jor_fullname).fill(J_name);
+        LocalDate currentDate = LocalDate.now();
+        String formattedDate = currentDate.format(DateTimeFormatter.ISO_LOCAL_DATE);
+        page.locator(jor_received_date).fill(formattedDate);
+        page.locator(recto_facing).click();
+        page.locator(layout_1).click();
+        page.locator(layout_2).click();
+        page.locator(trimSizeWidth).fill("1");
+        page.locator(trimSizeHeight).fill("2");
+        page.locator(remarks).fill("Test Remarks");
+        page.locator(category_1).click();
+        page.locator(category_2_technicalEdit).click();
+        page.locator(category_2_typeSetting).click();
+        page.locator(category_3_CopyEdit).click();
+        page.locator(copyEditLevel_1).click();
+        page.locator(copyEditLevel_2).click();
+        page.locator(pubType_1).click();
+        page.locator(pubType_CheckAll).click();
+        page.locator(G_FPdaysOfLatex).fill("1");
+        page.locator(G_FPdaysOfGraphics).fill("1");
+        page.locator(G_FPdaysOfPreEdit).fill("1");
+        page.locator(G_FPdaysOfCopyEdit).fill("1");
+        page.locator(G_FPdaysOfTypeSetting).fill("1");
+        page.locator(G_FPdaysOfQC).fill("1");
+        page.locator(FS_FPdaysOfLatex).fill("1");
+        page.locator(FS_FPdaysOfGraphics).fill("1");
+        page.locator(FS_FPdaysOfPreEdit).fill("1");
+        page.locator(FS_FPdaysOfCopyEdit).fill("1");
+        page.locator(FS_FPdaysOfTypeSetting).fill("1");
+        page.locator(FS_FPdaysOfQC).fill("1");
+        page.evaluate("window.scrollBy(0, 320)");
+        page.locator(G_AUdaysOfPage).fill("1");
+        page.locator(G_AUdaysOfQC).fill("1");
+        page.locator(FS_AUdaysOfPage).fill("1");
+        page.locator(FS_AUdaysOfQC).fill("1");
+        page.locator(G_PEdaysOfPage).fill("1");
+        page.locator(G_PEdaysOfQC).fill("1");
+        page.locator(FS_PEdaysOfPage).fill("1");
+        page.locator(FS_PEdaysOfQC).fill("1");
+        page.evaluate("window.scrollBy(0, 320)");
+        page.locator(G_ONFdaysOfPage).fill("1");
+        page.locator(G_ONFdaysOfQC).fill("1");
+        page.locator(G_ONFdaysOfXML).fill("1");
+        page.locator(FS_ONFdaysOfPage).fill("1");
+        page.locator(FS_ONFdaysOfQC).fill("1");
+        page.locator(FS_ONFdaysOfXML).fill("1");
+
+        page.locator(G_ISSdaysOfPage).fill("1");
+        page.locator(G_ISSdaysOfQC).fill("1");
+        page.locator(FS_ISSdaysOfPage).fill("1");
+        page.locator(FS_ISSdaysOfQC).fill("1");
+        page.locator(G_PrintdaysOfPage).fill("1");
+        page.locator(G_PrintdaysOfQC).fill("1");
+        page.locator(G_PrintdaysOfXML).fill("1");
+        page.locator(FS_PrintdaysOfPage).fill("1");
+        page.locator(FS_PrintdaysOfQC).fill("1");
+        page.locator(FS_PrintdaysOfXML).fill("1");
+
+        fileChooser = page.waitForFileChooser(() -> page.locator(styleTemplateUploadButton).click());
+        fileChooser.setFiles(Paths.get("ems_journal.sty"));
+        fileChooser = page.waitForFileChooser(() -> page.locator(guideLineUploadButton).click());
+        fileChooser.setFiles(Paths.get("EMS_Press.pdf"));
+
+        page.locator(addButton).click();
+        Thread.sleep(2000);
+
+        page.locator(alertCloseButton).click();
+
+    }
+
 
     public void DoAddArticle(String journalacro, String articleid, String artname, String doinum, String workflow) throws InterruptedException {
 
