@@ -323,6 +323,7 @@ public class AddJournalPage {
 
     public void verifyAddJournalIconIsClickable() {
 
+
         page.locator(baseicon).click();
         page.locator(addjouricon).click();
 
@@ -341,12 +342,11 @@ public class AddJournalPage {
         page.locator(trimSizeWidth).fill("1");
         page.locator(trimSizeHeight).fill("2");
         page.locator(remarks).fill("Test Remarks");
+        page.waitForTimeout(2000);
         page.locator(category_1).click();
-        page.locator(category_2_technicalEdit).click();
-        page.locator(category_2_typeSetting).click();
-        page.locator(category_3_CopyEdit).click();
-        page.locator(copyEditLevel_1).click();
-        page.locator(copyEditLevel_2).click();
+        page.waitForSelector(category_2_technicalEdit).click();
+        page.waitForSelector(category_2_typeSetting).click();
+        page.waitForTimeout(3000);
         page.locator(pubType_1).click();
         page.locator(pubType_CheckAll).click();
 
@@ -396,8 +396,10 @@ public class AddJournalPage {
         page.locator(FS_PrintdaysOfQC).fill("2");
         page.locator(FS_PrintdaysOfXML).fill("2");
 
+        page.waitForTimeout(3000);
         fileChooser = page.waitForFileChooser(() -> page.locator(styleTemplateUploadButton).click());
         fileChooser.setFiles(Paths.get("ems_journal.sty"));
+        page.waitForTimeout(3000);
 
         fileChooser = page.waitForFileChooser(() -> page.locator(guideLineUploadButton).click());
         fileChooser.setFiles(Paths.get("EMS_Press.pdf"));
@@ -408,6 +410,7 @@ public class AddJournalPage {
 
     public void generalPubAcroWithJname(String Pub, String J_acrm, String J_name) {
 
+        page.reload();
         page.locator(baseicon).click();
         page.locator(addjouricon).click();
         page.locator(publisher_1).click();
@@ -426,9 +429,13 @@ public class AddJournalPage {
         page.locator(category_1).click();
         page.locator(category_2_technicalEdit).click();
         page.locator(category_2_typeSetting).click();
+        page.waitForTimeout(3000);
         page.locator(category_3_CopyEdit).click();
+        page.waitForTimeout(2000);
         page.locator(copyEditLevel_1).click();
+        page.waitForTimeout(2000);
         page.locator(copyEditLevel_2).click();
+        page.waitForTimeout(2000);
         page.locator(pubType_1).click();
         page.locator(pubType_CheckAll).click();
 
@@ -446,7 +453,7 @@ public class AddJournalPage {
 
     }
 
-    public String sameAcrWithSlChar(String Pub, String J_acrm, String J_name) {
+    public Boolean sameAcrWithSlChar(String Pub, String J_acrm, String J_name) {
 
         page.locator(baseicon).click();
         page.locator(addjouricon).click();
@@ -459,10 +466,14 @@ public class AddJournalPage {
 
         page.locator(addButton).click();
 
-        String Add_alert = page.locator(acknowledgement).innerText();
+        Boolean Add_alert = page.locator(acknowledgement).isVisible();
+
         System.out.println("Acknowledgment is: " + Add_alert);
         page.locator(alertCloseButton).click();
 
+        page.reload();
+        page.locator(baseicon).click();
+        page.locator(addjouricon).click();
 
         return Add_alert;
 
@@ -476,7 +487,7 @@ public class AddJournalPage {
         page.locator(JourView_1).click();
         page.locator(JourView_2).click();
 
-        String JValue = page.locator("(//th[text()='" + J_acrm + "'])[2]").innerText();
+        String JValue = page.locator("(//th[text()='" + J_acrm + "'])[1]").innerText();
         System.out.println("Journal Acroname: " + JValue);
         return JValue;
 
@@ -495,8 +506,7 @@ public class AddJournalPage {
 
         page.locator(addButton).click();
 
-        String Add_alert = page.locator(acknowledgement).innerText();
-        System.out.println("Acknowledgment is: " + Add_alert);
+
 
         page.locator(alertCloseButton).click();
         page.reload();
@@ -596,8 +606,8 @@ public class AddJournalPage {
 
         List<String> publisherInfo = new ArrayList<>();
 
-        String Pub_Title = page.locator("//h2[text()='" + PubName + "']").textContent();
-        publisherInfo.add("Publisher Title: " + Pub_Title);
+        String Pub_Title = page.locator("//h2[text()='" + PubName + "']").innerText();
+        publisherInfo.add(Pub_Title);
         System.out.println("Publisher title in samePubAcro: " + Pub_Title);
 
 
@@ -613,9 +623,12 @@ public class AddJournalPage {
         Locator Pub_Acro = page.locator(publisher_1);
         Pub_Acro.scrollIntoViewIfNeeded();
 
-        String Pub_Acro1 = page.waitForSelector(publisher_1).textContent();
-        publisherInfo.add("Publisher Final Acro here: " + Pub_Acro1);
-        System.out.println("Print the publisher Acro :" + Pub_Acro);
+        page.waitForTimeout(2500);
+        String Pub_Acronm = page.locator("//input[@value='"+Pub+"']").inputValue();
+
+        publisherInfo.add(Pub_Acronm);
+
+        System.out.println("Print the publisher Acro :" + Pub_Acronm);
 
         return publisherInfo;
 
@@ -705,7 +718,13 @@ public class AddJournalPage {
         fileChooser = page.waitForFileChooser(() -> page.locator(guideLineUploadButton).click());
         fileChooser.setFiles(Paths.get("EMS_Press.pdf"));
 
-        page.locator(addButton).click();
+        page.waitForTimeout(2000);
+
+        page.waitForSelector(addButton).click();
+        page.waitForTimeout(2000);
+
+        page.reload();
+
         page.locator(manageMenu).click();
         page.locator(JourView_1).click();
         page.locator(JourView_2).click();
@@ -893,10 +912,12 @@ public class AddJournalPage {
         page.locator(category_1).click();
         page.locator(category_2_technicalEdit).click();
         page.locator(category_2_typeSetting).click();
-        page.locator(category_3_CopyEdit).click();
-        page.locator(copyEditLevel_1).click();
-        page.locator(copyEditLevel_2).click();
-        page.locator(pubType_1).click();
+//        page.waitForSelector(category_3_CopyEdit).click();
+//        page.waitForTimeout(3000);
+//        page.waitForSelector(copyEditLevel_1).click();
+//        page.waitForSelector(copyEditLevel_2).click();
+        page.waitForTimeout(3000);
+        page.waitForSelector(pubType_1).click();
         page.locator(pubType_CheckAll).click();
 
         GenToFastCopyTat();
@@ -935,7 +956,14 @@ public class AddJournalPage {
 
 
         page.locator(addButton).click();
-        page.locator(alertCloseButton).click();
+        page.waitForTimeout(2000);
+        page.reload();
+        page.locator(manageMenu).click();
+        page.locator(JourView_1).click();
+        page.locator(JourView_2).click();
+
+
+
 
         Locator editJournalOption =
                 page.locator("//h2[text()='"+PubName+"']//following::th[text()='"+J_acrm+"']//following::div[text()='"+J_Name+"']//following::span[@data-target='#dropright'][1]");
@@ -1031,13 +1059,20 @@ public class AddJournalPage {
         fileChooser = page.waitForFileChooser(() -> page.locator(guideLineUploadButton).click());
         fileChooser.setFiles(Paths.get("EMS_Press.pdf"));
 
+        page.waitForTimeout(2000);
         page.locator(addButton).click();
+
         page.locator(alertCloseButton).click();
+        page.locator(manageMenu).click();
+        page.locator(JourView_1).click();
+        page.locator(JourView_2).click();
+
 
         Locator editJournalOption =
                 page.locator("//h2[text()='"+PubName+"']//following::th[text()='"+J_acrm+"']//following::div[text()='"+J_Name+"']//following::span[@data-target='#dropright'][1]");
 
         editJournalOption.scrollIntoViewIfNeeded();
+        page.waitForTimeout(3000);
         editJournalOption.click();
         page.waitForSelector(EditJournal).click();
 
@@ -1241,7 +1276,12 @@ public class AddJournalPage {
         page.locator("//div[@class='_options-container_15e5e_189']//following::ul/li//p[text()='" + PubNewAckro + "']").click();
 
         page.locator(addButton).click();
+        page.waitForTimeout(2000);
         page.locator(alertCloseButton).click();
+
+        page.locator(manageMenu).click();
+        page.locator(JourView_1).click();
+        page.locator(JourView_2).click();
 
         Locator JournalNew =
                 page.locator("//h2[text()='" + PubNameNew2 + "']//following::th[text()='" + J_acrm + "']//following::div[text()='" + J_name + "']");
@@ -1293,7 +1333,7 @@ public class AddJournalPage {
         fileChooser = page.waitForFileChooser(() -> page.locator(guidelinesdoc).click());
         fileChooser.setFiles(Paths.get("GuidelinesNew.docx"));
 
-        page.locator(addbutton).click();
+        page.waitForSelector(addbutton).click();
         page.locator(addalertclose).click();
 
 
@@ -1307,6 +1347,10 @@ public class AddJournalPage {
         page.locator(addButton).click();
 
         Locator ErrMsg = page.locator("//div[@class='_modalContent_1rfj1_12']//following::div[text()='Before submit, please upload Latest Style Template.']");
+
+        page.waitForTimeout(2000);
+        page.reload();
+
         return ErrMsg.isVisible();
 
 
@@ -1318,13 +1362,17 @@ public class AddJournalPage {
         GenToFastCopyTat();
         FastToGenCopyTat();
 
+        page.waitForTimeout(2000);
         fileChooser = page.waitForFileChooser(() -> page.locator(styletemplate).click());
         fileChooser.setFiles(Paths.get("ems_journal.sty"));
 
         fileChooser = page.waitForFileChooser(() -> page.locator(guidelinesdoc).click());
         fileChooser.setFiles(Paths.get("GuidelinesNew.docx"));
 
+        page.waitForTimeout(3000);
         page.locator(addButton).click();
+
+        page.reload();
 
         page.locator(manageMenu).click();
         page.locator(JourView_1).click();
@@ -1368,7 +1416,9 @@ public class AddJournalPage {
             page.locator(jor_fullname).fill(J_name);
             generalAddJournals();
 
-            page.locator(addButton).click();
+            page.waitForTimeout(2000);
+
+            page.waitForSelector(addButton).click();
             page.locator(alertCloseButton).click();
 
             page.locator(manageMenu).click();
@@ -1388,9 +1438,9 @@ public class AddJournalPage {
 
             page.waitForTimeout(1000);
 
-            String journalElementXPath = "(//h2[text()='" + PubName + "']//following::th[text()='" + J_acrm + "']//following::div[text()='" + J_name + "'])[1]";
-            Locator Pub_SameJrName = page.locator(journalElementXPath);
-            Pub_SameJrName.scrollIntoViewIfNeeded();
+               String journalElementXPath = "(//h2[text()='" + PubName + "']//following::th[text()='" + J_acrm + "']//following::div[text()='" + J_name + "'])[1]";
+               Locator Pub_SameJrName = page.locator(journalElementXPath);
+//            Pub_SameJrName.scrollIntoViewIfNeeded();
 
             boolean actualPub_SameJrName = Pub_SameJrName.isVisible();
             System.out.println("Publisher Journal name: " + actualPub_SameJrName);
@@ -1499,7 +1549,8 @@ public class AddJournalPage {
         page.locator(manageMenu_Art).click();
         page.locator(ArtView_1).click();
         page.locator(ArtView_2).click();
-        page.locator("//th[normalize-space()='" + artname + "']//following::td[@class='_edit_icon_td_6185f_96'][1]").click();
+        page.waitForTimeout(2000);
+        page.waitForSelector("//th[normalize-space()='" + artname + "']//following::td[@class='_edit_icon_td_6185f_96'][1]").click();
         System.out.println("Article Name: " + artname);
         page.locator(TATShow).click();
         page.locator(trackType).click();
@@ -1637,9 +1688,10 @@ public class AddJournalPage {
         page.locator(clickSelectPub).click();
 
         page.locator(Selectpubdropdown).fill(journalacro);
-        page.waitForTimeout(1000);
+        page.waitForTimeout(2000);
         Locator JAck = page.locator("//p[normalize-space(text())='" + journalacro + "']");
         JAck.scrollIntoViewIfNeeded();
+        page.waitForTimeout(2000);
         JAck.click();
         String arttimeid = String.valueOf(System.currentTimeMillis());
         page.locator(articleidinput).fill(arttimeid);
@@ -1688,7 +1740,8 @@ public class AddJournalPage {
         page.locator(tomail).click();
         page.locator(checkall).click();
         page.locator(Acknowlegeemtnsavemailbutton).click();
-        page.locator(Acknowledgementyesalert).click();
+        page.waitForTimeout(2000);
+        page.waitForSelector(Acknowledgementyesalert).click();
         page.locator(Acknowlegementtoastclose).click();
         page.locator(notificationmail).click();
         page.locator(ccmail).click();
@@ -1894,7 +1947,7 @@ public class AddJournalPage {
 
     }
 
-    public List<String> unmodifiedTATbyAddArticleTwoJournals(String Pub, String J_acrm, String J_name, String PubName, String journalacro, String artname, String workflow) throws InterruptedException {
+    public List<String> unmodifiedTATbyAddArticleTwoJournals(String Pub, String J_acrm, String J_name, String PubName,String artname,String journalacro, String workflow) throws InterruptedException {
 
 
         generalPubAcroWithJname(Pub, J_acrm, J_name);
@@ -1916,13 +1969,14 @@ public class AddJournalPage {
         Locator Add = page.locator(addButton);
         boolean isVisible = Add.first().isVisible();
         System.out.println("is Add button visible now? : " + isVisible);
+        page.waitForTimeout(2000);
 
         page.waitForSelector("//button[@type='button']");
         Add.click();
 
         page.waitForTimeout(2000);
         page.locator(alertCloseButton).click();
-        page.waitForTimeout(2000);
+        page.reload();
         page.locator(manageMenu).click();
         page.locator(JourView_1).click();
         page.locator(JourView_2).click();
@@ -1966,7 +2020,9 @@ public class AddJournalPage {
         page.waitForTimeout(2000);
         page.locator(trackType).click();
         page.locator(FastTrack).click();
-        page.locator(importtatfromjournal).click();
+        page.waitForTimeout(2000);
+
+        page.waitForSelector(importtatfromjournal).click();
         page.locator(confirmimportfromjour).click();
 
         List<String> NewFasttrackEditedValues = new ArrayList<>();

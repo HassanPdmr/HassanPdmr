@@ -27,24 +27,31 @@ public class PreRequestTest extends BaseTest {
     @DataProvider(name = "getPubData")
     public Object[][] getPublisherData() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\PreRequest.xlsx", 0);
+        return ReadExcelData(".//src//test//resources//files//PreRequest.xlsx", 0);
     }
 
 
     @Test(priority = 1, dataProvider = "getPubData")
     public void AddPublisher(String pub_acro, String pub_name) throws InterruptedException {
 
+        ExtentReportListener.getTest().assignCategory("Add Publisher - Pre requisite");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
+
         prerequestpage.DoAddPub(pub_acro, pub_name);
         System.out.println("Pubacro: " + pub_acro);
         System.out.println("PubName: " + pub_name);
 
+        ExtentReportListener.getTest().log(Status.INFO, "Publisher Added");
 
     }
 
     @Test(priority = 2)
     public void AddJournal() throws InterruptedException {
 
-        List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\PreRequest.xlsx", 1);
+        ExtentReportListener.getTest().assignCategory("Add Journals - Pre requisite");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
+
+        List<Object[]> excelData = ExcelParser.getExcelData(".//src//test//resources//files//PreRequest.xlsx", 1);
         for (Object[] row : excelData) {
             if (row.length == 3) {
                 String Pub = row[0].toString();
@@ -70,13 +77,15 @@ public class PreRequestTest extends BaseTest {
     @DataProvider(name = "AddingArticle")
     public Object[][] getaddArticledata() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\PreRequest.xlsx", 2);
+        return ReadExcelData(".//src//test//resources//files//PreRequest.xlsx", 2);
     }
 
 
     @Test(priority =3,dataProvider = "AddingArticle")
     public void AddArticle(String journalacro, String articleid, String artname, String doinum, String workflow, String username, String password, String jacrm, String pubname) throws InterruptedException {
 
+        ExtentReportListener.getTest().assignCategory("Add Article - Pre requisite");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         prerequestpage.DoAddArticle(journalacro,articleid,artname,doinum,workflow);
         ExtentReportListener.getTest().log(Status.INFO, "Article Added");
 
@@ -85,7 +94,7 @@ public class PreRequestTest extends BaseTest {
     @DataProvider(name = "AddingUser")
     public Object[][] getaddUser() throws IOException{
 
-        return ReadExcelData("D:\\ZoneTest\\PreRequest.xlsx", 3);
+        return ReadExcelData(".//src//test//resources//files//PreRequest.xlsx", 3);
 
     }
 
@@ -95,6 +104,8 @@ public class PreRequestTest extends BaseTest {
                          String role, String mail){
 
 
+        ExtentReportListener.getTest().assignCategory("Add User - Pre requisite");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         prerequestpage.AddUser(empName,empId,designation,gender,
                 depart,Pub,access,role, mail);
         ExtentReportListener.getTest().log(Status.INFO, "User Added");

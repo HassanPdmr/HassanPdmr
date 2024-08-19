@@ -29,6 +29,7 @@ public class HomePageTest extends BaseTest {
     public void verifyUrl() {
 
         ExtentReportListener.getTest().assignCategory("HomePageTests");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().info("Login successfully");
         ExtentReportListener.getTest().info("validating the url");
         ExtentReportListener.getTest().info("url expected as http://192.168.1.39:3002/jms/stock");
@@ -43,7 +44,8 @@ public class HomePageTest extends BaseTest {
     @Test(priority = 2)
     public void verifyIconIsDisplayed() {
         ExtentReportListener.getTest().assignCategory("HomePageTests");
-        ExtentReportListener.getTest().assignCategory("HomePageTests");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
+
         ExtentReportListener.getTest().info("verify icon is display or not");
 
         boolean visible = homepage.isBaseIconDisplayed();

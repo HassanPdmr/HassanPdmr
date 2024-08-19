@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">JMS_Automation_Test_Report</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Aug 19, 2024 11:51:51 AM</span></a>
+<a href="#"><span class="badge badge-primary">Aug 19, 2024 07:48:58 PM</span></a>
 </li>
 </ul>
 </div>
@@ -47,9 +47,14 @@
 <span class="ico"><i class="fa fa-list"></i></span>
 </a>
 </li>
-<li class="nav-item dropdown" onclick="toggleView('exception-view')">
-<a id="nav-exception" class="dropdown-toggle" href="#">
-<span class="ico"><i class="fa fa-bug"></i></span>
+<li class="nav-item dropdown" onclick="toggleView('category-view')">
+<a id="nav-category" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tag"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('author-view')">
+<a id="nav-author" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-user"></i></span>
 </a>
 </li>
 <li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
@@ -72,10 +77,20 @@
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
 <a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
-<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
-<a class="dropdown-item" status="skip" href="#"><span>Skip</span><span class="status warning"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i></a>
+<ul id="author-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">Hassan</a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">AddArticle-Prerequisite</a><a class="dropdown-item" href="#">AddJournals-Prerequisite</a><a class="dropdown-item" href="#">AddPublisher-Prerequisite</a><a class="dropdown-item" href="#">AddUser-Prerequisite</a>
 </ul>
 </li>
 </ul>
@@ -86,9 +101,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">Verify Acronym should not be allowed with special characters</p>
+            <p class="name">NavigatetoBaseIcon</p>
             <p class="text-sm">
-              <span>11:52:18 AM</span> / <span>00:00:48:458</span>
+              <span>7:49:09 PM</span> / <span>00:00:01:270</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -96,10 +111,10 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">Verify Acronym should not be allowed with special characters</h5>
-<span class='badge badge-success'>08.19.2024 11:52:18 AM</span>
-<span class='badge badge-danger'>08.19.2024 11:53:06 AM</span>
-<span class='badge badge-default'>00:00:48:458</span>
+<h5 class="test-status text-pass">NavigatetoBaseIcon</h5>
+<span class='badge badge-success'>08.19.2024 7:49:09 PM</span>
+<span class='badge badge-danger'>08.19.2024 7:49:10 PM</span>
+<span class='badge badge-default'>00:00:01:270</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -110,45 +125,17 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>11:52:18 AM</td>
-        <td>
-          Parameter: SamZ&
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>11:52:18 AM</td>
-        <td>
-          Parameter: SamrZ
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>11:52:18 AM</td>
-        <td>
-          Enter Journal Acronym with special char
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>11:52:57 AM</td>
-        <td>
-          Journal has been added even with Special characters in Journal Acronym
-        </td>
-      </tr>
-      <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>11:52:57 AM</td>
+        <td>7:49:10 PM</td>
         <td>
           Test Passed
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>11:53:06 AM</td>
+        <td>7:49:10 PM</td>
         <td>
-          Trace saved: <a href='traces/verifyAcrWithSplChar.zip'>traces/verifyAcrWithSplChar.zip</a>
+          Trace saved: <a href='traces/NavigatetoBaseIcon.zip'>traces/NavigatetoBaseIcon.zip</a>
         </td>
       </tr>
   </tbody>
@@ -156,151 +143,69 @@
 </div>
           </div>
         </li>
-        <li class="test-item"  status="fail" test-id="2"
-          author=""
-          tag=""
+        <li class="test-item"  status="pass" test-id="2"
+          author="Hassan"
+          tag="AddPublisher-Prerequisite"
           device="">
           <div class="test-detail">
-            <p class="name">Verify Acronym should not be allowed with special characters</p>
+            <p class="name">AddPublisher</p>
             <p class="text-sm">
-              <span>11:53:10 AM</span> / <span>00:00:52:370</span>
-              <span class="badge fail-bg log float-right">Fail</span>
+              <span>7:49:17 PM</span> / <span>00:00:08:572</span>
+              <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">Verify Acronym should not be allowed with special characters</h5>
-<span class='badge badge-success'>08.19.2024 11:53:10 AM</span>
-<span class='badge badge-danger'>08.19.2024 11:54:02 AM</span>
-<span class='badge badge-default'>00:00:52:370</span>
+<h5 class="test-status text-pass">AddPublisher</h5>
+<span class='badge badge-success'>08.19.2024 7:49:17 PM</span>
+<span class='badge badge-danger'>08.19.2024 7:49:26 PM</span>
+<span class='badge badge-default'>00:00:08:572</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">Hassan</span>
+<span class="badge badge-pill badge-default">AddPublisher-Prerequisite</span></div>
 </div>
-</div>    <div class="row mb-3"><div class="col-md-3">
-<img data-featherlight='screenshots/verifyAcrWithSplChar.png' src="screenshots/verifyAcrWithSplChar.png">
-    
-    </div></div>
-<div class="detail-body mt-4">
+</div><div class="detail-body mt-4">
 <table class="table table-sm">
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>11:53:10 AM</td>
+        <td>7:49:17 PM</td>
         <td>
-          Parameter: D#PQ
+          Parameter: EFTest
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>11:53:10 AM</td>
+        <td>7:49:17 PM</td>
         <td>
-          Parameter: WomeQX
+          Parameter: Eifeen
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>11:53:10 AM</td>
+        <td>7:49:25 PM</td>
         <td>
-          Enter Journal Acronym with special char
+          Publisher Added
         </td>
       </tr>
       <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>11:53:59 AM</td>
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>7:49:25 PM</td>
         <td>
-          Test Failed
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>11:53:59 AM</td>
-        <td>
-          <textarea readonly class="code-block">com.microsoft.playwright.TimeoutError: Error {
-  message='Timeout 30000ms exceeded.
-=========================== logs ===========================
-waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online First ']/../..//*[text()='Days for XML']/../input")
-============================================================
-  name='TimeoutError
-  stack='TimeoutError: Timeout 30000ms exceeded.
-=========================== logs ===========================
-waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online First ']/../..//*[text()='Days for XML']/../input")
-============================================================
-    at ProgressController.run (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6296531276040340635\package\lib\server\progress.js:88:26)
-    at Frame.fill (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6296531276040340635\package\lib\server\frames.js:1042:23)
-    at FrameDispatcher.fill (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6296531276040340635\package\lib\server\dispatchers\frameDispatcher.js:163:30)
-    at DispatcherConnection.dispatch (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6296531276040340635\package\lib\server\dispatchers\dispatcher.js:312:46)
-}
-	at com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:52)
-	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:111)
-	at com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:126)
-	at com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:102)
-	at com.microsoft.playwright.impl.FrameImpl.fillImpl(FrameImpl.java:335)
-	at com.microsoft.playwright.impl.FrameImpl.lambda$fill$14(FrameImpl.java:325)
-	at com.microsoft.playwright.impl.LoggingSupport.lambda$withLogging$0(LoggingSupport.java:36)
-	at com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:47)
-	at com.microsoft.playwright.impl.ChannelOwner.withLogging(ChannelOwner.java:87)
-	at com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:35)
-	at com.microsoft.playwright.impl.FrameImpl.fill(FrameImpl.java:325)
-	at com.microsoft.playwright.impl.LocatorImpl.fill(LocatorImpl.java:210)
-	at com.microsoft.playwright.Locator.fill(Locator.java:2841)
-	at org.jms.pages.AddJournalPage.generalAddJournals(AddJournalPage.java:381)
-	at org.jms.pages.AddJournalPage.sameAcrWithSlChar(AddJournalPage.java:458)
-	at tests.AddJournalTest.verifyAcrWithSplChar(AddJournalTest.java:67)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:829)
-	at org.testng.TestRunner.run(TestRunner.java:602)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
-	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:475)
-	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:58)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: com.microsoft.playwright.TimeoutError: Error {
-  message='Timeout 30000ms exceeded.
-=========================== logs ===========================
-waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online First ']/../..//*[text()='Days for XML']/../input")
-============================================================
-  name='TimeoutError
-  stack='TimeoutError: Timeout 30000ms exceeded.
-=========================== logs ===========================
-waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online First ']/../..//*[text()='Days for XML']/../input")
-============================================================
-    at ProgressController.run (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6296531276040340635\package\lib\server\progress.js:88:26)
-    at Frame.fill (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6296531276040340635\package\lib\server\frames.js:1042:23)
-    at FrameDispatcher.fill (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6296531276040340635\package\lib\server\dispatchers\frameDispatcher.js:163:30)
-    at DispatcherConnection.dispatch (C:\Users\smhassan\AppData\Local\Temp\playwright-java-6296531276040340635\package\lib\server\dispatchers\dispatcher.js:312:46)
-}
-	at com.microsoft.playwright.impl.Connection.dispatch(Connection.java:224)
-	at com.microsoft.playwright.impl.Connection.processOneMessage(Connection.java:206)
-	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:109)
-	... 36 more
-</textarea>
-          
+          Test Passed
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>11:54:02 AM</td>
+        <td>7:49:26 PM</td>
         <td>
-          Trace saved: <a href='traces/verifyAcrWithSplChar.zip'>traces/verifyAcrWithSplChar.zip</a>
+          Trace saved: <a href='traces/AddPublisher.zip'>traces/AddPublisher.zip</a>
         </td>
       </tr>
   </tbody>
@@ -308,29 +213,31 @@ waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online F
 </div>
           </div>
         </li>
-        <li class="test-item"  status="skip" test-id="3"
-          author=""
-          tag=""
+        <li class="test-item"  status="pass" test-id="3"
+          author="Hassan"
+          tag="AddPublisher-Prerequisite"
           device="">
           <div class="test-detail">
-            <p class="name">Verify Acronym should not be allowed with special characters</p>
+            <p class="name">AddPublisher</p>
             <p class="text-sm">
-              <span>11:54:32 AM</span> / <span>00:00:01:509</span>
-              <span class="badge skip-bg log float-right">Skip</span>
+              <span>7:49:30 PM</span> / <span>00:00:09:226</span>
+              <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-skip">Verify Acronym should not be allowed with special characters</h5>
-<span class='badge badge-success'>08.19.2024 11:54:32 AM</span>
-<span class='badge badge-danger'>08.19.2024 11:54:34 AM</span>
-<span class='badge badge-default'>00:00:01:509</span>
+<h5 class="test-status text-pass">AddPublisher</h5>
+<span class='badge badge-success'>08.19.2024 7:49:30 PM</span>
+<span class='badge badge-danger'>08.19.2024 7:49:39 PM</span>
+<span class='badge badge-default'>00:00:09:226</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">Hassan</span>
+<span class="badge badge-pill badge-default">AddPublisher-Prerequisite</span></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
@@ -338,30 +245,37 @@ waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online F
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>11:54:32 AM</td>
+        <td>7:49:30 PM</td>
         <td>
-          Parameter: JQZQ
+          Parameter: SrTest
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>11:54:32 AM</td>
+        <td>7:49:30 PM</td>
         <td>
-          Parameter: QQanda
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log skip-bg">Skip</span></td>
-        <td>11:54:34 AM</td>
-        <td>
-          Test Skipped
+          Parameter: Samco
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>11:54:34 AM</td>
+        <td>7:49:38 PM</td>
         <td>
-          Trace saved: <a href='traces/verifyAcrWithSplChar.zip'>traces/verifyAcrWithSplChar.zip</a>
+          Publisher Added
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>7:49:38 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:49:39 PM</td>
+        <td>
+          Trace saved: <a href='traces/AddPublisher.zip'>traces/AddPublisher.zip</a>
         </td>
       </tr>
   </tbody>
@@ -369,46 +283,293 @@ waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online F
 </div>
           </div>
         </li>
-        <li class="test-item"  status="skip" test-id="4"
-          author=""
-          tag=""
+        <li class="test-item"  status="pass" test-id="4"
+          author="Hassan"
+          tag="AddJournals-Prerequisite"
           device="">
           <div class="test-detail">
-            <p class="name">Same journal can be created with different publisher</p>
+            <p class="name">AddJournal</p>
             <p class="text-sm">
-              <span>11:54:34 AM</span> / <span>00:00:01:259</span>
-              <span class="badge skip-bg log float-right">Skip</span>
+              <span>7:49:42 PM</span> / <span>00:00:12:997</span>
+              <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-skip">Same journal can be created with different publisher</h5>
-<span class='badge badge-success'>08.19.2024 11:54:34 AM</span>
-<span class='badge badge-danger'>08.19.2024 11:54:35 AM</span>
-<span class='badge badge-default'>00:00:01:259</span>
+<h5 class="test-status text-pass">AddJournal</h5>
+<span class='badge badge-success'>08.19.2024 7:49:42 PM</span>
+<span class='badge badge-danger'>08.19.2024 7:49:55 PM</span>
+<span class='badge badge-default'>00:00:12:997</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=4</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">Hassan</span>
+<span class="badge badge-pill badge-default">AddJournals-Prerequisite</span></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log skip-bg">Skip</span></td>
-        <td>11:54:35 AM</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:49:53 PM</td>
         <td>
-          Test Skipped
+          Journal Added
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>7:49:53 PM</td>
+        <td>
+          Test Passed
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>11:54:35 AM</td>
+        <td>7:49:55 PM</td>
         <td>
-          Trace saved: <a href='traces/verifySameJrWithDiffPub.zip'>traces/verifySameJrWithDiffPub.zip</a>
+          Trace saved: <a href='traces/AddJournal.zip'>traces/AddJournal.zip</a>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="5"
+          author="Hassan"
+          tag="AddArticle-Prerequisite"
+          device="">
+          <div class="test-detail">
+            <p class="name">AddArticle</p>
+            <p class="text-sm">
+              <span>7:49:58 PM</span> / <span>00:00:25:578</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">AddArticle</h5>
+<span class='badge badge-success'>08.19.2024 7:49:58 PM</span>
+<span class='badge badge-danger'>08.19.2024 7:50:23 PM</span>
+<span class='badge badge-default'>00:00:25:578</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=5</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">Hassan</span>
+<span class="badge badge-pill badge-default">AddArticle-Prerequisite</span></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:49:58 PM</td>
+        <td>
+          Parameter: JAC(EFTest)
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:49:58 PM</td>
+        <td>
+          Parameter: 12965
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:49:58 PM</td>
+        <td>
+          Parameter: HFTestArtN
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:49:58 PM</td>
+        <td>
+          Parameter: 143
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:49:58 PM</td>
+        <td>
+          Parameter: Test Workflow By Santhosh
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:49:58 PM</td>
+        <td>
+          Parameter: 1234
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:49:58 PM</td>
+        <td>
+          Parameter: 1234
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:49:58 PM</td>
+        <td>
+          Parameter: ALL
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:49:58 PM</td>
+        <td>
+          Parameter: Jasper
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:50:22 PM</td>
+        <td>
+          Article Added
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>7:50:22 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:50:23 PM</td>
+        <td>
+          Trace saved: <a href='traces/AddArticle.zip'>traces/AddArticle.zip</a>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="6"
+          author="Hassan"
+          tag="AddUser-Prerequisite"
+          device="">
+          <div class="test-detail">
+            <p class="name">AddUser</p>
+            <p class="text-sm">
+              <span>7:50:26 PM</span> / <span>00:00:06:524</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">AddUser</h5>
+<span class='badge badge-success'>08.19.2024 7:50:26 PM</span>
+<span class='badge badge-danger'>08.19.2024 7:50:33 PM</span>
+<span class='badge badge-default'>00:00:06:524</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=6</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">Hassan</span>
+<span class="badge badge-pill badge-default">AddUser-Prerequisite</span></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:50:26 PM</td>
+        <td>
+          Parameter: VKLN
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:50:26 PM</td>
+        <td>
+          Parameter: 1817
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:50:26 PM</td>
+        <td>
+          Parameter: Senior Paginator
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:50:26 PM</td>
+        <td>
+          Parameter: Male
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:50:26 PM</td>
+        <td>
+          Parameter: Journals
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:50:26 PM</td>
+        <td>
+          Parameter: EFTest
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:50:26 PM</td>
+        <td>
+          Parameter: Graphics
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:50:26 PM</td>
+        <td>
+          Parameter: User
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:50:26 PM</td>
+        <td>
+          Parameter: gf@yahoo.com
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:50:33 PM</td>
+        <td>
+          User Added
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>7:50:33 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>7:50:33 PM</td>
+        <td>
+          Trace saved: <a href='traces/AddUser.zip'>traces/AddUser.zip</a>
         </td>
       </tr>
   </tbody>
@@ -425,26 +586,26 @@ waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online F
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
-<div class="test-wrapper row view exception-view attributes-view">
+<div class="test-wrapper row view category-view attributes-view">
 <div class="test-list">
 <div class="test-list-tools">
-<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
-<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">4</span></a></li></ul>
 </div>
 <div class="test-list-wrapper scrollable">
 <ul class="test-list-item">
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log badge-danger'>1</span>
+<span class='badge log pass-bg'>1</span>
 </span>
-<p class="name">com.microsoft.playwright.TimeoutError</p>
+<p class="name">AddArticle-Prerequisite</p>
 <p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>com.microsoft.playwright.TimeoutError</h4>
-<span status="fail" class='badge log badge-danger'>1 failed</span>
+<h4>AddArticle-Prerequisite</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -455,11 +616,194 @@ waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online F
 </tr>
 </thead>
 <tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>11:53:10 AM</td>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>19:49:58 PM</td>
 <td>
-<a href="#" class="linked" test-id='2' id='2'>Verify Acronym should not be allowed with special characters</a>
+<a href="#" class="linked" test-id='5' id='5'>AddArticle</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">AddJournals-Prerequisite</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>AddJournals-Prerequisite</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>19:49:42 PM</td>
+<td>
+<a href="#" class="linked" test-id='4' id='4'>AddJournal</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>2</span>
+</span>
+<p class="name">AddPublisher-Prerequisite</p>
+<p class="duration text-sm">2 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>AddPublisher-Prerequisite</h4>
+<span status="pass" class='badge log pass-bg'>2 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>19:49:17 PM</td>
+<td>
+<a href="#" class="linked" test-id='2' id='2'>AddPublisher</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>19:49:30 PM</td>
+<td>
+<a href="#" class="linked" test-id='3' id='3'>AddPublisher</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">AddUser-Prerequisite</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>AddUser-Prerequisite</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>19:50:26 PM</td>
+<td>
+<a href="#" class="linked" test-id='6' id='6'>AddUser</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view author-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Author</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>5</span>
+</span>
+<p class="name">Hassan</p>
+<p class="duration text-sm">5 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>Hassan</h4>
+<span status="pass" class='badge log pass-bg'>5 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>19:49:17 PM</td>
+<td>
+<a href="#" class="linked" test-id='2' id='2'>AddPublisher</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>19:49:30 PM</td>
+<td>
+<a href="#" class="linked" test-id='3' id='3'>AddPublisher</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>19:49:42 PM</td>
+<td>
+<a href="#" class="linked" test-id='4' id='4'>AddJournal</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>19:49:58 PM</td>
+<td>
+<a href="#" class="linked" test-id='5' id='5'>AddArticle</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>19:50:26 PM</td>
+<td>
+<a href="#" class="linked" test-id='6' id='6'>AddUser</a>
 </td>
 </tr>
 </tbody>
@@ -479,25 +823,25 @@ waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online F
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Aug 19, 2024 11:51:51 AM</h3>
+<h3>Aug 19, 2024 07:48:58 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Aug 19, 2024 11:54:35 AM</h3>
+<h3>Aug 19, 2024 07:50:37 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Tests Passed</p>
-<h3>1</h3>
+<h3>6</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Tests Failed</p>
-<h3>1</h3>
+<h3>0</h3>
 </div></div>
 </div>
 </div>
@@ -513,13 +857,13 @@ waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online F
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='25%'>
-<b>1</b> tests passed
+<div><small data-tooltip='100%'>
+<b>6</b> tests passed
 </small>
 </div>
 <div>
-<small data-tooltip='25%'><b>1</b> tests failed,
-<b>2</b> skipped, <b data-tooltip='0%'>0</b> others
+<small data-tooltip='0%'><b>0</b> tests failed,
+<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
 </div>
@@ -536,10 +880,10 @@ waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online F
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='5%'><b>1</b> events passed</small></div>
+<div><small data-tooltip='15%'><b>6</b> events passed</small></div>
 <div>
-<small data-tooltip='11%'><b>2</b> events failed,
-<b data-tooltip='%'>15</b> others
+<small data-tooltip='0%'><b>0</b> events failed,
+<b data-tooltip='%'>33</b> others
 </small>
 </div>
 </div>
@@ -555,10 +899,69 @@ waiting for locator("xpath=//*[text()='General']/..//*[text()=' TAT for Online F
 </div></div>
 <script>
 var timeline = {
-"Verify Acronym should not be allowed with special characters":48.458,"Verify Acronym should not be allowed with special characters":52.37,"Verify Acronym should not be allowed with special characters":1.509,"Same journal can be created with different publisher":1.259
+"NavigatetoBaseIcon":1.27,"AddPublisher":8.572,"AddPublisher":9.226,"AddJournal":12.997,"AddArticle":25.578,"AddUser":6.524
 };
 </script>
 <div class="row">
+<div class="col-lg-6 col-md-12 author-container">
+<div class="card">
+<div class="card-header"><p>Author</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead>
+<tbody>
+<tr>
+<td>Hassan</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="col-lg-6 col-md-12 category-container">
+<div class="card">
+<div class="card-header"><p>Tags</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+<tr>
+<td>AddArticle-Prerequisite</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>AddJournals-Prerequisite</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>AddPublisher-Prerequisite</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>AddUser-Prerequisite</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
 <div class="col-lg-6 col-md-12 sysenv-container">
 <div class="card">
 <div class="card-header"><p>System/Environment</p></div>
@@ -582,10 +985,10 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 1,
-failParent: 1,
+passParent: 6,
+failParent: 0,
 warningParent: 0,
-skipParent: 2,
+skipParent: 0,
 childCount: 5,
 passChild: 0,
 failChild: 0,
@@ -599,11 +1002,11 @@ warningGrandChild: 0,
 skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
-passEvents: 1,
-failEvents: 2,
+passEvents: 6,
+failEvents: 0,
 warningEvents: 0,
-skipEvents: 2,
-infoEvents: 13
+skipEvents: 0,
+infoEvents: 33
 };
 </script>        </div>
       </div>

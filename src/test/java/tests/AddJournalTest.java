@@ -31,7 +31,8 @@ public class AddJournalTest extends BaseTest {
     @Test(priority = 0, description = "Navigating to Add Journals")
     public void NavigateToAddJorIcon() {
 
-        ExtentReportListener.getTest().assignCategory("Add Journal");
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Clicking the Base icon");
         ExtentReportListener.getTest().log(Status.INFO, "Clicking the add journal icon");
 
@@ -47,11 +48,14 @@ public class AddJournalTest extends BaseTest {
         return ReadExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 1);
     }
 
-    @Test(priority = 1, dataProvider = "getJrData", description = "Verify Acronym should not be allowed with special characters")
+    @Test(priority = 1, dataProvider = "getJrData", description = "JMS-155 : Acronym should not be allowed with special characters - Version 1")
     public void verifyAcrWithSplChar(String J_acrm, String J_name) throws InterruptedException {
 
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Enter Journal Acronym with special char");
+
 
         List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 0);
 
@@ -64,19 +68,18 @@ public class AddJournalTest extends BaseTest {
             if (!excelData.isEmpty() && excelData.get(0).length > 0) {
                 String Pub = excelData.get(0)[0].toString();
 
-                String JrAck = addJournalPage.sameAcrWithSlChar(Pub, J_acrm, J_name);
+                Boolean JrAck = addJournalPage.sameAcrWithSlChar(Pub, J_acrm, J_name);
 
                 System.out.println("Acknowledgement received as: " + JrAck);
 
-                SoftAssert SoftAst = new SoftAssert();
-                SoftAst.assertEquals(JrAck, "Special characters are not allowed in the journal name", "Journal name should not allow Special Characters");
+
+                Assert.assertTrue(JrAck, "Journal was added with spl charc");
             } else {
 
                 System.out.println("Row does not have expected numbers: " + row.length);
             }
 
             String J_AcroName = addJournalPage.fromManageJournalsCheck(J_acrm);
-
             Assert.assertEquals(J_AcroName, J_acrm, "Journal Acroname not added with Special charcters");
             ExtentReportListener.getTest().log(Status.INFO, "Journal has been added even with Special characters in Journal Acronym");
 
@@ -86,8 +89,12 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 2, description = "Same journal can be created with different publisher")
+
+    @Test(priority = 2, description = "JMS-157 : Same journal can be created with different publisher - Version 1")
     public void verifySameJrWithDiffPub() throws InterruptedException {
+
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Enter Same journal with different publisher");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 2);
 
@@ -113,9 +120,11 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 3, description = "Verify Publisher,Title, Acronym can’t be changed after journal is created")
+    @Test(priority = 3, description = "JMS-168 : Verify Publisher, Title, Acronym can’t be changed after journal is created - Version 2")
     public void verifyPubNameAcro() {
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Enter Same journal with different publisher");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 3);
 
@@ -130,8 +139,12 @@ public class AddJournalTest extends BaseTest {
 
                 List<String> PubDetails = addJournalPage.samePubAcro(Pub, J_acrm, J_name, PubName);
 
-                Assert.assertTrue(PubDetails.contains("Publisher Title: " + PubName));
-                Assert.assertTrue(PubDetails.contains("Publisher Acro: " + Pub));
+                Assert.assertEquals(PubDetails.get(0), PubName, "Publisher name varies");
+                System.out.println("Pub title: " + PubDetails);
+
+                Assert.assertEquals(PubDetails.get(1), Pub, "Publisher Acroname varies");
+                System.out.println("Pub ACK: " + PubDetails);
+
                 ExtentReportListener.getTest().log(Status.INFO, "Publisher details were not changed even after journal created");
 
 
@@ -145,9 +158,11 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 4, description = "Ensure the working of recto option at issue stage")
+    @Test(priority = 4, description = "JMS-158 : Ensure the working of recto option at issue stage - Version 1")
     public void verifyRectoBox() {
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check the recto checkbox whether it is clickable");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 4);
 
@@ -178,9 +193,11 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 6, description = "Check Copyediting levels(L1,L2,L3) are available only when CopyEditing option is selected ")
+    @Test(priority = 6, description = "JMS-159 : Check Copyediting levels are available only when CopyEditing option is selected - Version 2")
     public void verifyCELevels() {
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Checking CE level options");
         List<String> text = addJournalPage.CopyEditingLevel();
         String l1 = text.get(0);
@@ -196,9 +213,11 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 7, description = "Ensure Trim sizes can be given only numerical values")
+    @Test(priority = 7, description = " JMS-160 : Ensure Trim sizes can be given only numerical values - Version 1")
     public void verifyTrimSize() throws InterruptedException {
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Trim size field box has been examined");
 
         boolean isNumericType = addJournalPage.TrimSizeIsNumeric();
@@ -209,9 +228,13 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 8, description = "Give TATdate for General and ensure the same schedule can be copied to FastTrack")
+    @Test(priority = 8, description = "JMS-161 : Give TATdate for General and ensure the same schedule can be copied to FastTrack - Version 1")
     public void verifyGeneralToFastCopyTat() {
 
+
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
+        ExtentReportListener.getTest().log(Status.INFO, "Check TAT for General and ensure same for FasTrack");
 
         List<String> actualValues = addJournalPage.GenToFastCopyTat();
 
@@ -228,8 +251,12 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 9, description = "Give TATdate for FastTrack and ensure the same schedule can be copied to General")
+    @Test(priority = 9, description = "JMS-161 - 2 : Give TATdate for FastTrack and ensure the same schedule can be copied to General - Version 1")
     public void verifyFastTrackToGeneral() {
+
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
+        ExtentReportListener.getTest().log(Status.INFO, "Check TAT for FasTrack and ensure same for General");
 
         List<String> actualValues = addJournalPage.FastToGenCopyTat();
 
@@ -247,10 +274,12 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 10, description = "After Copied, verify the TAT modification (General to FastTrack) be possible separately")
+    @Test(priority = 10, description = "JMS-162 : After Copied, verify the TAT modification be possible separately (Gen to Fast) - Version 1")
     public void verifyTATModificationGeneralToFast() {
 
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check modification of TAT after Copied (Gen to Fast)");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 3);
 
@@ -281,10 +310,12 @@ public class AddJournalTest extends BaseTest {
         }
     }
 
-    @Test(priority = 11, description = "After Copied, verify the TAT modification (FastTrack to General) be possible separately")
+    @Test(priority = 11, description = "JMS-162 - 2 : After Copied, verify the TAT modification be possible separately (Fast to Gen) - Version 1")
     public void verifyTATModificationFastTrackToGeneral() {
 
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check modification of TAT after Copied (Fast to Gen)");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 3);
 
@@ -309,7 +340,6 @@ public class AddJournalTest extends BaseTest {
 
                 Assert.assertEquals(actualValues, expectedValues, "Values retrieved from page class do not match expected values");
 
-
                 ExtentReportListener.getTest().log(Status.INFO, "Edited Values for imported General days has been displayed ");
 
 
@@ -317,9 +347,11 @@ public class AddJournalTest extends BaseTest {
         }
     }
 
-    @Test(priority = 11, description = "Import TAT from Publisher & verify the details are correctly imported for Gen & FastTat")
+    @Test(priority = 12, description = "JMS-163 : Import TAT from Publisher & verify the details are correctly imported for Gen & FastTat - Version 2")
     public void verifyImportTATFromPub_GenToFast() {
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Import Publisher TAT to Gen to Fast and verify it");
 
         List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 5);
@@ -354,9 +386,11 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 12, description = "Import TAT from Publisher & verify the details are correctly imported for Fast & GenTat")
+    @Test(priority = 13, description = "JMS-163 -2 : Import TAT from Publisher & verify the details are correctly imported for Fast & Gen Tat - Version 2")
     public void verifyImportTATFromPub_FastToGen() {
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Import Publisher TAT to Fast to Gen and verify it");
 
         List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 5);
@@ -376,8 +410,6 @@ public class AddJournalTest extends BaseTest {
                         "1", "2", "3", "4", "5", "6", "7", "8", "9");
 
                 Assert.assertEquals(actualValues, expectedValues, "Values retrieved from page class do not match expected values");
-
-
                 ExtentReportListener.getTest().log(Status.INFO, "Verified fast to gen import values");
 
 
@@ -397,10 +429,12 @@ public class AddJournalTest extends BaseTest {
         return ReadExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 6);
     }
 
-    @Test(priority = 12, dataProvider = "getJrNewData", description = "JMS-175 : Move the files from Latest to Archive and save the journal and verify the number of files later ")
+    @Test(priority = 14, dataProvider = "getJrNewData", description = "JMS-175 : Move the files from Latest to Archive and save the journal and verify the number of files later ")
     public void verifyFromLatestToArchFiles(String Arch_Sty) {
 
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Import Publisher TAT to Fast to Gen and verify it");
 
         List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 5);
@@ -424,7 +458,6 @@ public class AddJournalTest extends BaseTest {
                 System.out.println("Archive File received as: " + Arch_File);
 
                 Assert.assertEquals(Arch_File, Arch_Sty, "Latest Files moved to archived files");
-
                 ExtentReportListener.getTest().log(Status.INFO, "Archived file verified");
 
 
@@ -445,9 +478,11 @@ public class AddJournalTest extends BaseTest {
         return ReadExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 7);
     }
 
-    @Test(priority = 13, dataProvider = "getJrNewData2", description = "JMS-169 : Ensure integrity - Before Journal creation, Try to change Publisher ")
+    @Test(priority = 15, dataProvider = "getJrNewData2", description = "JMS-169 : Ensure integrity - Before Journal creation, Try to change Publisher ")
     public void verifyChangePubBeforeCreateJr(String PubNewAckro, String PubNameNew2) {
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Enter Same journal with one publisher");
 
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 8);
@@ -466,6 +501,8 @@ public class AddJournalTest extends BaseTest {
 
                 addJournalPage.JrCreationByChangingPub(Pub, J_acrm, J_name, PubNewAckro, PubNameNew2);
                 Assert.assertTrue(true, "Journal not added once we change new publisher");
+                ExtentReportListener.getTest().log(Status.INFO, "Publisher change has been verified before journal creation");
+
 
             } else {
 
@@ -476,9 +513,11 @@ public class AddJournalTest extends BaseTest {
         }
     }
 
-    @Test(priority = 14, description = "JMS-171: (Publisher has some files) Create a journal under publisher without importing files\n")
+    @Test(priority = 16, description = "JMS-171: (Publisher has some files) Create a journal under publisher without importing files")
     public void verifyJournalWithoutPubImport() {
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "verifying publiSher is added");
 
         List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\AddPub.xlsx", 0);
@@ -496,7 +535,7 @@ public class AddJournalTest extends BaseTest {
 
 
                 addJournalPage.addPublisher(acro, pub, c, d, e, f, g, h);
-
+                System.out.println("Executed is done");
 
             } else {
                 System.out.println("Row does not have the expected number of columns: " + row.length);
@@ -504,9 +543,9 @@ public class AddJournalTest extends BaseTest {
 
         }
         ExtentReportListener.getTest().log(Status.INFO, "New publisher is added");
-
-
         ExtentReportListener.getTest().log(Status.INFO, "verifying the error message");
+
+
         List<Object[]> excelDataAB = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 9);
 
         for (Object[] row : excelDataAB) {
@@ -516,8 +555,9 @@ public class AddJournalTest extends BaseTest {
                 String J_name = row[2].toString();
 
 
-                addJournalPage.createJrWithoutImportFiles(Pub, J_acrm, J_name);
-                Assert.assertTrue(true, "Error message has been displayed to import files");
+                boolean ActuVal = addJournalPage.createJrWithoutImportFiles(Pub, J_acrm, J_name);
+                Assert.assertTrue(ActuVal, "Error message has been displayed to import files");
+
                 ExtentReportListener.getTest().log(Status.INFO, "Journal cant be added without files has been verified");
 
 
@@ -528,9 +568,11 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 15, description = "JMS-153 : Create and verify the Journal with valid details")
+    @Test(priority = 17, description = "JMS-153 : Create and verify the Journal with valid details")
     public void verifyAddJournals() {
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Enter valid journal credentials");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 10);
 
@@ -573,37 +615,30 @@ public class AddJournalTest extends BaseTest {
     }
 
 
-    @Test(priority = 16, dataProvider = "getJrNewData3", description = "JMS-156 : Journal can't be duplicated within the publisher")
+    @Test(priority = 18, dataProvider = "getJrNewData3", description = "JMS-156 : Journal can't be duplicated within the publisher")
     public void verifyJrCantDuplicatedWithPub(String Pub, String J_acrm, String J_name, String PubName) {
 
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check whether journal can't be duplicated");
         List<Boolean> JrVisible = addJournalPage.JournalCantDuplicated(Pub, J_acrm, J_name, PubName);
 
 
-//        boolean isJrvisible = JrVisible1.get(0);
-//        System.out.println(isJrvisible);
-//
-//        boolean isJrvisible1 = JrVisible1.get(1);
-//        System.out.println(isJrvisible1);
-//
-//        boolean isJrvisible2 = JrVisible1.get(2);
-//        System.out.println(isJrvisible2);
-
-
-        SoftAssert softAssert = new SoftAssert();
-
         for (Boolean isVisible : JrVisible) {
-            softAssert.assertTrue(isVisible, "Expected journal to be visible but it's not.");
+            Assert.assertTrue(isVisible, "Expected journal to be visible but it's not.");
+            ExtentReportListener.getTest().log(Status.INFO, "Duplicate Jr has been ");
+
         }
 
-        softAssert.assertAll();
 
     }
 
-    @Test(priority = 17, description = "JMS-170 : Even if the publisher has files, it should not be imported unless IMPORT icon is clicked")
+    @Test(priority = 19, description = "JMS-170 : Even if the publisher has files, it should not be imported unless IMPORT icon is clicked")
     public void verifyImportIconForImportFiles() {
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check whether files has been imported before import icon");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 12);
 
@@ -652,9 +687,11 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 18, description = "JMS-165 : Select General TAT for journal and verify the same by creating new article (Add Article)")
+    @Test(priority = 20, description = "JMS-165 : Select General TAT for journal and verify the same by creating new article (Add Article)")
     public void verifyGenTATByAddingArticle() {
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check whether files has been imported before import icon (Gen to Fast)");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 13);
 
@@ -683,9 +720,11 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 18, description = "JMS-166 : Select Fast TAT for journal and verify the same by creating new article (Add Article)")
+    @Test(priority = 21, description = "JMS-166 : Select Fast TAT for journal and verify the same by creating new article (Add Article)")
     public void verifyFastTATByAddingArticle() {
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check whether files has been imported before import icon (Fast to Gen)");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 13);
 
@@ -715,10 +754,12 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 19, description = " JMS-172 : Import template from publisher and verify the following details from publisher itself")
+    @Test(priority = 22, description = " JMS-172 : Import template from publisher and verify the following details from publisher itself")
     public void verifyImportStyTemplateFromPub() throws InterruptedException {
 
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check the import from publisher style template and verify same");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 12);
         for (Object[] row : excelDataA) {
@@ -756,10 +797,12 @@ public class AddJournalTest extends BaseTest {
     }
 
 
-    @Test(priority = 20, description = "JMS-173 : Import GuideLines from publisher and verify the following details")
+    @Test(priority = 23, description = "JMS-173 : Import GuideLines from publisher and verify the following details")
     public void verifyImportGuideLineFromPub() {
 
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check the import from publisher Guidelines and verify same");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 12);
         for (Object[] row : excelDataA) {
@@ -779,10 +822,16 @@ public class AddJournalTest extends BaseTest {
 
 
                 List<String> latestGuideFilesTexts = addJournalPage.getGuideFileTexts();
-                List<String> expectedTexts = List.of("GuidelinesNew.docx");
+                List<String> expectedTexts = List.of("Guideline....docx");
 
-                System.out.println("Actual lastName: " + latestGuideFilesTexts);
+
+                System.out.println("Actual latestGuide: " + latestGuideFilesTexts);
+                System.out.println("Expected latestGuide: " + expectedTexts);
+
+
                 Assert.assertTrue(latestGuideFilesTexts.containsAll(expectedTexts), "The list of file texts does not match the expected texts.");
+
+
                 ExtentReportListener.getTest().log(Status.INFO, "Verification done for GuideLine doc");
 
 
@@ -798,9 +847,12 @@ public class AddJournalTest extends BaseTest {
     }
 
 
-    @Test(priority = 21, description = "JMS-164 : Verify modification of TAT - Create two journals, import TAT for both journals (Add article) - Modified")
+    @Test(priority = 24, description = "JMS-164 : Verify modification of TAT - Create two journals, import TAT for both journals (Add article) - Modified")
     public void verifyModifiedTATtwoJournalAddAritcle() throws InterruptedException {
 
+
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check the modification of TAT by adding 2 journals from add article - Modifed TAT");
 
         List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 14);
@@ -874,10 +926,12 @@ public class AddJournalTest extends BaseTest {
         }
     }
 
-    @Test(priority = 22, description = "JMS-164 : Verify unmodified of TAT - Create two journals, import TAT for both journals (Add article) - Modified")
+    @Test(priority = 25, description = "JMS-164 : Verify unmodified of TAT - Create two journals, import TAT for both journals (Add article) - Modified")
     public void verifyUnModifiedTATtwoJournalAddAritcle() throws InterruptedException {
 
 
+        ExtentReportListener.getTest().assignCategory("Add Journals");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check the modification of TAT by adding 2 journals from add article - Modifed TAT");
 
         List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 15);
@@ -902,7 +956,7 @@ public class AddJournalTest extends BaseTest {
                         "1", "1", "1", "1", "1", "1", "1", "1", "1",
                         "1", "1", "1", "1", "1", "1", "1");
 
-                Assert.assertEquals(actualValuesUnModifiedTAT, expectedValuesUnModifiedTAT, "Values retrieved from page class do not match expected values");
+                Assert.assertEquals(actualValuesUnModifiedTAT, expectedValuesUnModifiedTAT, "Unmodified list size has been varies");
 
 
                 ExtentReportListener.getTest().log(Status.INFO, "UnModified TAT for journals has been verified from add articles");

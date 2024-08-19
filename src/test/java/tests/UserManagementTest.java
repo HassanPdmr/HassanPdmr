@@ -36,7 +36,9 @@ public class UserManagementTest extends BaseTest {
     @Test(priority = 0, description = "Navigating to Add User")
     public void NavigateToAddUser() throws InterruptedException {
 
-        ExtentReportListener.getTest().assignCategory("Add User");
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
+
         ExtentReportListener.getTest().log(Status.INFO, "Clicking the Side UserManagement ");
         ExtentReportListener.getTest().log(Status.INFO, "Clicking the add user page");
 
@@ -57,6 +59,9 @@ public class UserManagementTest extends BaseTest {
                                                    String gender, String depart, String Pub, String access,
                                                    String role, String mail) throws InterruptedException {
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
+
         ExtentReportListener.getTest().log(Status.INFO, "Adding User without clicking Add button");
 
         userManagement.creatingUserWithoutAdd(empName, empId, designation, gender,
@@ -73,6 +78,9 @@ public class UserManagementTest extends BaseTest {
     public void verifyDuplicateEmpIdNotAdded(String empName, String empId, String designation,
                                              String gender, String depart, String Pub, String access,
                                              String role, String mail) {
+
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
 
         ExtentReportListener.getTest().log(Status.INFO, "Verifying the duplicate EmpID should be unique");
 
@@ -98,6 +106,8 @@ public class UserManagementTest extends BaseTest {
                                                String role, String mail) throws InterruptedException {
 
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Verify new user from edit profile");
         List<String> actualUserValues = userManagement.addNewUserandVerify(empName, empId, designation, gender,
                 depart, Pub, access, role, mail);
@@ -106,6 +116,8 @@ public class UserManagementTest extends BaseTest {
 
 
         Assert.assertEquals(actualUserValues, expectedUserValues, "Values are differ from page class");
+
+        ExtentReportListener.getTest().log(Status.INFO, "New user from edit profile has been verified");
 
 
     }
@@ -121,6 +133,8 @@ public class UserManagementTest extends BaseTest {
     @Test(priority = 4, dataProvider = "getEmpName", description = "JMS-48 : Verify the name should not allow other than alphabets - check with invalid scenarios - Version 1")
     public void verifyEmpNameShouldAllowAlphabets(String empName) throws InterruptedException {
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check the Emp Name only with alphabets");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\User_management.xlsx", 2);
 
@@ -162,6 +176,8 @@ public class UserManagementTest extends BaseTest {
     @Test(priority = 5, dataProvider = "getEmpID", description = "JMS-49 : Verify the validation of employee id, whether not accepting any Alphabets - Version 1")
     public void verifyEmpIDShouldOnlyAcceptNumerics(String empId) throws InterruptedException {
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check the EmpID only with Numerics");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\User_management.xlsx", 4);
 
@@ -198,7 +214,9 @@ public class UserManagementTest extends BaseTest {
     public void verifyEditEmployeeWithoutUpdateClick() throws InterruptedException {
 
 
-        ExtentReportListener.getTest().log(Status.INFO, "Check  edit employee details without clicking update button");
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
+        ExtentReportListener.getTest().log(Status.INFO, "Check edit employee details without clicking update button");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\User_management.xlsx", 8);
 
         for (Object[] row : excelDataA) {
@@ -223,8 +241,9 @@ public class UserManagementTest extends BaseTest {
 
                 List<String> expectedUserValues = List.of(empName, empIDAsString, designation, gender, depart, pub, access, role);
 
-
                 Assert.assertEquals(actualExp, expectedUserValues, "Values are differ from page class");
+
+                ExtentReportListener.getTest().log(Status.INFO, "edit employee details without clicking update button has been verified");
 
 
             }
@@ -236,6 +255,8 @@ public class UserManagementTest extends BaseTest {
     @Test(priority = 7, description = "JMS-56 : Duplicate user with employ ID of the deactivated account - Version 2")
     public void verifyDupEmpIDofDeactivatedAccount() throws InterruptedException {
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check inactive user EMP id can added again from add user");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\User_management.xlsx", 8);
 
@@ -281,6 +302,8 @@ public class UserManagementTest extends BaseTest {
                                               String depart, String Pub, String access, String role, String mail) throws InterruptedException {
 
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check Gender dropdown");
 
         List<String> actual = userManagement.MaleFemaleIconCheck(empName, empId, designation, gender, depart, Pub, access, role, mail);
@@ -311,6 +334,8 @@ public class UserManagementTest extends BaseTest {
                                                  String depart, String Pub, String access, String role, String mail,
                                                  String roleTL, String Uname, String Pwd, String rolecheck, String PmUname, String PmPwd) throws InterruptedException {
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check Roles from TL to User and User to TL");
 
         List<String> actualVal = userManagement.CheckWithChangingRoles(empName, empId, designation, gender, depart,
@@ -343,6 +368,8 @@ public class UserManagementTest extends BaseTest {
                                               String Uname, String Pwd, String desigNew, String departNew) throws InterruptedException {
 
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check Designation and Department don't impact on User roles");
 
 
@@ -379,6 +406,8 @@ public class UserManagementTest extends BaseTest {
     public void verifyAllViewManage(String PubV, String JourV, String ArtV) {
 
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check for Manage View for Publisher, Journal and Article view");
 
         List<Boolean> actualVal = userManagement.navigateToAllManageViewPage(PubV, JourV, ArtV);
@@ -402,6 +431,8 @@ public class UserManagementTest extends BaseTest {
     @Test(priority = 12, dataProvider = "getPublisherView", description = "JMS-211 : Add a new Publisher(Pub-A) and verify the publisher is displayed with correct Name/Acronym - Version 1")
     public void verifyPubView(String PubAcro, String PubName) {
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check for Publisher verify with ack and name");
 
         List<Object> actualVal = userManagement.addAndVerifyPublisher(PubAcro, PubName);
@@ -429,6 +460,8 @@ public class UserManagementTest extends BaseTest {
     public void verifyTwoJournals(String PubAcro, String PubName, String Jacro,
                                   String Jname, String JacroNew, String JnameNew) {
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check two journals that can be added in one publisher");
 
         List<Boolean> actualVal = userManagement.addTwoJounralsAndVerifywithPub(PubAcro, PubName, Jacro, Jname, JacroNew, JnameNew);
@@ -457,6 +490,8 @@ public class UserManagementTest extends BaseTest {
                                         String Jname, String JacroArt, String artname, String workflow) throws InterruptedException {
 
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check with add article along with publisher");
 
         Boolean actValue = userManagement.AddArticleWithPub(PubAcro, PubName, Jacro, Jname, JacroArt, artname, workflow);
@@ -479,6 +514,8 @@ public class UserManagementTest extends BaseTest {
     @Test(priority = 15, dataProvider = "getPubDescription", description = "JMS-216 : Verify the description of the publisher is displayed correctly in the outer banner - Version 1")
     public void verifyPubDescription(String PubAcro, String PubName, String Description) {
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check publisher Description and verify it");
 
         String actualVal = userManagement.checkPubDescription(PubAcro, PubName, Description);
@@ -492,6 +529,8 @@ public class UserManagementTest extends BaseTest {
     @Test(priority = 16, dataProvider = "getPubDescription", description = "JMS-219 : Verify the following details in Publisher banner by adding/editing - Version 2")
     public void verifyPubDetailsOuterBanner(String PubAcro, String PubName, String Description) {
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check publisher Acroname and Desc in Outer banner  ");
 
         List<String> actualVal = userManagement.checkPubDetailsInOuterBanner(PubAcro, PubName, Description);
@@ -516,6 +555,8 @@ public class UserManagementTest extends BaseTest {
     public void verifyJournalDetailOuterBanner(String PubAcro, String PubName, String Jacro, String Jname) {
 
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check Journal Details in Journal Badge");
 
         List<Object> actualVal = userManagement.checkJournalDetailInOuterBanner(PubAcro, PubName, Jacro, Jname);
@@ -540,8 +581,9 @@ public class UserManagementTest extends BaseTest {
     @Test(priority = 18, dataProvider = "getArticleBadge", description = "JMS-220 : Verify the following details in journal badge by adding/editing: - Version 2")
     public void verifyArticleName(String PubName, String journalacro, String Jack, String artname, String workflow) throws InterruptedException {
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check Article Details in Article Badge");
-
 
         List<Object> actualVal = userManagement.checkDetailsInArticleBadge(PubName, journalacro, Jack, artname, workflow);
 
@@ -565,6 +607,8 @@ public class UserManagementTest extends BaseTest {
     @Test(priority = 19, dataProvider = "getSearch", description = "JMS-220 : Verify the following details in journal badge by adding/editing: - Version 2")
     public void verifyStockSearch(String PubName) {
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Checking Search in Stock");
 
         boolean actualVal = userManagement.checkSearchOptioninStock(PubName);
@@ -584,8 +628,9 @@ public class UserManagementTest extends BaseTest {
     @Test(priority = 20, dataProvider = "getPubFromFilter", description = "JMS-78 : Apply filter on Pub, journal separately and ensure the list is updated by filter(Publisher) - Version 2")
     public void verifyPubinCountFilter(String PubAcro, String PubNam) {
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Checking Publisher count from stock with manage count");
-
 
         boolean actualVal = userManagement.checkPubJournalSepratelyinFilterPUB(PubAcro, PubNam);
         Assert.assertTrue(actualVal, "Publisher count varies");
@@ -606,8 +651,9 @@ public class UserManagementTest extends BaseTest {
     @Test(priority = 21, dataProvider = "getJourFromFilter", description = "JMS-78 : Apply filter on Pub, journal separately and ensure the list is updated by filter(Journal) - Version 2")
     public void verifyJourInCountFilter(String PubAcro, String Jacro, String Jname) {
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Checking Journals count from stock with manage count");
-
 
         boolean actualVal = userManagement.checkPubJournalSepratelyinFilterJour(PubAcro, Jacro, Jname);
         Assert.assertTrue(actualVal, "Publisher count varies");
@@ -626,6 +672,8 @@ public class UserManagementTest extends BaseTest {
     @Test(priority = 22, dataProvider = "getJrWithPub", description = "JMS-79 : Apply filter on Pub+journal and ensure the list is updated accordingly - Version 1 ")
     public void verifyJrWithPubInFilter(String PubAcro, String PubName, String Jacro, String Jname) {
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Checking Journals count with publisher at a time");
 
 
@@ -646,8 +694,9 @@ public class UserManagementTest extends BaseTest {
     @Test(priority = 23, dataProvider = "getPenArt", description = "JMS-79 : Apply filter on Pub+journal and ensure the list is updated accordingly - Version 1 ")
     public void verifyPendingArticleCount(String journalacro, String artname, String workflow) {
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Checking Journals count with publisher at a time");
-
 
         boolean ActualVal = userManagement.checkPendingArticleCount(journalacro, artname, workflow);
         Assert.assertTrue(ActualVal, "Pending Article varies");
@@ -668,6 +717,8 @@ public class UserManagementTest extends BaseTest {
     public void verifyDeactivatedUserLogin(String empName, String empId, String designation, String gender,
                                            String depart, String Pub, String access, String role, String mail, String Uname, String Pwd) throws InterruptedException {
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Verification the deactivated user need to be login again");
 
         boolean ActualVal = userManagement.checkDeactivationUserAndLogin(empName, empId, designation, gender, depart, Pub, access, role, mail, Uname, Pwd);
@@ -691,6 +742,8 @@ public class UserManagementTest extends BaseTest {
                                               String depart, String Pub, String access, String role, String mail, String Uname, String Pwd) throws InterruptedException {
 
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Verify the deactivated user to login again");
 
         boolean ActualVal = userManagement.checkDeactivatedUserForAssign(empName, empId, designation, gender, depart, Pub, access, role, mail, Uname, Pwd);
@@ -714,6 +767,8 @@ public class UserManagementTest extends BaseTest {
                                            String depart, String Pub, String access, String role, String mail, String Uname, String Pwd) throws InterruptedException {
 
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Verify the deactivated to active and try user to login again");
 
 
@@ -739,14 +794,14 @@ public class UserManagementTest extends BaseTest {
                                                 String empName, String EmpId, String Uname, String Pwd, String UempName, String UempId) throws InterruptedException {
 
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Deactivate and Reactivate the TL/AM login and check to assign to user");
 
 
         boolean ActulVal = userManagement.checkReactivatedTLorAMtoAssign(journalacro,artname,workflow,empName,EmpId,Uname,Pwd,UempName,UempId);
 
-
         Assert.assertTrue(ActulVal, "Can't able to assign to user login from AM/TL Reactivated login");
-
 
         ExtentReportListener.getTest().log(Status.INFO, "Reactivation ID can able to assign to user verification is done");
 
@@ -765,12 +820,12 @@ public class UserManagementTest extends BaseTest {
                                         String depart, String Pub, String access, String role, String mail, String PmUname, String PmPass) throws InterruptedException {
 
 
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check deactivation of ownID for PMuser");
-
         boolean ActulVal = userManagement.checkDeactivationOfOwnIDforPM(empName,empId,designation,gender,depart,Pub,access,role,mail,PmUname,PmPass);
 
         Assert.assertTrue(ActulVal, "Deactivated PM user can able to login here");
-
         ExtentReportListener.getTest().log(Status.INFO, "Deactivated PMuser login has been verified");
 
     }

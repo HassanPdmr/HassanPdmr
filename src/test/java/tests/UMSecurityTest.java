@@ -36,6 +36,8 @@ public class UMSecurityTest extends BaseTest {
     public void verifyEmpIDWithCorrectDetails(String Uname, String Pwd, String EmpId) {
 
 
+        ExtentReportListener.getTest().assignCategory("User Management Security");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, " Logout and login with Correct credentials with valid credentials");
         List<String> actualVal = umSecurityPage.loginLogoutCorrectData(Uname, Pwd, EmpId);
 
@@ -46,6 +48,8 @@ public class UMSecurityTest extends BaseTest {
 
         Assert.assertEquals(actualVal.get(0), Expected_EmpId_before, "Wrong Emp ID has been Displayed before logout");
         Assert.assertEquals(actualVal.get(1), Expected_EmpId_after, "Wrong Emp ID has been Displayed after login");
+
+        ExtentReportListener.getTest().log(Status.INFO, " Logout and Login with correct details has been verified");
 
 
     }
@@ -62,12 +66,16 @@ public class UMSecurityTest extends BaseTest {
     @Test(priority = 2, dataProvider = "getEmpIDInvalidDetails", description = "JMS-59 : Logout and login with wrong set of credentials - should not allow user to login - Version 1")
     public void verifyEmpIDWithInvalidCredentials(String IvUname, String IvPwd, String Pwd , String Uname, String ErrMsg) {
 
+        ExtentReportListener.getTest().assignCategory("User Management Security");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check Logout and login with Correct credentials with Invalid credentials");
 
 
         boolean isErrorMessageDisplayed = umSecurityPage.loginLogoutINCorrectData(IvUname,IvPwd,Pwd,Uname, ErrMsg);
 
         Assert.assertTrue(isErrorMessageDisplayed, "Error message is not displayed as expected");
+        ExtentReportListener.getTest().log(Status.INFO, " Logout and Login with correct details has been verified");
+
 
 
 
