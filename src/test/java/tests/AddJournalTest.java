@@ -45,7 +45,7 @@ public class AddJournalTest extends BaseTest {
     @DataProvider(name = "getJrData")
     public Object[][] getJournalData() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 1);
+        return ReadExcelData(".//src//test//resources//files//newaddjournals.xlsx", 1);
     }
 
     @Test(priority = 1, dataProvider = "getJrData", description = "JMS-155 : Acronym should not be allowed with special characters - Version 1")
@@ -57,7 +57,7 @@ public class AddJournalTest extends BaseTest {
         ExtentReportListener.getTest().log(Status.INFO, "Enter Journal Acronym with special char");
 
 
-        List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 0);
+        List<Object[]> excelData = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 0);
 
 
         for (Object[] row : excelData) {
@@ -96,7 +96,7 @@ public class AddJournalTest extends BaseTest {
         ExtentReportListener.getTest().assignCategory("Add Journals");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Enter Same journal with different publisher");
-        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 2);
+        List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 2);
 
         for (Object[] row : excelDataA) {
 
@@ -126,7 +126,7 @@ public class AddJournalTest extends BaseTest {
         ExtentReportListener.getTest().assignCategory("Add Journals");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Enter Same journal with different publisher");
-        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 3);
+        List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 3);
 
         for (Object[] row : excelDataA) {
 
@@ -164,7 +164,7 @@ public class AddJournalTest extends BaseTest {
         ExtentReportListener.getTest().assignCategory("Add Journals");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check the recto checkbox whether it is clickable");
-        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 4);
+        List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 4);
 
         for (Object[] row : excelDataA) {
 
@@ -193,7 +193,7 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 6, description = "JMS-159 : Check Copyediting levels are available only when CopyEditing option is selected - Version 2")
+    @Test(priority = 5, description = "JMS-159 : Check Copyediting levels are available only when CopyEditing option is selected - Version 2")
     public void verifyCELevels() {
 
         ExtentReportListener.getTest().assignCategory("Add Journals");
@@ -213,7 +213,7 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 7, description = " JMS-160 : Ensure Trim sizes can be given only numerical values - Version 1")
+    @Test(priority = 6, description = " JMS-160 : Ensure Trim sizes can be given only numerical values - Version 1")
     public void verifyTrimSize() throws InterruptedException {
 
         ExtentReportListener.getTest().assignCategory("Add Journals");
@@ -228,7 +228,7 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 8, description = "JMS-161 : Give TATdate for General and ensure the same schedule can be copied to FastTrack - Version 1")
+    @Test(priority = 7, description = "JMS-161 : Give TATdate for General and ensure the same schedule can be copied to FastTrack - Version 1")
     public void verifyGeneralToFastCopyTat() {
 
 
@@ -251,7 +251,7 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 9, description = "JMS-161 - 2 : Give TATdate for FastTrack and ensure the same schedule can be copied to General - Version 1")
+    @Test(priority = 8, description = "JMS-161 - 2 : Give TATdate for FastTrack and ensure the same schedule can be copied to General - Version 1")
     public void verifyFastTrackToGeneral() {
 
         ExtentReportListener.getTest().assignCategory("Add Journals");
@@ -274,14 +274,14 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 10, description = "JMS-162 : After Copied, verify the TAT modification be possible separately (Gen to Fast) - Version 1")
+    @Test(priority = 9, description = "JMS-162 : After Copied, verify the TAT modification be possible separately (Gen to Fast) - Version 1")
     public void verifyTATModificationGeneralToFast() {
 
 
         ExtentReportListener.getTest().assignCategory("Add Journals");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check modification of TAT after Copied (Gen to Fast)");
-        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 3);
+        List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 3);
 
         for (Object[] row : excelDataA) {
 
@@ -310,14 +310,14 @@ public class AddJournalTest extends BaseTest {
         }
     }
 
-    @Test(priority = 11, description = "JMS-162 - 2 : After Copied, verify the TAT modification be possible separately (Fast to Gen) - Version 1")
+    @Test(priority = 10, description = "JMS-162 - 2 : After Copied, verify the TAT modification be possible separately (Fast to Gen) - Version 1")
     public void verifyTATModificationFastTrackToGeneral() {
 
 
         ExtentReportListener.getTest().assignCategory("Add Journals");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check modification of TAT after Copied (Fast to Gen)");
-        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 3);
+        List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 3);
 
         for (Object[] row : excelDataA) {
 
@@ -347,14 +347,14 @@ public class AddJournalTest extends BaseTest {
         }
     }
 
-    @Test(priority = 12, description = "JMS-163 : Import TAT from Publisher & verify the details are correctly imported for Gen & FastTat - Version 2")
+    @Test(priority = 11, description = "JMS-163 : Import TAT from Publisher & verify the details are correctly imported for Gen & FastTat - Version 2")
     public void verifyImportTATFromPub_GenToFast() {
 
         ExtentReportListener.getTest().assignCategory("Add Journals");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Import Publisher TAT to Gen to Fast and verify it");
 
-        List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 5);
+        List<Object[]> excelData = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 5);
 
         for (Object[] row : excelData) {
 
@@ -386,14 +386,14 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 13, description = "JMS-163 -2 : Import TAT from Publisher & verify the details are correctly imported for Fast & Gen Tat - Version 2")
+    @Test(priority = 12, description = "JMS-163 -2 : Import TAT from Publisher & verify the details are correctly imported for Fast & Gen Tat - Version 2")
     public void verifyImportTATFromPub_FastToGen() {
 
         ExtentReportListener.getTest().assignCategory("Add Journals");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Import Publisher TAT to Fast to Gen and verify it");
 
-        List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 5);
+        List<Object[]> excelData = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 5);
 
         for (Object[] row : excelData) {
 
@@ -426,10 +426,10 @@ public class AddJournalTest extends BaseTest {
     @DataProvider(name = "getJrNewData")
     public Object[][] getJournalNewData() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 6);
+        return ReadExcelData(".//src//test//resources//files//newaddjournals.xlsx", 6);
     }
 
-    @Test(priority = 14, dataProvider = "getJrNewData", description = "JMS-175 : Move the files from Latest to Archive and save the journal and verify the number of files later ")
+    @Test(priority = 13, dataProvider = "getJrNewData", description = "JMS-175 : Move the files from Latest to Archive and save the journal and verify the number of files later ")
     public void verifyFromLatestToArchFiles(String Arch_Sty) {
 
 
@@ -437,7 +437,7 @@ public class AddJournalTest extends BaseTest {
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Import Publisher TAT to Fast to Gen and verify it");
 
-        List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 5);
+        List<Object[]> excelData = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 5);
 
         for (Object[] row : excelData) {
 
@@ -475,17 +475,17 @@ public class AddJournalTest extends BaseTest {
     @DataProvider(name = "getJrNewData2")
     public Object[][] getJournalNewData2() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 7);
+        return ReadExcelData(".//src//test//resources//files//newaddjournals.xlsx", 7);
     }
 
-    @Test(priority = 15, dataProvider = "getJrNewData2", description = "JMS-169 : Ensure integrity - Before Journal creation, Try to change Publisher ")
+    @Test(priority = 14, dataProvider = "getJrNewData2", description = "JMS-169 : Ensure integrity - Before Journal creation, Try to change Publisher ")
     public void verifyChangePubBeforeCreateJr(String PubNewAckro, String PubNameNew2) {
 
         ExtentReportListener.getTest().assignCategory("Add Journals");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Enter Same journal with one publisher");
 
-        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 8);
+        List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 8);
 
         for (Object[] row : excelDataA) {
 
@@ -513,14 +513,14 @@ public class AddJournalTest extends BaseTest {
         }
     }
 
-    @Test(priority = 16, description = "JMS-171: (Publisher has some files) Create a journal under publisher without importing files")
+    @Test(priority = 15, description = "JMS-171: (Publisher has some files) Create a journal under publisher without importing files")
     public void verifyJournalWithoutPubImport() {
 
         ExtentReportListener.getTest().assignCategory("Add Journals");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "verifying publiSher is added");
 
-        List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\AddPub.xlsx", 0);
+        List<Object[]> excelData = ExcelParser.getExcelData(".//src//test//resources//files//AddPub.xlsx", 0);
 
         for (Object[] row : excelData) {
             if (row.length == 8) {
@@ -568,13 +568,13 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 17, description = "JMS-153 : Create and verify the Journal with valid details")
+    @Test(priority = 16, description = "JMS-153 : Create and verify the Journal with valid details")
     public void verifyAddJournals() {
 
         ExtentReportListener.getTest().assignCategory("Add Journals");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Enter valid journal credentials");
-        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 10);
+        List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 10);
 
         for (Object[] row : excelDataA) {
 
@@ -611,11 +611,11 @@ public class AddJournalTest extends BaseTest {
     @DataProvider(name = "getJrNewData3")
     public Object[][] getJournalNewData3() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 11);
+        return ReadExcelData(".//src//test//resources//files//newaddjournals.xlsx", 11);
     }
 
 
-    @Test(priority = 18, dataProvider = "getJrNewData3", description = "JMS-156 : Journal can't be duplicated within the publisher")
+    @Test(priority = 17, dataProvider = "getJrNewData3", description = "JMS-156 : Journal can't be duplicated within the publisher")
     public void verifyJrCantDuplicatedWithPub(String Pub, String J_acrm, String J_name, String PubName) {
 
 
@@ -634,13 +634,13 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 19, description = "JMS-170 : Even if the publisher has files, it should not be imported unless IMPORT icon is clicked")
+    @Test(priority = 18, description = "JMS-170 : Even if the publisher has files, it should not be imported unless IMPORT icon is clicked")
     public void verifyImportIconForImportFiles() {
 
         ExtentReportListener.getTest().assignCategory("Add Journals");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check whether files has been imported before import icon");
-        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 12);
+        List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 12);
 
 
         for (Object[] row : excelDataA) {
@@ -687,13 +687,13 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 20, description = "JMS-165 : Select General TAT for journal and verify the same by creating new article (Add Article)")
+    @Test(priority = 19, description = "JMS-165 : Select General TAT for journal and verify the same by creating new article (Add Article)")
     public void verifyGenTATByAddingArticle() {
 
         ExtentReportListener.getTest().assignCategory("Add Journals");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check whether files has been imported before import icon (Gen to Fast)");
-        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 13);
+        List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 13);
 
 
         for (Object[] row : excelDataA) {
@@ -720,13 +720,13 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 21, description = "JMS-166 : Select Fast TAT for journal and verify the same by creating new article (Add Article)")
+    @Test(priority = 20, description = "JMS-166 : Select Fast TAT for journal and verify the same by creating new article (Add Article)")
     public void verifyFastTATByAddingArticle() {
 
         ExtentReportListener.getTest().assignCategory("Add Journals");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check whether files has been imported before import icon (Fast to Gen)");
-        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 13);
+        List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 13);
 
 
         for (Object[] row : excelDataA) {
@@ -754,14 +754,14 @@ public class AddJournalTest extends BaseTest {
 
     }
 
-    @Test(priority = 22, description = " JMS-172 : Import template from publisher and verify the following details from publisher itself")
+    @Test(priority = 21, description = " JMS-172 : Import template from publisher and verify the following details from publisher itself")
     public void verifyImportStyTemplateFromPub() throws InterruptedException {
 
 
         ExtentReportListener.getTest().assignCategory("Add Journals");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check the import from publisher style template and verify same");
-        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 12);
+        List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 12);
         for (Object[] row : excelDataA) {
 
             if (row.length == 3) {
@@ -797,14 +797,14 @@ public class AddJournalTest extends BaseTest {
     }
 
 
-    @Test(priority = 23, description = "JMS-173 : Import GuideLines from publisher and verify the following details")
+    @Test(priority = 22, description = "JMS-173 : Import GuideLines from publisher and verify the following details")
     public void verifyImportGuideLineFromPub() {
 
 
         ExtentReportListener.getTest().assignCategory("Add Journals");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check the import from publisher Guidelines and verify same");
-        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 12);
+        List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 12);
         for (Object[] row : excelDataA) {
 
             if (row.length == 3) {
@@ -847,7 +847,7 @@ public class AddJournalTest extends BaseTest {
     }
 
 
-    @Test(priority = 24, description = "JMS-164 : Verify modification of TAT - Create two journals, import TAT for both journals (Add article) - Modified")
+    @Test(priority = 23, description = "JMS-164 : Verify modification of TAT - Create two journals, import TAT for both journals (Add article) - Modified")
     public void verifyModifiedTATtwoJournalAddAritcle() throws InterruptedException {
 
 
@@ -855,7 +855,7 @@ public class AddJournalTest extends BaseTest {
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check the modification of TAT by adding 2 journals from add article - Modifed TAT");
 
-        List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 14);
+        List<Object[]> excelData = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 14);
 
         for (Object[] row : excelData) {
 
@@ -926,7 +926,7 @@ public class AddJournalTest extends BaseTest {
         }
     }
 
-    @Test(priority = 25, description = "JMS-164 : Verify unmodified of TAT - Create two journals, import TAT for both journals (Add article) - Modified")
+    @Test(priority = 24, description = "JMS-164 : Verify unmodified of TAT - Create two journals, import TAT for both journals (Add article) - Modified")
     public void verifyUnModifiedTATtwoJournalAddAritcle() throws InterruptedException {
 
 
@@ -934,7 +934,7 @@ public class AddJournalTest extends BaseTest {
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check the modification of TAT by adding 2 journals from add article - Modifed TAT");
 
-        List<Object[]> excelData = ExcelParser.getExcelData("D:\\ZoneTest\\newaddjournals.xlsx", 15);
+        List<Object[]> excelData = ExcelParser.getExcelData(".//src//test//resources//files//newaddjournals.xlsx", 15);
 
         for (Object[] row : excelData) {
 

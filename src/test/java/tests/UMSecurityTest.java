@@ -29,7 +29,7 @@ public class UMSecurityTest extends BaseTest {
     @DataProvider(name = "getEmpIDCorrectDetails")
     public Object[][] getCorrectEmpID() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_Security.xlsx", 0);
+        return ReadExcelData(".//src//test//resources//files//User_Management_Security.xlsx", 0);
 
     }
     @Test(priority = 1, dataProvider = "getEmpIDCorrectDetails", description = "JMS-58 : Logout and login with Correct credentials - should allow user to login - Version 1")
@@ -59,7 +59,7 @@ public class UMSecurityTest extends BaseTest {
     @DataProvider(name = "getEmpIDInvalidDetails")
     public Object[][] getInValidEmpID() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_Security.xlsx", 1);
+        return ReadExcelData(".//src//test//resources//files//User_Management_Security.xlsx", 1);
 
     }
 

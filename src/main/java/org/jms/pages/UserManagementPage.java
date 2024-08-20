@@ -1829,6 +1829,7 @@ public class UserManagementPage {
         page.locator(ClearallFilter).click();
 
         page.locator(JourCheckboxfilter).click();
+        page.waitForTimeout(2500);
 
         int JourCountStock = page.locator("//tbody/tr").count();
         System.out.println("Count in Journal Stock in hand: " + JourCountStock);
@@ -1837,15 +1838,19 @@ public class UserManagementPage {
         page.locator(SelectView).click();
         page.locator(journalsview).click();
 
+        page.waitForTimeout(2500);
+
         int JourCountManage = page.locator("//div//h2").count();
         int filteredJournalCount = JourCountManage > 0 ? JourCountManage - 1 : 0;
         System.out.println("Count in Journal Manage: " + filteredJournalCount);
 
+        page.waitForTimeout(2000);
         if (JourCountStock == filteredJournalCount) {
             return true;
         } else {
             return false;
         }
+
 
 
     }

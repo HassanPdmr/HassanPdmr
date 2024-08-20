@@ -1909,7 +1909,8 @@ public class AddJournalPage {
         page.waitForTimeout(2000);
         page.locator(trackType).click();
         page.locator(FastTrack).click();
-        page.locator(importtatfromjournal).click();
+        page.waitForTimeout(3000);
+        page.waitForSelector(importtatfromjournal).click();
         page.locator(confirmimportfromjour).click();
 
         List<String> NewFasttrackEditedValues = new ArrayList<>();

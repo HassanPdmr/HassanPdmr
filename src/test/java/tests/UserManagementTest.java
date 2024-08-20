@@ -51,7 +51,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getAddUserdata")
     public Object[][] getAddUserData() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_management.xlsx", 0);
+        return ReadExcelData(".//src//test//resources//files//User_Management.xlsx", 0);
     }
 
     @Test(priority = 1, dataProvider = "getAddUserdata", description = "JMS-52 : Provide details for new employee but don’t click ‘ADD’ & ensure employee not created")
@@ -97,7 +97,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getNewAddUser")
     public Object[][] getNewAddUserData() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_management.xlsx", 1);
+        return ReadExcelData(".//src//test//resources//files//User_Management.xlsx", 1);
     }
 
     @Test(priority = 3, dataProvider = "getNewAddUser", description = "JMS-43 : Add new user with valid details and verify the entered details in Profile")
@@ -126,7 +126,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getEmpName")
     public Object[][] getNewEmpData() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_management.xlsx", 3);
+        return ReadExcelData(".//src//test//resources//files//User_Management.xlsx", 3);
 
     }
 
@@ -136,7 +136,7 @@ public class UserManagementTest extends BaseTest {
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check the Emp Name only with alphabets");
-        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\User_management.xlsx", 2);
+        List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//User_Management.xlsx", 2);
 
         for (Object[] row : excelDataA) {
 
@@ -169,7 +169,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getEmpID")
     public Object[][] getNewEmpID() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_management.xlsx", 5);
+        return ReadExcelData(".//src//test//resources//files//User_Management.xlsx", 5);
 
     }
 
@@ -179,7 +179,7 @@ public class UserManagementTest extends BaseTest {
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check the EmpID only with Numerics");
-        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\User_management.xlsx", 4);
+        List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//User_Management.xlsx", 4);
 
         for (Object[] row : excelDataA) {
 
@@ -217,7 +217,7 @@ public class UserManagementTest extends BaseTest {
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check edit employee details without clicking update button");
-        List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\User_management.xlsx", 8);
+        List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//User_Management", 8);
 
         for (Object[] row : excelDataA) {
 
@@ -292,7 +292,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getGender")
     public Object[][] getGenderData() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_management.xlsx", 9);
+        return ReadExcelData(".//src//test//resources//files//User_Management.xlsx", 9);
 
     }
 
@@ -325,7 +325,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getChangingRoles")
     public Object[][] getRoleNewData() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_management.xlsx", 10);
+        return ReadExcelData(".//src//test//resources//files//User_Management.xlsx", 10);
 
     }
 
@@ -358,7 +358,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getDepartDesignation")
     public Object[][] getDeptDesignData() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_management.xlsx", 11);
+        return ReadExcelData(".//src//test//resources//files//User_Management.xlsx", 11);
 
     }
 
@@ -398,7 +398,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getAllManageView")
     public Object[][] getManageView() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 0);
+        return ReadExcelData(".//src//test//resources//files//User_Management_Manage.xlsx", 0);
 
     }
 
@@ -424,7 +424,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getPublisherView")
     public Object[][] getPubView() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 1);
+        return ReadExcelData(".//src//test//resources//files//User_Management_Manage.xlsx", 1);
 
     }
 
@@ -452,7 +452,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getTwoJournalCheck")
     public Object[][] getTwoJournals() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 2);
+        return ReadExcelData(".//src//test//resources//files//User_Management_Manage.xlsx", 2);
 
     }
 
@@ -481,7 +481,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getAddArtilce")
     public Object[][] getAddArticleData() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 3);
+        return ReadExcelData(".//src//test//resources//files//User_Management_Manage.xlsx", 3);
 
     }
 
@@ -495,9 +495,7 @@ public class UserManagementTest extends BaseTest {
         ExtentReportListener.getTest().log(Status.INFO, "Check with add article along with publisher");
 
         Boolean actValue = userManagement.AddArticleWithPub(PubAcro, PubName, Jacro, Jname, JacroArt, artname, workflow);
-
         Assert.assertTrue(actValue, "Article not added");
-
         ExtentReportListener.getTest().log(Status.INFO, "Article added Successfully");
 
 
@@ -506,7 +504,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getPubDescription")
     public Object[][] getPubDescptn() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 4);
+        return ReadExcelData(".//src//test//resources//files//User_Management_Manage.xlsx", 4);
 
     }
 
@@ -546,7 +544,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getJournalBanner")
     public Object[][] getJrDataBanner() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 5);
+        return ReadExcelData(".//src//test//resources//files//User_Management_Manage.xlsx", 5);
 
     }
 
@@ -574,7 +572,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getArticleBadge")
     public Object[][] getArtBadge() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 6);
+        return ReadExcelData(".//src//test//resources//files//User_Management_Manage.xlsx", 6);
 
     }
 
@@ -599,7 +597,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getSearch")
     public Object[][] getsearchStock() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 7);
+        return ReadExcelData(".//src//test//resources//files//User_Management_Manage.xlsx", 7);
 
     }
 
@@ -621,7 +619,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getPubFromFilter")
     public Object[][] getPubinBothStockAndManage() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 8);
+        return ReadExcelData(".//src//test//resources//files//User_Management_Manage.xlsx", 8);
 
     }
 
@@ -643,7 +641,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getJourFromFilter")
     public Object[][] getJourinBothStockAndManage() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 9);
+        return ReadExcelData(".//src//test//resources//files//User_Management_Manage.xlsx", 9);
 
     }
 
@@ -665,7 +663,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getJrWithPub")
     public Object[][] getJourPubFromFilter() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 10);
+        return ReadExcelData(".//src//test//resources//files//User_Management_Manage.xlsx", 10);
 
     }
 
@@ -687,7 +685,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getPenArt")
     public Object[][] getPendingArticle() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_Manage.xlsx", 11);
+        return ReadExcelData(".//src//test//resources//files//User_Management_Manage.xlsx", 11);
 
     }
 
@@ -709,7 +707,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getUserDeactData")
     public Object[][] getUserDactData() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_ActDeact.xlsx", 0);
+        return ReadExcelData(".//src//test//resources//files//User_Management_ActDeact.xlsx", 0);
 
     }
 
@@ -733,7 +731,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getUserforAssign")
     public Object[][] getUserforAssign() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_ActDeact.xlsx", 1);
+        return ReadExcelData(".//src//test//resources//files//User_Management_ActDeact.xlsx", 1);
 
     }
 
@@ -758,7 +756,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getActivateUserToLogin")
     public Object[][] getActivateUserToLogin() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_ActDeact.xlsx", 2);
+        return ReadExcelData(".//src//test//resources//files//User_Management_ActDeact.xlsx", 2);
 
     }
 
@@ -784,7 +782,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getTLAMReactivaton")
     public Object[][] getTLAMReactivaton() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_ActDeact.xlsx", 3);
+        return ReadExcelData(".//src//test//resources//files//User_Management_ActDeact.xlsx", 3);
 
     }
 
@@ -811,7 +809,7 @@ public class UserManagementTest extends BaseTest {
     @DataProvider(name = "getPMOwnDeactivation")
     public Object[][] getPMOwnDeactivation() throws IOException {
 
-        return ReadExcelData("D:\\ZoneTest\\User_Management_ActDeact.xlsx", 4);
+        return ReadExcelData(".//src//test//resources//files//User_Management_ActDeact.xlsx", 4);
 
     }
 
