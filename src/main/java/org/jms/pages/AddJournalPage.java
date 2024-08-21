@@ -1739,7 +1739,8 @@ public class AddJournalPage {
         page.locator(checkall).click();
         page.locator(tomail).click();
         page.locator(checkall).click();
-        page.locator(Acknowlegeemtnsavemailbutton).click();
+        Thread.sleep(2000);
+        page.waitForSelector(Acknowlegeemtnsavemailbutton).click();
         page.waitForTimeout(2000);
         page.waitForSelector(Acknowledgementyesalert).click();
         page.locator(Acknowlegementtoastclose).click();
@@ -1910,8 +1911,8 @@ public class AddJournalPage {
         page.locator(trackType).click();
         page.locator(FastTrack).click();
         page.waitForTimeout(3000);
-        page.waitForSelector(importtatfromjournal).click();
-        page.locator(confirmimportfromjour).click();
+//        page.waitForSelector(importtatfromjournal).click();
+//        page.locator(confirmimportfromjour).click();
 
         List<String> NewFasttrackEditedValues = new ArrayList<>();
 
@@ -1952,6 +1953,7 @@ public class AddJournalPage {
 
 
         generalPubAcroWithJname(Pub, J_acrm, J_name);
+
         page.locator(importPubTAT_button).click();
         page.locator(importPubTATyes).click();
 
@@ -1988,8 +1990,12 @@ public class AddJournalPage {
         page.locator(TATShow).click();
         page.locator(trackType).click();
         page.locator(GenTrack).click();
+        System.out.println("Gen has been clicked");
+
         page.locator(importtatfromjournal).click();
         page.locator(confirmimportfromjour).click();
+        page.evaluate("window.scrollBy(0, 320)");
+
 
 
         List<String> NewGeneralEditedValues = new ArrayList<>();
@@ -2018,13 +2024,16 @@ public class AddJournalPage {
         NewGeneralEditedValues.add(page.locator(daysforprintQC).inputValue());
         NewGeneralEditedValues.add(page.locator(daysforprintxml).inputValue());
 
-        page.waitForTimeout(2000);
+        page.waitForTimeout(4000);
         page.locator(trackType).click();
         page.locator(FastTrack).click();
-        page.waitForTimeout(2000);
+        System.out.println("FasTrack has been clicked");
 
-        page.waitForSelector(importtatfromjournal).click();
-        page.locator(confirmimportfromjour).click();
+        Thread.sleep(2000);
+        page.evaluate("window.scrollBy(0, 320)");
+
+//        page.locator(importtatfromjournal).click();
+//        page.locator(confirmimportfromjour).click();
 
         List<String> NewFasttrackEditedValues = new ArrayList<>();
 

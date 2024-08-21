@@ -45,6 +45,12 @@ public class UserManagementPage {
     private String password = "id=signin_pwd";
     private String SignIn = "//button[normalize-space()='Sign in']";
     private String profile = "//p[normalize-space()='Profile']";
+    private String security = "//button[normalize-space()='Security']";
+    private String oldPasswrd = "//input[@placeholder='Old Password']";
+    private String newPasswrd = "//input[@placeholder='New Password']";
+    private String confirmPasswrd = "//input[@placeholder='Confirm Password']";
+    private String ChangeOkPassword = "//button[normalize-space()='Change Password']";
+
     private String Manage = "//p[normalize-space()='Manage']";
 
     private String SelectView = "id=select_view";
@@ -743,8 +749,8 @@ public class UserManagementPage {
         page.waitForSelector(ArticleView).click();
         page.waitForTimeout(2000);
 
-        boolean VisibilityArt =  page.locator("(//em[text()='" + doivalue + "'])[1]//preceding::td[2]").isVisible();
-        System.out.println("Visibility of Art with DOI: "+VisibilityArt);
+        boolean VisibilityArt = page.locator("(//em[text()='" + doivalue + "'])[1]//preceding::td[2]").isVisible();
+        System.out.println("Visibility of Art with DOI: " + VisibilityArt);
         page.locator("(//em[text()='" + doivalue + "'])[1]//preceding::td[2]").click();
         return doivalue;
 
@@ -1141,7 +1147,7 @@ public class UserManagementPage {
             page.waitForSelector(DeactivaeIcon).click();
             page.reload();
 
-            editUserProfileCard(empName,empId);
+            editUserProfileCard(empName, empId);
             page.waitForSelector(ActivateIcon).click();
             page.reload();
 
@@ -1242,7 +1248,6 @@ public class UserManagementPage {
                                                String roleTL, String Uname, String Pwd, String rolecheck, String PmUname, String PmPwd) throws InterruptedException {
 
 
-
         generalAddUser(empName, empId, designation, gender, depart, Pub, access, role, mail);
         page.locator(AddOkButton).click();
 
@@ -1303,8 +1308,6 @@ public class UserManagementPage {
 
         RolesCheck.add(UserRole);
         System.out.println("User inside List :" + UserRole);
-
-
 
 
         return RolesCheck;
@@ -1581,8 +1584,6 @@ public class UserManagementPage {
         page.reload();
 
 
-
-
         page.locator(Manage).click();
         page.locator(SelectView).click();
         page.locator(JourView).click();
@@ -1852,7 +1853,6 @@ public class UserManagementPage {
         }
 
 
-
     }
 
 
@@ -1965,9 +1965,11 @@ public class UserManagementPage {
             page.waitForTimeout(2000);
             page.locator(DeactivaeIcon).click();
             page.reload();
-            editUserProfileCard(empName,empId);
+            editUserProfileCard(empName, empId);
             page.locator(ActivateIcon).click();
+            page.waitForTimeout(4000);
             page.reload();
+            System.out.println("User Deactivated");
 //            page.locator(addCloseButton).click();
 
             System.out.println("Close button clicked in if");
@@ -1985,13 +1987,15 @@ public class UserManagementPage {
         }
 
         page.locator(Logout).click();
-        page.locator(username).fill(Uname);
-        page.locator(password).fill(Pwd);
+        page.locator(username).fill(empId);
+        page.locator(password).fill(empId);
         page.locator(SignIn).click();
 
-        Boolean ErrMSg = page.locator("//span[text()='* User Disabled. Contact admin']").isVisible();
+        page.waitForTimeout(2000);
+        Boolean ErrMSg = page.waitForSelector("//span[text()='* User Disabled. Contact admin']").isVisible();
         System.out.println("Is err msg visible :" + ErrMSg);
 
+        Thread.sleep(3000);
         page.locator(username).fill("7000");
         page.locator(password).fill("7000");
         page.locator(SignIn).click();
@@ -2012,6 +2016,7 @@ public class UserManagementPage {
                                                  String depart, String Pub, String access, String role, String mail,
                                                  String Uname, String Pwd) throws InterruptedException {
 
+
         generalAddUser(empName, empId, designation, gender, depart, Pub, access, role, mail);
         page.locator(AddOkButton).click();
         page.waitForTimeout(2000);
@@ -2023,7 +2028,7 @@ public class UserManagementPage {
         editUserProfileCard(empName, empId);
 
 
-        page.waitForTimeout(2000);
+        page.waitForTimeout(3000);
         Boolean DeActVN = page.locator(DeactivaeIcon).isVisible();
 
         if (DeActVN.equals(true)) {
@@ -2093,7 +2098,6 @@ public class UserManagementPage {
             page.waitForTimeout(2000);
             page.locator(DeactivaeIcon).click();
             page.reload();
-
 
 
         } else {
@@ -2212,11 +2216,10 @@ public class UserManagementPage {
         }
 
 
-
     }
 
     public boolean checkDeactivationOfOwnIDforPM(String empName, String empId, String designation, String gender,
-                                            String depart, String Pub, String access, String role, String mail, String PmUname, String PmPass) throws InterruptedException {
+                                                 String depart, String Pub, String access, String role, String mail, String PmUname, String PmPass) throws InterruptedException {
 
         generalAddUser(empName, empId, designation, gender, depart, Pub, access, role, mail);
         page.waitForSelector(AddOkButton).click();
@@ -2266,7 +2269,6 @@ public class UserManagementPage {
             page.waitForSelector(Logout).click();
 
 
-
         }
         page.locator(username).fill(empId);
         page.locator(password).fill(empId);
@@ -2287,6 +2289,43 @@ public class UserManagementPage {
     }
 
 
+    public boolean CheckWithWrongPreviousPassword(String empName, String empId, String designation, String gender,
+                                                  String depart, String Pub, String access,
+                                                  String role, String mail, String WrgOldPass, String NewPass) {
+
+
+        generalAddUser(empName, empId, designation, gender, depart, Pub, access, role, mail);
+        page.locator(AddOkButton).click();
+        page.waitForTimeout(2000);
+        page.locator(addCloseButton).click();
+        page.reload();
+        page.locator(Logout).click();
+        page.locator(username).fill(empId);
+        page.locator(password).fill(empId);
+        page.locator(SignIn).click();
+        page.waitForTimeout(2000);
+
+        page.locator(profile).click();
+        page.locator(security).click();
+        page.waitForTimeout(2000);
+        page.locator(oldPasswrd).fill(WrgOldPass);
+        page.locator(newPasswrd).fill(NewPass);
+        page.locator(confirmPasswrd).fill(NewPass);
+        page.waitForSelector(ChangeOkPassword).click();
+
+        return page.locator("//*[text()='Dummy xpath for Oldpasswrd error']").isVisible();
+    }
+
+
+    public void CheckWithCorrectPrevPassword(){
+
+
+    }
+
+
+
 }
+
+
 
 

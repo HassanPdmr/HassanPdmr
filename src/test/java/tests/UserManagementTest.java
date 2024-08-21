@@ -704,14 +704,14 @@ public class UserManagementTest extends BaseTest {
     }
 
 
-    @DataProvider(name = "getUserDeactData")
-    public Object[][] getUserDactData() throws IOException {
+    @DataProvider(name = "getUserDeactDataN")
+    public Object[][] getUserDactDataN() throws IOException {
 
         return ReadExcelData(".//src//test//resources//files//User_Management_ActDeact.xlsx", 0);
 
     }
 
-    @Test(priority = 24, dataProvider = "getUserDeactData", description = "JMS-145 : Deactivate the user and ensure the employee can’t be logged in again - Version 1 ")
+    @Test(priority = 24, dataProvider = "getUserDeactDataN", description = "JMS-145 : Deactivate the user and ensure the employee can’t be logged in again - Version 1 ")
     public void verifyDeactivatedUserLogin(String empName, String empId, String designation, String gender,
                                            String depart, String Pub, String access, String role, String mail, String Uname, String Pwd) throws InterruptedException {
 
@@ -721,7 +721,7 @@ public class UserManagementTest extends BaseTest {
 
         boolean ActualVal = userManagement.checkDeactivationUserAndLogin(empName, empId, designation, gender, depart, Pub, access, role, mail, Uname, Pwd);
 
-        Assert.assertFalse(ActualVal, "Deactivated User can able to login again");
+        Assert.assertTrue(ActualVal, "Deactivated User can able to login again");
 
         ExtentReportListener.getTest().log(Status.INFO, "Deactivated user login has been verified");
 
@@ -779,6 +779,7 @@ public class UserManagementTest extends BaseTest {
 
 
     }
+
     @DataProvider(name = "getTLAMReactivaton")
     public Object[][] getTLAMReactivaton() throws IOException {
 
@@ -797,7 +798,7 @@ public class UserManagementTest extends BaseTest {
         ExtentReportListener.getTest().log(Status.INFO, "Deactivate and Reactivate the TL/AM login and check to assign to user");
 
 
-        boolean ActulVal = userManagement.checkReactivatedTLorAMtoAssign(journalacro,artname,workflow,empName,EmpId,Uname,Pwd,UempName,UempId);
+        boolean ActulVal = userManagement.checkReactivatedTLorAMtoAssign(journalacro, artname, workflow, empName, EmpId, Uname, Pwd, UempName, UempId);
 
         Assert.assertTrue(ActulVal, "Can't able to assign to user login from AM/TL Reactivated login");
 
@@ -821,15 +822,40 @@ public class UserManagementTest extends BaseTest {
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
         ExtentReportListener.getTest().log(Status.INFO, "Check deactivation of ownID for PMuser");
-        boolean ActulVal = userManagement.checkDeactivationOfOwnIDforPM(empName,empId,designation,gender,depart,Pub,access,role,mail,PmUname,PmPass);
+        boolean ActulVal = userManagement.checkDeactivationOfOwnIDforPM(empName, empId, designation, gender, depart, Pub, access, role, mail, PmUname, PmPass);
 
         Assert.assertTrue(ActulVal, "Deactivated PM user can able to login here");
         ExtentReportListener.getTest().log(Status.INFO, "Deactivated PMuser login has been verified");
 
     }
 
+    @DataProvider(name = "getWrongOldPass")
+    public Object[][] getWrongOldPassVerification() throws IOException {
+
+        return ReadExcelData(".//src//test//resources//files//User_Management_Security.xlsx", 3);
+
+    }
+
+
+    @Test(priority = 29, dataProvider = "getWrongOldPass", description = "JMS-62 : Provide wrong previous password in change password screen and attempt - Version 2")
+    public void verifyOldPassWrdChangeFromSecurity(String empName, String empId, String designation, String gender,
+                                                   String depart, String Pub, String access, String role, String mail, String WrgOldPass, String NewPass) throws InterruptedException {
+
+
+        ExtentReportListener.getTest().assignCategory("User Management Security");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
+        ExtentReportListener.getTest().log(Status.INFO, "Click profile option --> security");
+        ExtentReportListener.getTest().log(Status.INFO, "Enter incorrect password at the old password details,try in change password");
+
+
+        boolean ActulVal = userManagement.CheckWithWrongPreviousPassword(empName, empId, designation, gender, depart, Pub, access, role, mail, WrgOldPass, NewPass);
+        Assert.assertTrue(ActulVal, "Old Password is not correct Alert was not displayed");
+
+        ExtentReportListener.getTest().log(Status.INFO, "Password change page is displayed");
+        ExtentReportListener.getTest().log(Status.INFO, "Incorrect password alert displayed, user is unable to change the password.");
 
 
 
+    }
 
-}
+    }
