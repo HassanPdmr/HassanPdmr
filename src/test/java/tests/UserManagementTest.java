@@ -54,7 +54,7 @@ public class UserManagementTest extends BaseTest {
         return ReadExcelData(".//src//test//resources//files//User_Management.xlsx", 0);
     }
 
-    @Test(priority = 1, dataProvider = "getAddUserdata", description = "JMS-52 : Provide details for new employee but don’t click ‘ADD’ & ensure employee not created")
+    @Test(priority = 1, dataProvider = "getAddUserdata", description = "JMS-52 : Provide details for new employee but don’t click ‘ADD’ & ensure employee not created - Version 3")
     public void verifyCreatingUserBynotClickingAdd(String empName, String empId, String designation,
                                                    String gender, String depart, String Pub, String access,
                                                    String role, String mail) throws InterruptedException {
@@ -62,19 +62,22 @@ public class UserManagementTest extends BaseTest {
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
 
-        ExtentReportListener.getTest().log(Status.INFO, "Adding User without clicking Add button");
+        ExtentReportListener.getTest().log(Status.INFO, "Enter the details and don't click ‘ADD’button. Instead click 'cancel' or 'X'");
+        ExtentReportListener.getTest().log(Status.INFO, "Check whether user created from list of users");
+
 
         userManagement.creatingUserWithoutAdd(empName, empId, designation, gender,
                 depart, Pub, access, role, mail);
 
         Assert.assertFalse(false, "User created even without clicking Add button");
 
-        ExtentReportListener.getTest().log(Status.INFO, "User creation failed without clicking Add button");
+        ExtentReportListener.getTest().log(Status.INFO, "Navigated away from AddUser page");
+        ExtentReportListener.getTest().log(Status.INFO, "User not available - not created");
 
 
     }
 
-    @Test(priority = 2, dataProvider = "getAddUserdata", description = "JMS-55 : Try duplicate an employee by Emp-ID - EmpID should be unique - Version 1 Show ghost string Display Author/Updater ")
+    @Test(priority = 2, dataProvider = "getAddUserdata", description = " JMS-55 : Try duplicate an employee by Emp-ID - EmpID should be unique - Version 2")
     public void verifyDuplicateEmpIdNotAdded(String empName, String empId, String designation,
                                              String gender, String depart, String Pub, String access,
                                              String role, String mail) {
@@ -82,14 +85,14 @@ public class UserManagementTest extends BaseTest {
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
 
-        ExtentReportListener.getTest().log(Status.INFO, "Verifying the duplicate EmpID should be unique");
+        ExtentReportListener.getTest().log(Status.INFO, "Try to add the new user using the existing the user id");
 
         String AlertMessage = userManagement.duplicateEmpId(empName, empId, designation, gender,
                 depart, Pub, access, role, mail);
 
         Assert.assertEquals(AlertMessage, "Employee ID already exists.");
 
-        ExtentReportListener.getTest().log(Status.INFO, "Verifying the duplicate EmpID should be unique");
+        ExtentReportListener.getTest().log(Status.INFO, "The user should not be created. The duplication is not allowed.");
 
 
     }
@@ -100,7 +103,7 @@ public class UserManagementTest extends BaseTest {
         return ReadExcelData(".//src//test//resources//files//User_Management.xlsx", 1);
     }
 
-    @Test(priority = 3, dataProvider = "getNewAddUser", description = "JMS-43 : Add new user with valid details and verify the entered details in Profile")
+    @Test(priority = 3, dataProvider = "getNewAddUser", description = "JMS-43 : Add new user with valid details and verify the entered details in Profile - Version 2")
     public void verifyAddUserandVerifyfromEdit(String empName, String empId, String designation,
                                                String gender, String depart, String Pub, String access,
                                                String role, String mail) throws InterruptedException {
@@ -108,7 +111,11 @@ public class UserManagementTest extends BaseTest {
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Verify new user from edit profile");
+        ExtentReportListener.getTest().log(Status.INFO, "Click on the User menu");
+        ExtentReportListener.getTest().log(Status.INFO, "Click on the Add user button");
+        ExtentReportListener.getTest().log(Status.INFO, "Add the valid information, Employee ID should be unique.");
+        ExtentReportListener.getTest().log(Status.INFO, "Click on the Add user");
+        ExtentReportListener.getTest().log(Status.INFO, "Click on the Profile, Verify the updated data's correct.");
         List<String> actualUserValues = userManagement.addNewUserandVerify(empName, empId, designation, gender,
                 depart, Pub, access, role, mail);
 
@@ -117,7 +124,11 @@ public class UserManagementTest extends BaseTest {
 
         Assert.assertEquals(actualUserValues, expectedUserValues, "Values are differ from page class");
 
-        ExtentReportListener.getTest().log(Status.INFO, "New user from edit profile has been verified");
+        ExtentReportListener.getTest().log(Status.INFO, "The user page is displayed");
+        ExtentReportListener.getTest().log(Status.INFO, "The Add user page is pop up is displayed");
+        ExtentReportListener.getTest().log(Status.INFO, "The data should be updated");
+        ExtentReportListener.getTest().log(Status.INFO, "The user should be added");
+        ExtentReportListener.getTest().log(Status.INFO, "The data entered on the add profile should be displayed on the profile page.");
 
 
     }
@@ -130,12 +141,14 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 4, dataProvider = "getEmpName", description = "JMS-48 : Verify the name should not allow other than alphabets - check with invalid scenarios - Version 1")
+    @Test(priority = 4, dataProvider = "getEmpName", description = "JMS-48 : Verify the name should not allow other than alphabets - check with invalid scenarios - Version 3")
     public void verifyEmpNameShouldAllowAlphabets(String empName) throws InterruptedException {
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check the Emp Name only with alphabets");
+        ExtentReportListener.getTest().log(Status.INFO, "Try to enter the invalid format other than alphabet at the name file and click on the Add user button.");
+        ExtentReportListener.getTest().log(Status.INFO, "Try the same on Existing users");
+
         List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//User_Management.xlsx", 2);
 
         for (Object[] row : excelDataA) {
@@ -156,7 +169,8 @@ public class UserManagementTest extends BaseTest {
 
                 System.out.println("Actual Error: " + actualErr);
                 Assert.assertFalse(actualErr, "No Validation error displayed");
-                ExtentReportListener.getTest().log(Status.INFO, "EMP name has been verified with alphabets");
+                ExtentReportListener.getTest().log(Status.INFO, "The name should not accept. User should not be created.");
+                ExtentReportListener.getTest().log(Status.INFO, "Invalid name should not get accepted");
 
 
             }
@@ -173,12 +187,12 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 5, dataProvider = "getEmpID", description = "JMS-49 : Verify the validation of employee id, whether not accepting any Alphabets - Version 1")
+    @Test(priority = 5, dataProvider = "getEmpID", description = "JMS-49 : Verify the validation of employee id, whether not accepting any Alphabets - Version 2")
     public void verifyEmpIDShouldOnlyAcceptNumerics(String empId) throws InterruptedException {
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check the EmpID only with Numerics");
+        ExtentReportListener.getTest().log(Status.INFO, "Try to enter the alphabet at the employee id field and Click Add user.");
         List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//User_Management.xlsx", 4);
 
         for (Object[] row : excelDataA) {
@@ -199,7 +213,7 @@ public class UserManagementTest extends BaseTest {
 
                 System.out.println("Actual Error: " + actualErr);
                 Assert.assertFalse(actualErr, "No Validation error displayed");
-                ExtentReportListener.getTest().log(Status.INFO, "EmpID has been verified with numerics");
+                ExtentReportListener.getTest().log(Status.INFO, "Should not accept at the employee id field and user should not be created.");
 
 
             }
@@ -210,13 +224,14 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 6, description = "Test Case has relations. Click to jump to section JMS-54 : Attempt to edit employee details, but don’t click ‘UPDATE’ & ensure the details have not changed - Version 1 ")
+    @Test(priority = 6, description = "JMS-54 : Attempt to edit employee details, but don’t click ‘UPDATE’ & ensure the details have not changed - Version 2")
     public void verifyEditEmployeeWithoutUpdateClick() throws InterruptedException {
 
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check edit employee details without clicking update button");
+        ExtentReportListener.getTest().log(Status.INFO, "Click on the edit button");
+        ExtentReportListener.getTest().log(Status.INFO, "Modify the data,update button should not be clicked and close the button");
         List<Object[]> excelDataA = ExcelParser.getExcelData(".//src//test//resources//files//User_Management", 8);
 
         for (Object[] row : excelDataA) {
@@ -243,7 +258,8 @@ public class UserManagementTest extends BaseTest {
 
                 Assert.assertEquals(actualExp, expectedUserValues, "Values are differ from page class");
 
-                ExtentReportListener.getTest().log(Status.INFO, "edit employee details without clicking update button has been verified");
+                ExtentReportListener.getTest().log(Status.INFO, "Edit pop up is displayed");
+                ExtentReportListener.getTest().log(Status.INFO, "Verify at the profile page , data should not be changed.");
 
 
             }
@@ -252,12 +268,12 @@ public class UserManagementTest extends BaseTest {
         }
     }
 
-    @Test(priority = 7, description = "JMS-56 : Duplicate user with employ ID of the deactivated account - Version 2")
+    @Test(priority = 7, description = "JMS-56 : Duplicate user with employ ID of the deactivated account - Version 3")
     public void verifyDupEmpIDofDeactivatedAccount() throws InterruptedException {
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check inactive user EMP id can added again from add user");
+        ExtentReportListener.getTest().log(Status.INFO, "Try to create the new user using the deactivated employ Id.");
         List<Object[]> excelDataA = ExcelParser.getExcelData("D:\\ZoneTest\\User_management.xlsx", 8);
 
         for (Object[] row : excelDataA) {
@@ -281,7 +297,7 @@ public class UserManagementTest extends BaseTest {
 
                 Assert.assertEquals(actualErr, expectedMsg, "Same inactive user also added here");
 
-                ExtentReportListener.getTest().log(Status.INFO, "Inactive user login has been verified");
+                ExtentReportListener.getTest().log(Status.INFO, "The user should not be created");
 
 
             }
@@ -297,14 +313,17 @@ public class UserManagementTest extends BaseTest {
     }
 
 
-    @Test(priority = 8, dataProvider = "getGender", description = "JMS-51 : Verify the Male/female icon on employee badge based on gender - Version 1")
+    @Test(priority = 8, dataProvider = "getGender", description = "JMS-51 : Verify the Male/female icon on employee badge based on gender - Version 2")
     public void verifyGenderWithMaleAndFemale(String empName, String empId, String designation, String gender,
                                               String depart, String Pub, String access, String role, String mail) throws InterruptedException {
 
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check Gender dropdown");
+        ExtentReportListener.getTest().log(Status.INFO, "Click on the User menu");
+        ExtentReportListener.getTest().log(Status.INFO, "Click on the Add user button");
+        ExtentReportListener.getTest().log(Status.INFO, "Enter the details of the user as the male");
+        ExtentReportListener.getTest().log(Status.INFO, "Enter the details of the user as the Female");
 
         List<String> actual = userManagement.MaleFemaleIconCheck(empName, empId, designation, gender, depart, Pub, access, role, mail);
 
@@ -318,7 +337,10 @@ public class UserManagementTest extends BaseTest {
             Assert.assertEquals(actual.get(0), FemaleGen, "Expected gender to be Female");
         }
 
-        ExtentReportListener.getTest().log(Status.INFO, "Gender icon has been verified");
+        ExtentReportListener.getTest().log(Status.INFO, "The user page is displayed");
+        ExtentReportListener.getTest().log(Status.INFO, "The Add user page is pop up is displayed");
+        ExtentReportListener.getTest().log(Status.INFO, "The male gender is displayed at the JMS user page of the created user.");
+        ExtentReportListener.getTest().log(Status.INFO, "The Female image is displayed at the JMS user page of the created user.");
 
     }
 
@@ -329,14 +351,19 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 10, dataProvider = "getChangingRoles", description = " JMS-207 : Change role of any user and verify the same by logging into user’s profile - Version 1")
+    @Test(priority = 10, dataProvider = "getChangingRoles", description = "JMS-207 : Change role of any user and verify the same by logging into user’s profile - Version 2")
     public void verifyChangingRolesByLoggingUser(String empName, String empId, String designation, String gender,
                                                  String depart, String Pub, String access, String role, String mail,
                                                  String roleTL, String Uname, String Pwd, String rolecheck, String PmUname, String PmPwd) throws InterruptedException {
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check Roles from TL to User and User to TL");
+        ExtentReportListener.getTest().log(Status.INFO, "From PM Login, Change the role of the Employee(A) from 'user'to TL");
+        ExtentReportListener.getTest().log(Status.INFO, "Then log in to the employee's profile and check the Role");
+        ExtentReportListener.getTest().log(Status.INFO, "Check whether 'Assign' option is enabled which is exclusive for TL");
+        ExtentReportListener.getTest().log(Status.INFO, "From PM login, Change again role of the emp(A) from TL to 'Login', and verify");
+        ExtentReportListener.getTest().log(Status.INFO, "Login to the employee's profile and verify the AM/TL dashboard is available");
+        ExtentReportListener.getTest().log(Status.INFO, "Check whether the employee can able 'Add the article' now");
 
         List<String> actualVal = userManagement.CheckWithChangingRoles(empName, empId, designation, gender, depart,
                 Pub, access, role, mail, roleTL, Uname, Pwd, rolecheck, PmUname, PmPwd);
@@ -349,7 +376,13 @@ public class UserManagementTest extends BaseTest {
         Assert.assertEquals(actualVal.get(0), TLVal, "Expected gender to be Male");
         Assert.assertEquals(actualVal.get(1), UserVal, "Expected gender to be FeMale");
 
-        ExtentReportListener.getTest().log(Status.INFO, "Changing roles has been verified");
+        ExtentReportListener.getTest().log(Status.INFO, "The Role should be changed by the PM.");
+        ExtentReportListener.getTest().log(Status.INFO, "Role changed from User to 'AM/TL'");
+        ExtentReportListener.getTest().log(Status.INFO, "'Assign' option is enabled");
+        ExtentReportListener.getTest().log(Status.INFO, "Role now changed again from 'AM/TL' to 'Login'");
+        ExtentReportListener.getTest().log(Status.INFO, "AM/TL dashboard is NOT available now");
+        ExtentReportListener.getTest().log(Status.INFO, "Can navigate to 'Add article' page, and check for add article");
+
 
 
     }
@@ -362,7 +395,7 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 9, dataProvider = "getDepartDesignation", description = " JMS-57 : Verify Designation and Department don’t impact on the roles assigned - Version 2")
+    @Test(priority = 9, dataProvider = "getDepartDesignation", description = "JMS-57 : Verify Designation and Department don’t impact on the roles assigned - Version 2")
     public void verifyDepartDesignOnUserRoles(String empName, String empId, String designation,
                                               String gender, String depart, String Pub, String access, String role, String mail,
                                               String Uname, String Pwd, String desigNew, String departNew) throws InterruptedException {
@@ -370,7 +403,10 @@ public class UserManagementTest extends BaseTest {
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check Designation and Department don't impact on User roles");
+        ExtentReportListener.getTest().log(Status.INFO, "Add user by giving all the mandatory details like Emp-ID, name, Access, Role");
+        ExtentReportListener.getTest().log(Status.INFO, "Login as the user");
+        ExtentReportListener.getTest().log(Status.INFO, "As PM, Change now the Dept & Designation of the user as totally irrelavant and update");
+        ExtentReportListener.getTest().log(Status.INFO, "Repeat step2 and check");
 
 
         List<String> actualVal = userManagement.desigDeptVerification(empName, empId, designation, gender,
@@ -389,7 +425,10 @@ public class UserManagementTest extends BaseTest {
         Assert.assertEquals(actualVal.get(2), UpdatedDesigVal, "Wrong Updated Designation displayed");
         Assert.assertEquals(actualVal.get(3), UpdatedDeptVal, "Wrong Updated Department displayed");
 
-        ExtentReportListener.getTest().log(Status.INFO, "Department and Designation has been verified which it doesn't reflect on roles");
+        ExtentReportListener.getTest().log(Status.INFO, "User must be able to create");
+        ExtentReportListener.getTest().log(Status.INFO, "User able to login");
+        ExtentReportListener.getTest().log(Status.INFO, "User updated");
+        ExtentReportListener.getTest().log(Status.INFO, "User able to login as previous and continous the work as usual");
 
 
     }
@@ -408,7 +447,11 @@ public class UserManagementTest extends BaseTest {
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check for Manage View for Publisher, Journal and Article view");
+        ExtentReportListener.getTest().log(Status.INFO, "Click on the Manage menu");
+        ExtentReportListener.getTest().log(Status.INFO, "Click on the Publisher view");
+        ExtentReportListener.getTest().log(Status.INFO, "Click on the article view");
+        ExtentReportListener.getTest().log(Status.INFO, " Click on the Journal view");
+
 
         List<Boolean> actualVal = userManagement.navigateToAllManageViewPage(PubV, JourV, ArtV);
 
@@ -416,7 +459,10 @@ public class UserManagementTest extends BaseTest {
         Assert.assertTrue(actualVal.get(1), "View was not displayed as per the option");
         Assert.assertTrue(actualVal.get(2), "View was not displayed as per the option");
 
-        ExtentReportListener.getTest().log(Status.INFO, "All Manage view has been displayed");
+        ExtentReportListener.getTest().log(Status.INFO, "Manage view page is displayed");
+        ExtentReportListener.getTest().log(Status.INFO, "All the Publisher list are displayed");
+        ExtentReportListener.getTest().log(Status.INFO, "All the Article list displayed");
+        ExtentReportListener.getTest().log(Status.INFO, "All the journal list displayed");
 
 
     }
@@ -428,12 +474,12 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 12, dataProvider = "getPublisherView", description = "JMS-211 : Add a new Publisher(Pub-A) and verify the publisher is displayed with correct Name/Acronym - Version 1")
+    @Test(priority = 12, dataProvider = "getPublisherView", description = "JMS-211 : Add a new Publisher(Pub-A) and verify the publisher is displayed with correct Name/Acronym - Version 2")
     public void verifyPubView(String PubAcro, String PubName) {
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check for Publisher verify with ack and name");
+        ExtentReportListener.getTest().log(Status.INFO, "Create the publisher as Pub A");
 
         List<Object> actualVal = userManagement.addAndVerifyPublisher(PubAcro, PubName);
 
@@ -443,7 +489,7 @@ public class UserManagementTest extends BaseTest {
 
         Assert.assertFalse((Boolean) actualVal.get(2), "Journal was added");
 
-        ExtentReportListener.getTest().log(Status.INFO, "Publisher name and Acro has been verified");
+        ExtentReportListener.getTest().log(Status.INFO, "Verify that publisher is displayed on the manage board with correct Name/Acronym");
 
 
     }
@@ -456,24 +502,53 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 13, dataProvider = "getTwoJournalCheck", description = "JMS-212 : Add one or two journals(Jrnl-A,B) under the publisher and revisit the Publisher banner. - Version 1")
+    @Test(priority = 13, dataProvider = "getTwoJournalCheck", description = "JMS-212 : Add one or two journals(Jrnl-A,B) under the publisher and revisit the Publisher banner. - Version 2")
     public void verifyTwoJournals(String PubAcro, String PubName, String Jacro,
                                   String Jname, String JacroNew, String JnameNew) {
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check two journals that can be added in one publisher");
+        ExtentReportListener.getTest().log(Status.INFO, "Create the journal A, B under the Pub A");
+        ExtentReportListener.getTest().log(Status.INFO, "navigate to Manage->Publisher View page; Check the journal count on the Publisher");
+        ExtentReportListener.getTest().log(Status.INFO, "Now on same - Check the Article count on the Publisher");
 
         List<Boolean> actualVal = userManagement.addTwoJounralsAndVerifywithPub(PubAcro, PubName, Jacro, Jname, JacroNew, JnameNew);
-
 
         Assert.assertTrue(actualVal.get(0), "Journal count 1 was not added");
         Assert.assertTrue(actualVal.get(1), "Journal count 2 was not added");
         Assert.assertTrue(actualVal.get(2), "Article was not listed here");
 
+        ExtentReportListener.getTest().log(Status.INFO, "Two journals have been created");
+        ExtentReportListener.getTest().log(Status.INFO, "journal count is updated as 2");
+        ExtentReportListener.getTest().log(Status.INFO, "No count is updated or indicated as '0'");
 
-        ExtentReportListener.getTest().log(Status.INFO, "Journals created and it has been verified under publisher");
 
+    }
+
+
+    @Test(priority = 14, dataProvider = "getTwoJournalCheck", description = "JMS-213 : Verify the added Journals displayed in Journal-View with their Name /Acronym correctly displayed - Version 2")
+    public void verifyTwoJournalsWithAcro(String PubAcro, String PubName, String Jacro,
+                                          String Jname, String JacroNew, String JnameNew) {
+
+        ExtentReportListener.getTest().assignCategory("User Management");
+        ExtentReportListener.getTest().assignAuthor("Hassan");
+        ExtentReportListener.getTest().log(Status.INFO, "Create 2 different journals under the Publisher");
+        ExtentReportListener.getTest().log(Status.INFO, "Check now in Manage->Journal view - Journals displayed under the Publisher");
+        ExtentReportListener.getTest().log(Status.INFO, "Check their acronyms");
+        ExtentReportListener.getTest().log(Status.INFO, "Check the article count for the concerned journals");
+
+        List<Object> actualVal = userManagement.addTwoJounralsAndVerifywithPubandJournalAcro(PubAcro, PubName, Jacro, Jname, JacroNew, JnameNew);
+
+        Assert.assertEquals(actualVal.get(0), Jacro, "Wrong Journal Acroname for 1stAdded Journal is displayed");
+
+        Assert.assertEquals(actualVal.get(1), JacroNew, "Wrong Journal Acroname for 1stAdded Journal is displayed");
+
+        Assert.assertFalse((Boolean) actualVal.get(2), "Article was added before creating it");
+
+        ExtentReportListener.getTest().log(Status.INFO, "Two journals created");
+        ExtentReportListener.getTest().log(Status.INFO, "Two journals displayed under the publisher");
+        ExtentReportListener.getTest().log(Status.INFO, "Acronyms are correctly displayed");
+        ExtentReportListener.getTest().log(Status.INFO, "If no articles created under the Particular journal - Art. count indicates '0'");
 
     }
 
@@ -485,14 +560,16 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 14, dataProvider = "getAddArtilce", description = " JMS-214 : Add articles under journal(Jrnl-A) and verify the Publisher and Journal banners - Version 1")
+    @Test(priority = 15, dataProvider = "getAddArtilce", description = "JMS-214 : Add articles under journal(Jrnl-A) and verify the Publisher and Journal banners - Version 2")
     public void verifyAddArticlewithPub(String PubAcro, String PubName, String Jacro,
                                         String Jname, String JacroArt, String artname, String workflow) throws InterruptedException {
 
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check with add article along with publisher");
+        ExtentReportListener.getTest().log(Status.INFO, "Create 2 articles under journal(Jrnl-A) only and check the Art.Count in Journal View");
+        ExtentReportListener.getTest().log(Status.INFO, "Now Check the Jrnl, Art count in Publisher View");
+
 
         Boolean actValue = userManagement.AddArticleWithPub(PubAcro, PubName, Jacro, Jname, JacroArt, artname, workflow);
         Assert.assertTrue(actValue, "Article not added");
@@ -509,27 +586,32 @@ public class UserManagementTest extends BaseTest {
     }
 
 
-    @Test(priority = 15, dataProvider = "getPubDescription", description = "JMS-216 : Verify the description of the publisher is displayed correctly in the outer banner - Version 1")
+    @Test(priority = 16, dataProvider = "getPubDescription", description = "JMS-216 : Verify the description of the publisher is displayed correctly in the outer banner - Version 2")
     public void verifyPubDescription(String PubAcro, String PubName, String Description) {
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check publisher Description and verify it");
+        ExtentReportListener.getTest().log(Status.INFO, "Click on the Manage menu");
+        ExtentReportListener.getTest().log(Status.INFO, "Click on the Publisher view");
+        ExtentReportListener.getTest().log(Status.INFO, "Create the publisher and update the description");
+        ExtentReportListener.getTest().log(Status.INFO, "Click on the Edit button and update the description.");
 
         String actualVal = userManagement.checkPubDescription(PubAcro, PubName, Description);
 
         Assert.assertEquals(actualVal, "Test Description", "Wrong description is displayed");
 
-        ExtentReportListener.getTest().log(Status.INFO, "Description has been successfully verified");
-
+        ExtentReportListener.getTest().log(Status.INFO, "Manage view page is displayed");
+        ExtentReportListener.getTest().log(Status.INFO, "All the Publisher list are displayed");
+        ExtentReportListener.getTest().log(Status.INFO, "The description is displayed at the card of the publisher correctly in the outer banner");
+        ExtentReportListener.getTest().log(Status.INFO, "The description is displayed at the card of the publisher correctly in the outer banner");
     }
 
-    @Test(priority = 16, dataProvider = "getPubDescription", description = "JMS-219 : Verify the following details in Publisher banner by adding/editing - Version 2")
+    @Test(priority = 17, dataProvider = "getPubDescription", description = "JMS-219 : Verify the following details in Publisher banner by adding/editing - Version 2")
     public void verifyPubDetailsOuterBanner(String PubAcro, String PubName, String Description) {
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check publisher Acroname and Desc in Outer banner  ");
+        ExtentReportListener.getTest().log(Status.INFO, "Check publisher Acroname and Description in Outer banner  ");
 
         List<String> actualVal = userManagement.checkPubDetailsInOuterBanner(PubAcro, PubName, Description);
 
@@ -549,13 +631,14 @@ public class UserManagementTest extends BaseTest {
     }
 
 
-    @Test(priority = 17, dataProvider = "getJournalBanner", description = "JMS-220 : Verify the following details in journal badge by adding/editing: - Version 2")
+    @Test(priority = 18, dataProvider = "getJournalBanner", description = "JMS-220 : Verify the following details in journal badge by adding/editing: - Version 3")
     public void verifyJournalDetailOuterBanner(String PubAcro, String PubName, String Jacro, String Jname) {
 
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check Journal Details in Journal Badge");
+        ExtentReportListener.getTest().log(Status.INFO, "Check the details inside the banner are correct");
+        ExtentReportListener.getTest().log(Status.INFO, "Modify the Recto option and check again");
 
         List<Object> actualVal = userManagement.checkJournalDetailInOuterBanner(PubAcro, PubName, Jacro, Jname);
 
@@ -564,7 +647,11 @@ public class UserManagementTest extends BaseTest {
         Assert.assertEquals(actualVal.get(2), Jname, "Wrong Journal Name displayed");
         Assert.assertTrue((Boolean) actualVal.get(3), "Wrong message");
 
-        ExtentReportListener.getTest().log(Status.INFO, "Journal badge has been successfully verified");
+        ExtentReportListener.getTest().log(Status.INFO, "Publisher Name is correct");
+        ExtentReportListener.getTest().log(Status.INFO, "Journal Name is correct");
+        ExtentReportListener.getTest().log(Status.INFO, "Journal Ackro is correct");
+        ExtentReportListener.getTest().log(Status.INFO, "Recto option is changed and updated correctly");
+
 
     }
 
@@ -576,7 +663,7 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 18, dataProvider = "getArticleBadge", description = "JMS-220 : Verify the following details in journal badge by adding/editing: - Version 2")
+    @Test(priority = 19, dataProvider = "getArticleBadge", description = "JMS-220 : Verify the following details in journal badge by adding/editing: - Version 2")
     public void verifyArticleName(String PubName, String journalacro, String Jack, String artname, String workflow) throws InterruptedException {
 
         ExtentReportListener.getTest().assignCategory("User Management");
@@ -602,16 +689,18 @@ public class UserManagementTest extends BaseTest {
     }
 
 
-    @Test(priority = 19, dataProvider = "getSearch", description = "JMS-220 : Verify the following details in journal badge by adding/editing: - Version 2")
+    @Test(priority = 20, dataProvider = "getSearch", description = "JMS-82 : Search with any text and verify the list is updated accordingly - Version 2")
     public void verifyStockSearch(String PubName) {
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Checking Search in Stock");
+        ExtentReportListener.getTest().log(Status.INFO, "Navigate to stocklist page");
+        ExtentReportListener.getTest().log(Status.INFO, "Search with any text (eg. publisher name) in the search box.");
 
         boolean actualVal = userManagement.checkSearchOptioninStock(PubName);
         Assert.assertTrue(actualVal, "Search results are not correctly updated.");
-        ExtentReportListener.getTest().log(Status.INFO, "Search verification completed.");
+        ExtentReportListener.getTest().log(Status.INFO, "The Publisher, Journal , article etc should be display in the stocklist.");
+        ExtentReportListener.getTest().log(Status.INFO, "In the search box, it will display a list of data as per the search");
 
 
     }
@@ -623,7 +712,7 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 20, dataProvider = "getPubFromFilter", description = "JMS-78 : Apply filter on Pub, journal separately and ensure the list is updated by filter(Publisher) - Version 2")
+    @Test(priority = 21, dataProvider = "getPubFromFilter", description = "JMS-78 : Apply filter on Pub, journal separately and ensure the list is updated by filter(Publisher) - Version 2")
     public void verifyPubinCountFilter(String PubAcro, String PubNam) {
 
         ExtentReportListener.getTest().assignCategory("User Management");
@@ -646,7 +735,7 @@ public class UserManagementTest extends BaseTest {
     }
 
 
-    @Test(priority = 21, dataProvider = "getJourFromFilter", description = "JMS-78 : Apply filter on Pub, journal separately and ensure the list is updated by filter(Journal) - Version 2")
+    @Test(priority = 22, dataProvider = "getJourFromFilter", description = "JMS-78 : Apply filter on Pub, journal separately and ensure the list is updated by filter(Journal) - Version 2")
     public void verifyJourInCountFilter(String PubAcro, String Jacro, String Jname) {
 
         ExtentReportListener.getTest().assignCategory("User Management");
@@ -667,7 +756,7 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 22, dataProvider = "getJrWithPub", description = "JMS-79 : Apply filter on Pub+journal and ensure the list is updated accordingly - Version 1 ")
+    @Test(priority = 23, dataProvider = "getJrWithPub", description = "JMS-79 : Apply filter on Pub+journal and ensure the list is updated accordingly - Version 1 ")
     public void verifyJrWithPubInFilter(String PubAcro, String PubName, String Jacro, String Jname) {
 
         ExtentReportListener.getTest().assignCategory("User Management");
@@ -689,7 +778,7 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 23, dataProvider = "getPenArt", description = "JMS-79 : Apply filter on Pub+journal and ensure the list is updated accordingly - Version 1 ")
+    @Test(priority = 24, dataProvider = "getPenArt", description = "JMS-79 : Apply filter on Pub+journal and ensure the list is updated accordingly - Version 1 ")
     public void verifyPendingArticleCount(String journalacro, String artname, String workflow) {
 
         ExtentReportListener.getTest().assignCategory("User Management");
@@ -711,19 +800,23 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 24, dataProvider = "getUserDeactDataN", description = "JMS-145 : Deactivate the user and ensure the employee can’t be logged in again - Version 1 ")
+    @Test(priority = 25, dataProvider = "getUserDeactDataN", description = "JMS-145 : Deactivate the user and ensure the employee can’t be logged in again - Version 2")
     public void verifyDeactivatedUserLogin(String empName, String empId, String designation, String gender,
                                            String depart, String Pub, String access, String role, String mail, String Uname, String Pwd) throws InterruptedException {
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Verification the deactivated user need to be login again");
+        ExtentReportListener.getTest().log(Status.INFO, "From Proj. Mngr login, Navigate to User-A's EDIT profile page");
+        ExtentReportListener.getTest().log(Status.INFO, "Deactivate the employee");
+        ExtentReportListener.getTest().log(Status.INFO, "Login with de-activate credential(user profile)");
 
         boolean ActualVal = userManagement.checkDeactivationUserAndLogin(empName, empId, designation, gender, depart, Pub, access, role, mail, Uname, Pwd);
 
         Assert.assertTrue(ActualVal, "Deactivated User can able to login again");
 
-        ExtentReportListener.getTest().log(Status.INFO, "Deactivated user login has been verified");
+        ExtentReportListener.getTest().log(Status.INFO, "PM is on User's profile page");
+        ExtentReportListener.getTest().log(Status.INFO, "Employee deactivated message should be displayed");
+        ExtentReportListener.getTest().log(Status.INFO, "User should be unable to login");
 
 
     }
@@ -735,20 +828,29 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 25, dataProvider = "getUserforAssign", description = " JMS-146 : Deactivate the user and ensure employee is not available to be assigned - Version 2")
+    @Test(priority = 26, dataProvider = "getUserforAssign", description = " JMS-146 : Deactivate the user and ensure employee is not available to be assigned - Version 2")
     public void verifyDeactivatedUsertoAssign(String empName, String empId, String designation, String gender,
                                               String depart, String Pub, String access, String role, String mail, String Uname, String Pwd) throws InterruptedException {
 
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Verify the deactivated user to login again");
+        ExtentReportListener.getTest().log(Status.INFO, "Check whether the User is available for his/her TL to Assign any task from TL login - click on 'Assign' icon and check on Assign List");
+        ExtentReportListener.getTest().log(Status.INFO, "Now from Proj. Mngr login, Deactivate the user");
+        ExtentReportListener.getTest().log(Status.INFO, "Now Login as TL");
+        ExtentReportListener.getTest().log(Status.INFO, "Repeat the step 1 and search the user");
+
+
+
 
         boolean ActualVal = userManagement.checkDeactivatedUserForAssign(empName, empId, designation, gender, depart, Pub, access, role, mail, Uname, Pwd);
 
         Assert.assertFalse(ActualVal, "Deactivated User displayed in assign option for Latex TL login");
 
-        ExtentReportListener.getTest().log(Status.INFO, "Deactivated user assign has been verified");
+        ExtentReportListener.getTest().log(Status.INFO, "User is available to be assigned");
+        ExtentReportListener.getTest().log(Status.INFO, "User is deactivated");
+        ExtentReportListener.getTest().log(Status.INFO, "Logged In as TL");
+        ExtentReportListener.getTest().log(Status.INFO, "Now User should not be available to assign any task");
 
 
     }
@@ -760,14 +862,17 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 26, dataProvider = "getActivateUserToLogin", description = "JMS-149 : Verify Deactivated employee can be re-activated, and check he/she can be signed in - Version 2")
+    @Test(priority = 27, dataProvider = "getActivateUserToLogin", description = "JMS-149 : Verify Deactivated employee can be re-activated, and check he/she can be signed in - Version 2")
     public void verifyActivatedUserToLogin(String empName, String empId, String designation, String gender,
                                            String depart, String Pub, String access, String role, String mail, String Uname, String Pwd) throws InterruptedException {
 
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Verify the deactivated to active and try user to login again");
+        ExtentReportListener.getTest().log(Status.INFO, "From Proj.Mngr login, Deactivate any User/TL");
+        ExtentReportListener.getTest().log(Status.INFO, "Verify the deactivation by logging as the user");
+        ExtentReportListener.getTest().log(Status.INFO, "From Proj.Mngr login, Re-Activate the user");
+        ExtentReportListener.getTest().log(Status.INFO, "Now Login again as the User");
 
 
         boolean ActulVal = userManagement.checkDeactivatedEmpToBeActivated(empName, empId, designation, gender, depart,
@@ -775,7 +880,10 @@ public class UserManagementTest extends BaseTest {
 
         Assert.assertTrue(ActulVal, "Can't able to login for Activated user");
 
-        ExtentReportListener.getTest().log(Status.INFO, "Deactivated user has been Activated and it has been verified");
+        ExtentReportListener.getTest().log(Status.INFO, "staff deactivated");
+        ExtentReportListener.getTest().log(Status.INFO, "Can't able to Login");
+        ExtentReportListener.getTest().log(Status.INFO, "staff Re-Activated");
+        ExtentReportListener.getTest().log(Status.INFO, "able to login sucessfully");
 
 
     }
@@ -788,21 +896,32 @@ public class UserManagementTest extends BaseTest {
     }
 
 
-    @Test(priority = 27, dataProvider = "getTLAMReactivaton", description = "JMS-151 : Reactivated employee (TL/AM) can perform the same roles as normal - Version 2")
+    @Test(priority = 28, dataProvider = "getTLAMReactivaton", description = " JMS-151 : Reactivated employee (TL/AM) can perform the same roles as normal - Version 2")
     public void verifyReactivationAMTLforAssign(String journalacro, String artname, String workflow,
                                                 String empName, String EmpId, String Uname, String Pwd, String UempName, String UempId) throws InterruptedException {
 
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Deactivate and Reactivate the TL/AM login and check to assign to user");
+
+        ExtentReportListener.getTest().log(Status.INFO, "Log in as a PM user");
+        ExtentReportListener.getTest().log(Status.INFO, "click on users functionality in the dashboard");
+        ExtentReportListener.getTest().log(Status.INFO, "Deactivate and reactivate same employee(TL/AM)");
+        ExtentReportListener.getTest().log(Status.INFO, "Login as a user (TL/AM)");
+        ExtentReportListener.getTest().log(Status.INFO, "verify reactivated employee (TL/AM) can perform the same roles (TaskAssigning) as normal");
 
 
         boolean ActulVal = userManagement.checkReactivatedTLorAMtoAssign(journalacro, artname, workflow, empName, EmpId, Uname, Pwd, UempName, UempId);
-
         Assert.assertTrue(ActulVal, "Can't able to assign to user login from AM/TL Reactivated login");
+        ExtentReportListener.getTest().log(Status.INFO, "The home page will displayed");
+        ExtentReportListener.getTest().log(Status.INFO, "The list of users will displayed");
+        ExtentReportListener.getTest().log(Status.INFO, "The employee will be reactivated");
+        ExtentReportListener.getTest().log(Status.INFO, "The home page will displayed");
+        ExtentReportListener.getTest().log(Status.INFO, "The employee should perfrom the same roles (TaskAssigning) as normal");
 
-        ExtentReportListener.getTest().log(Status.INFO, "Reactivation ID can able to assign to user verification is done");
+
+
+
 
     }
 
@@ -814,48 +933,53 @@ public class UserManagementTest extends BaseTest {
 
     }
 
-    @Test(priority = 28, dataProvider = "getPMOwnDeactivation", description = "JMS-152 : Deactivation of OwnID must be prevented for PMuser - Version 1")
+    @Test(priority = 29, dataProvider = "getPMOwnDeactivation", description = "JMS-152 : Deactivation of OwnID must be prevented for PMuser - Version 1")
     public void verifyOwnIDReactivation(String empName, String empId, String designation, String gender,
                                         String depart, String Pub, String access, String role, String mail, String PmUname, String PmPass) throws InterruptedException {
 
 
         ExtentReportListener.getTest().assignCategory("User Management");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check deactivation of ownID for PMuser");
+        ExtentReportListener.getTest().log(Status.INFO, "Login as Proj. Mngr");
+        ExtentReportListener.getTest().log(Status.INFO, "Search for own profile and try Deactivating own ID");
+
         boolean ActulVal = userManagement.checkDeactivationOfOwnIDforPM(empName, empId, designation, gender, depart, Pub, access, role, mail, PmUname, PmPass);
 
         Assert.assertTrue(ActulVal, "Deactivated PM user can able to login here");
-        ExtentReportListener.getTest().log(Status.INFO, "Deactivated PMuser login has been verified");
-
-    }
-
-    @DataProvider(name = "getWrongOldPass")
-    public Object[][] getWrongOldPassVerification() throws IOException {
-
-        return ReadExcelData(".//src//test//resources//files//User_Management_Security.xlsx", 3);
-
-    }
-
-
-    @Test(priority = 29, dataProvider = "getWrongOldPass", description = "JMS-62 : Provide wrong previous password in change password screen and attempt - Version 2")
-    public void verifyOldPassWrdChangeFromSecurity(String empName, String empId, String designation, String gender,
-                                                   String depart, String Pub, String access, String role, String mail, String WrgOldPass, String NewPass) throws InterruptedException {
-
-
-        ExtentReportListener.getTest().assignCategory("User Management Security");
-        ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Click profile option --> security");
-        ExtentReportListener.getTest().log(Status.INFO, "Enter incorrect password at the old password details,try in change password");
-
-
-        boolean ActulVal = userManagement.CheckWithWrongPreviousPassword(empName, empId, designation, gender, depart, Pub, access, role, mail, WrgOldPass, NewPass);
-        Assert.assertTrue(ActulVal, "Old Password is not correct Alert was not displayed");
-
-        ExtentReportListener.getTest().log(Status.INFO, "Password change page is displayed");
-        ExtentReportListener.getTest().log(Status.INFO, "Incorrect password alert displayed, user is unable to change the password.");
-
+        ExtentReportListener.getTest().log(Status.INFO, "Login sucessfully");
+        ExtentReportListener.getTest().log(Status.INFO, "Deactivating OwnID should not be allowed");
 
 
     }
 
-    }
+
+//    @DataProvider(name = "getWrongOldPass")
+//    public Object[][] getWrongOldPassVerification() throws IOException {
+//
+//        return ReadExcelData(".//src//test//resources//files//User_Management_Security.xlsx", 3);
+//
+//    }
+//
+//
+//    @Test(priority = 29, dataProvider = "getWrongOldPass", description = "JMS-62 : Provide wrong previous password in change password screen and attempt - Version 2")
+//    public void verifyOldPassWrdChangeFromSecurity(String empName, String empId, String designation, String gender,
+//                                                   String depart, String Pub, String access, String role, String mail, String WrgOldPass, String NewPass) throws InterruptedException {
+//
+//
+//        ExtentReportListener.getTest().assignCategory("User Management Security");
+//        ExtentReportListener.getTest().assignAuthor("Hassan");
+//        ExtentReportListener.getTest().log(Status.INFO, "Click profile option --> security");
+//        ExtentReportListener.getTest().log(Status.INFO, "Enter incorrect password at the old password details,try in change password");
+//
+//
+//        boolean ActulVal = userManagement.CheckWithWrongPreviousPassword(empName, empId, designation, gender, depart, Pub, access, role, mail, WrgOldPass, NewPass);
+//        Assert.assertTrue(ActulVal, "Old Password is not correct Alert was not displayed");
+//
+//        ExtentReportListener.getTest().log(Status.INFO, "Password change page is displayed");
+//        ExtentReportListener.getTest().log(Status.INFO, "Incorrect password alert displayed, user is unable to change the password.");
+//
+//
+//    }
+
+
+}

@@ -33,13 +33,13 @@ public class UMSecurityTest extends BaseTest {
 
     }
 
-    @Test(priority = 2, dataProvider = "getEmpIDCorrectDetails", description = "JMS-58 : Logout and login with Correct credentials - should allow user to login - Version 1")
+    @Test(priority = 2, dataProvider = "getEmpIDCorrectDetails", description = " JMS-58 : Logout and login with Correct credentials - should allow user to login - Version 2")
     public void verifyEmpIDWithCorrectDetails(String Uname, String Pwd, String EmpId) {
 
 
         ExtentReportListener.getTest().assignCategory("User Management Security");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, " Logout and login with Correct credentials with valid credentials");
+        ExtentReportListener.getTest().log(Status.INFO, " Logout and login with valid credentials");
         List<String> actualVal = umSecurityPage.loginLogoutCorrectData(Uname, Pwd, EmpId);
 
 
@@ -50,7 +50,7 @@ public class UMSecurityTest extends BaseTest {
         Assert.assertEquals(actualVal.get(0), Expected_EmpId_before, "Wrong Emp ID has been Displayed before logout");
         Assert.assertEquals(actualVal.get(1), Expected_EmpId_after, "Wrong Emp ID has been Displayed after login");
 
-        ExtentReportListener.getTest().log(Status.INFO, " Logout and Login with correct details has been verified");
+        ExtentReportListener.getTest().log(Status.INFO, "User is able to Login sucessfully");
 
 
     }
@@ -63,18 +63,23 @@ public class UMSecurityTest extends BaseTest {
 
     }
 
-    @Test(priority = 3, dataProvider = "getEmpIDInvalidDetails", description = "JMS-59 : Logout and login with wrong set of credentials - should not allow user to login - Version 1")
+    @Test(priority = 3, dataProvider = "getEmpIDInvalidDetails", description = "JMS-59 : Logout and login with wrong set of credentials - should not allow user to login - Version 3")
     public void verifyEmpIDWithInvalidCredentials(String IvUname, String IvPwd, String Pwd, String Uname, String ErrMsg) {
 
         ExtentReportListener.getTest().assignCategory("User Management Security");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check Logout and login with Correct credentials with Invalid credentials");
+        ExtentReportListener.getTest().log(Status.INFO, "Login with invalid credential for user");
+        ExtentReportListener.getTest().log(Status.INFO, "Enter correct employee id, wrong password for user");
+        ExtentReportListener.getTest().log(Status.INFO, "Enter wrong employee id correct password for user");
+
 
 
         boolean isErrorMessageDisplayed = umSecurityPage.loginLogoutINCorrectData(IvUname, IvPwd, Pwd, Uname, ErrMsg);
 
         Assert.assertTrue(isErrorMessageDisplayed, "Error message is not displayed as expected");
-        ExtentReportListener.getTest().log(Status.INFO, " Logout and Login with correct details has been verified");
+        ExtentReportListener.getTest().log(Status.INFO, "User is unnable to login");
+        ExtentReportListener.getTest().log(Status.INFO, "User is unnable to login");
+        ExtentReportListener.getTest().log(Status.INFO, "User is unnable to login");
 
 
     }
@@ -104,18 +109,21 @@ public class UMSecurityTest extends BaseTest {
     }
 
 
-    @Test(priority = 4, description = " JMS-60 : Logout and click ‘Back’ from browser - user shouldn’t be able to login - Version 3")
+    @Test(priority = 4, description = " JMS-60 : Logout and click ‘Back’ from browser - user shouldn’t be able to login - Version 3 ")
     public void verifyLogOutWithBackButton() {
 
         ExtentReportListener.getTest().assignCategory("User Management Security");
         ExtentReportListener.getTest().assignAuthor("Hassan");
-        ExtentReportListener.getTest().log(Status.INFO, "Check with Bck button from Logout, thus user should not able to login again");
+        ExtentReportListener.getTest().log(Status.INFO, "Logout the user");
+        ExtentReportListener.getTest().log(Status.INFO, "Click BACK button from browser");
 
 
         boolean isLoginPageDisplayedBack = umSecurityPage.CheckLogOutWithBackButton();
 
         Assert.assertFalse(isLoginPageDisplayedBack, "Login page has been displayed even after clicking Back button from browser");
-        ExtentReportListener.getTest().log(Status.INFO, "Back browser button with logout restriction for user has been verified");
+
+        ExtentReportListener.getTest().log(Status.INFO, "User on Login Page");
+        ExtentReportListener.getTest().log(Status.INFO, "User should not be allowed to login");
 
 
     }

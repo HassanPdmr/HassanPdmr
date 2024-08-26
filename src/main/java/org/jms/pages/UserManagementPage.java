@@ -2317,11 +2317,63 @@ public class UserManagementPage {
     }
 
 
-    public void CheckWithCorrectPrevPassword(){
+    public List<Object> addTwoJounralsAndVerifywithPubandJournalAcro(String PubAcro, String PubName, String Jacro,
+                                                                     String Jname, String JacroNew, String JnameNew) {
+
+
+        AddPubGeneral(PubAcro, PubName);
+
+        AddJournalGeneral(PubAcro, Jacro, Jname);
+        AddJournalUploadFilesOld();
+
+        page.waitForTimeout(2000);
+        page.evaluate("window.scrollBy(0, 1000)");
+        page.waitForTimeout(3000);
+        page.waitForSelector(addButton).click();
+        page.reload();
+
+        page.keyboard().press("Control+Shift+R");
+        page.reload();
+        page.waitForTimeout(2000);
+
+        AddJournalGeneral(PubAcro, JacroNew, JnameNew);
+        NewAddJournalUploadFiles();
+
+        page.evaluate("window.scrollBy(0, 1000)");
+        page.waitForTimeout(3000);
+        Locator Add = page.locator(addButton);
+        boolean isVisible = Add.first().isVisible();
+        System.out.println("is Add button visible? : " + isVisible);
+
+        page.waitForSelector("//button[@type='button']");
+        Add.click();
+        page.reload();
+
+        page.locator(Manage).click();
+        page.locator(SelectView).click();
+        page.locator(JourView).click();
+
+        List<Object> DoubleJournalCheckAcroname = new ArrayList<>();
+
+        String FirstJournalAcro =
+                page.locator("//h2[text()='" + PubName + "']//following::th[text()='" + Jacro + "'][1]").innerText();
+        DoubleJournalCheckAcroname.add(FirstJournalAcro);
+
+
+        String SecondJournalAcro =
+                page.locator("//h2[text()='" + PubName + "']//following::th[text()='" + JacroNew + "'][1]").innerText();
+        System.out.println("Visibility of 1 journal: " + SecondJournalAcro);
+        DoubleJournalCheckAcroname.add(SecondJournalAcro);
+
+
+        Boolean ArtView = page.locator("//h2[normalize-space()='" + PubName + " / " + Jacro + "']").isVisible();
+        System.out.println("Visibility of Article: " + ArtView);
+
+        DoubleJournalCheckAcroname.add(ArtView);
+        return DoubleJournalCheckAcroname;
 
 
     }
-
 
 
 }
